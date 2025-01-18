@@ -1,4 +1,4 @@
-# [Gachapon](https://raw.githubusercontent.com/KyleBuii/Gachapon/main/public/title.webp)
+# [Gachapon](https://gachapon-pon.vercel.app/)
 > 90% of gamblers quit before they hit it big.
 
 ### Description
