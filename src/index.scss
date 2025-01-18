@@ -1,0 +1,365 @@
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    color: #ffc353;
+    font-size: 1rem;
+}
+
+button:not(footer button):not(.group-item button){
+    cursor: pointer;
+    max-width: 10rem;
+    position: relative;
+    padding: 0.8rem 1rem;
+    border-radius: 25px;
+    border: none;
+    background-image: linear-gradient(
+        rgb(255, 123, 150),
+        rgb(255, 62, 104) 50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: .04rem;
+    transition-property: opactiy box-shadow;
+    transition-duration: 0.5s;
+    &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        right: 4px;
+        bottom: 7px;
+        border: 2px solid white;
+        border-radius: 25px;
+    }
+    &:hover{
+        opacity: 0.8;
+    }
+    &:active{
+        opacity: 0.5;
+    }
+    &.active{
+        background-image: linear-gradient(
+            rgb(255, 144, 166),
+            rgb(255, 93, 128) 50%);    
+        box-shadow: 0 0 15px 0px rgb(255, 62, 104);
+    }
+}
+
+a{
+    color: #92e4ff;
+    text-decoration: none;
+    transition-property: color opacity;
+    transition-duration: 0.5s;
+    &:hover{
+        color: #dcf6ff;
+    }
+    &:active{
+        opacity: 0.8;
+    }
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #1b2242;
+    color: #92e4ff;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+    }
+}
+
+.group{
+    border: 4px solid rgb(255, 62, 104);
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 0.5rem;
+    margin: 1.5rem;
+    legend{
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+        padding: 0 0.5rem;
+    }
+}
+
+.group-items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 1rem 1.5rem;
+}
+
+.group-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 64px;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #ffc353;
+    background-color: #ffc35330;
+    img{
+        height: 64px;
+    }
+    span:first-of-type{
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    button{
+        cursor: pointer;
+        width: 100%;
+        margin-top: 0.5rem;
+        border: 2px solid #e08aff;
+        border-radius: 5px;
+        background-color: #e6a1ff;
+        color: white;
+        transition-property: opacity;
+        transition-duration: 0.5s;
+        &:hover{
+            opacity: 0.7;
+        }
+        &:active{
+            opacity: 0.5;
+        }
+    }
+    &.genshin-impact{
+        max-width: 174px;
+        button{
+            color: #ffc353;
+            background-image: url(/genshin-impact/wish-button.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: none;
+            background-color: transparent;        
+        }
+    }
+}
+
+.hotbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    height: 3rem;
+    padding: 2rem;
+}
+
+.hotbar-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    img{
+        &:nth-child(1){
+            filter: drop-shadow(3px 2px 2px #757575);          
+            width: 3rem;
+            margin: -1em;
+            padding-left: 0.9rem;
+        }
+        &:nth-child(2){
+            width: 18rem;
+            margin-right: 2rem;
+        }
+    }
+}
+
+.influence{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0rem 1.5rem;
+    img{
+        max-width: 25rem;
+        width: 100%;
+        border: 4px solid rgb(255, 62, 104);
+        border-radius: 15px;
+    }
+}
+
+.player{
+    pointer-events: none;
+    border: 4px solid rgb(255, 62, 104);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.icon-link{
+    cursor: pointer;
+    display: inline-flex;
+    &:hover{
+        color: #dcf6ff;
+    }
+    &:active{
+        opacity: 0.8;
+    }
+}
+
+.popup{
+    visibility: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    user-select: none;
+    background-color: white;
+    border: 4px solid #ffc353;
+    box-shadow: 0 0 50px 5px #ffc353;
+}
+
+.reward{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    max-height: 95%;
+    max-width: 95%;
+    gap: 3rem;
+    &.genshin-impact{
+        grid-template-columns: repeat(auto-fit, minmax(8.3rem, 1fr));
+        gap: 0.1rem;
+        > span{
+            width: 6rem;
+            height: 22rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border: 2px solid #ffc353;
+            border-radius: 25px;
+            padding: 1rem;
+            font-size: 1rem;
+            text-shadow: 0 0 5px black;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #ffc35350;
+            :nth-child(2){
+                img{
+                    height: 18px;
+                }        
+            }
+            &.character{
+                background-position: -18rem;
+            }    
+        }
+    }
+}
+
+#disclaimer{
+    gap: 1rem;
+    span{
+        &:first-of-type{
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            right: 0.9rem;
+        }
+        &:nth-child(2){
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+    }
+}
+
+#money{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(
+        rgb(255, 123, 150),
+        rgb(255, 62, 104) 50%);
+    padding: 0.5rem;
+    border-radius: 15px 0 0;
+    font-weight: bolder;
+}
+
+#open{
+    z-index: 1;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    video{
+        position: fixed;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+    }
+}
+
+#reward-genshin-impact{
+    display: flex;
+    flex-direction: row;
+    div:first-of-type{
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: start;
+    }
+    #reward-genshin-impact-name{
+        max-width: 10rem;
+    }
+    #reward-genshin-impact-stars{
+        img{
+            height: 18px;
+        }
+    }
+    #reward-genshin-impact-image{
+        height: 124px;
+        margin-left: -4rem;
+    }
+}
+
+@media screen and (max-width: 723px){
+    .hotbar{
+        flex-direction: column;
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 463px){
+    .hotbar{
+        margin-top: 3rem;
+        margin-bottom: 4.5rem;
+    }
+}
