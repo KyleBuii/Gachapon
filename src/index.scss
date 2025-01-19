@@ -101,6 +101,7 @@ footer{
 }
 
 .group-item{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,6 +121,13 @@ footer{
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+    }
+    span:last-of-type{
+        position: absolute;
+        bottom: 0.15rem;
+        font-size: 0.5rem;
+        font-style: italic;
+        margin-top: 0.5rem;
     }
     button{
         cursor: pointer;
@@ -276,6 +284,7 @@ footer{
 }
 
 #disclaimer{
+    z-index: 1;
     gap: 1rem;
     span{
         &:first-of-type{

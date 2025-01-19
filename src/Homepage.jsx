@@ -58,8 +58,7 @@ const shop = {
                 4: ["Sucrose", "Chongyun", "Bennett", "Fischl", "Ningguang", "Xingqiu", "Beidou", "Xiangling", "Razor", "Barbara"],
                 3: ["Slingshot", "Sharpshooter's Oath", "Raven Bow", "Jade Orb", "Thrilling Tales of Dragon Slayers", "Magic Guide", "Black Tassel", "Debate Club", "Bloodtainted Greatsword", "Ferrous Shadow", "Skyrider Sword", "Harbinger of Dawn", "Cool Steel"]
             },
-            cost: 1,
-            limit: 2
+            cost: 1
         }
     }
 };
@@ -75,11 +74,6 @@ class Homepage extends Component{
                 classic: 0
             },
             openAnimation: "",
-            limit: {
-                "genshin impact": {
-                    "beginners' wish": shop["genshin impact"]["beginners' wish"].limit
-                }  
-            },
             inventory: []
         };
         this.handleBuy = this.handleBuy.bind(this);
@@ -132,18 +126,26 @@ class Homepage extends Component{
         let openAnimation = "";
         let rewardMoney = 0;
         let highestReward = 0;
+        let forcedPulls = [];
         let inventoryAdd = [];
         if((amount > 1) || (set === "classic")){
             popupReward = document.getElementById("reward-multiple");
             popupReward.innerHTML = "";
             popupReward.className = `reward popup ${reformatSet}`;
             currentPopupReward = "multiple";
+            switch(type){
+                case "beginners' wish":
+                    forcedPulls.push("Noelle");
+                    calculateRate = 4;
+                    break;
+                default: break;
+            };    
         }else{
             popupReward = document.getElementById(`reward-${reformatSet}`);
             currentPopupReward = reformatSet;
         };
         for(let i = 0; i < amount; i++){
-            randomNumber = Math.random();
+            if(forcedPulls.length === 0){ randomNumber = Math.random(); };
             switch(set){
                 case "classic":
                     spanReward = document.createElement("span");
@@ -157,13 +159,18 @@ class Homepage extends Component{
                     popupReward.appendChild(spanReward);
                     break;
                 case "genshin impact":
-                    calculateRate = (randomNumber <= .943)
-                        ? 3
-                        : (randomNumber <= .994)
-                            ? 4
-                            : 5;
-                    highestReward = (highestReward < calculateRate) ? calculateRate : highestReward;
-                    calculateReward = shop[set][type].items[calculateRate][Math.floor(Math.random() * shop[set][type].items[calculateRate].length)];
+                    if(forcedPulls.length !== 0){
+                        let forcedPull = forcedPulls.pop();
+                        calculateReward = forcedPull;
+                    }else{
+                        calculateRate = (randomNumber <= .943)
+                            ? 3
+                            : (randomNumber <= .994)
+                                ? 4
+                                : 5;
+                        highestReward = (highestReward < calculateRate) ? calculateRate : highestReward;
+                        calculateReward = shop[set][type].items[calculateRate][Math.floor(Math.random() * shop[set][type].items[calculateRate].length)];
+                    };
                     const reformatName = calculateReward.toLowerCase()
                         .replace(/\s/g, "-")
                         .replace(/'/g, "");
@@ -285,8 +292,12 @@ class Homepage extends Component{
                     cost: shop[set][capsule].cost,
                     amount: 10
                 });
+                const elementSet = document.createElement("span");
+                elementSet.innerText = set.replace(/\s(.)/g, (char) => char.toUpperCase())
+                    .replace(/^./, (char) => char.toUpperCase());
                 elementCapsule.appendChild(buttonBuy);
                 elementCapsule.appendChild(buttonBuyClone);
+                elementCapsule.appendChild(elementSet);
                 elementShopItems.appendChild(elementCapsule);
             };
         };
