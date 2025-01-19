@@ -59,6 +59,12 @@ const shop = {
                 3: ["Slingshot", "Sharpshooter's Oath", "Raven Bow", "Jade Orb", "Thrilling Tales of Dragon Slayers", "Magic Guide", "Black Tassel", "Debate Club", "Bloodtainted Greatsword", "Ferrous Shadow", "Skyrider Sword", "Harbinger of Dawn", "Cool Steel"]
             },
             cost: 1
+        },
+        "moment of bloom": {
+            items: {
+                5: ["Hu-Tao"],
+                4: ["Thoma", "Diona", "Sayu"]
+            }
         }
     }
 };
@@ -406,7 +412,7 @@ class Homepage extends Component{
                 <div className="group-items inventory">
                     {this.state.inventory.map((item, index) => {
                         return <span key={`item ${index}`}
-                            className="group-item">
+                            className="group-item inventory-item">
                             <img src={`/inventory/${item.toLowerCase().replace(/\s/g, "-").replace(/'/g, "")}.png`}/>
                             <span>{item}</span>
                         </span>

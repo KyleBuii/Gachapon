@@ -158,6 +158,14 @@ footer{
             background-color: transparent;        
         }
     }
+    &.inventory-item{
+        span:last-of-type{
+            position: unset;
+            font-size: unset;
+            font-style: unset;
+            margin: 0;
+        }    
+    }
 }
 
 .hotbar{
@@ -227,6 +235,7 @@ footer{
 }
 
 .popup{
+    z-index: 1;
     visibility: hidden;
     cursor: pointer;
     display: flex;
