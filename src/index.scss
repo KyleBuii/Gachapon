@@ -98,6 +98,9 @@ footer{
     align-items: center;
     gap: 1rem;
     margin: 1rem 1rem 1.5rem;
+    &.inventory{
+        max-height: 655px;
+    }
 }
 
 .group-item{
@@ -113,6 +116,19 @@ footer{
     text-align: center;
     border: 2px solid #ffc353;
     background-color: #ffc35330;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:not(.inventory-item){
+        height: 10.4rem;
+        span:last-of-type{
+            position: absolute;
+            bottom: 0.15rem;
+            font-size: 0.5rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+    }
     img{
         height: 64px;
     }
@@ -121,13 +137,6 @@ footer{
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-    }
-    span:last-of-type{
-        position: absolute;
-        bottom: 0.15rem;
-        font-size: 0.5rem;
-        font-style: italic;
-        margin-top: 0.5rem;
     }
     button{
         cursor: pointer;
@@ -147,7 +156,7 @@ footer{
         }
     }
     &.genshin-impact{
-        max-width: 174px;
+        min-width: 174px;
         button{
             color: #ffc353;
             background-image: url(/genshin-impact/wish-button.png);
@@ -158,13 +167,49 @@ footer{
             background-color: transparent;        
         }
     }
+    &.honkai-star-rail{
+        min-width: 174px;
+        button{
+            border-radius: 25px;
+            outline: 2px solid white;
+            outline-offset: -4px;
+        }
+    }
     &.inventory-item{
-        span:last-of-type{
-            position: unset;
-            font-size: unset;
-            font-style: unset;
-            margin: 0;
-        }    
+        width: 100%;
+        &.honkai-star-rail-3::after{
+            content: "";
+            position: absolute;
+            height: 50%;
+            width: 100%;
+            bottom: 0px;
+            background-image: linear-gradient(
+                to top,
+                rgba(94, 191, 255, .4),
+                transparent 40%);
+        }
+        &.honkai-star-rail-4::after{
+            content: "";
+            position: absolute;
+            height: 50%;
+            width: 100%;
+            bottom: 0px;
+            background-image: linear-gradient(
+                to top,
+                rgba(151, 80, 255, .4),
+                transparent 40%);
+        }
+        &.honkai-star-rail-5::after{
+            content: "";
+            position: absolute;
+            height: 50%;
+            width: 100%;
+            bottom: 0px;
+            background-image: linear-gradient(
+                to top,
+                rgba(255, 207, 112, .4),
+                transparent 40%);
+        }
     }
 }
 
@@ -261,7 +306,23 @@ footer{
     grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
     max-height: 95%;
     max-width: 95%;
-    gap: 3rem;
+    > span{
+        position: relative;
+        will-change: scale;
+        transition: scale 0.5s;
+        &:hover{
+            scale: 1.05;
+        }
+    }
+    &.classic{
+        gap: 3rem;
+        > span{
+            .pon{
+                top: -3.4rem;
+                right: -3.4rem;
+            }
+        }
+    }
     &.genshin-impact{
         grid-template-columns: repeat(auto-fit, minmax(8.3rem, 1fr));
         gap: 0.1rem;
@@ -284,12 +345,74 @@ footer{
                 img{
                     height: 18px;
                 }        
-            }
-            &.character{
-                background-position: -18rem;
-            }    
+            }   
         }
     }
+    &.honkai-star-rail{
+        grid-template-columns: repeat(auto-fit, minmax(18.5rem, 1fr));
+        gap: 1.5rem;
+        > span{
+            width: 15rem;
+            height: 6rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            border: 2px solid #ffc353;
+            border-radius: 25px;
+            padding: 1rem;
+            font-size: 1rem;
+            text-shadow: 0 0 5px black;
+            rotate: -15deg;
+            overflow: hidden;
+            padding-left: 2rem;
+            background-position: 40% -5rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #ffc35350;
+            > span{
+                width: 6rem;
+                display: flex;
+                flex-direction: column;
+                margin-right: 0.5rem;
+                img{
+                    height: 18px;
+                }
+            }
+            span:nth-child(2){
+                display: block;
+                white-space: nowrap;
+                text-overflow: ellipsis;    
+                overflow: hidden;
+            }
+            > img:not(.pon){
+                position: relative;
+                top: 2.5rem;
+                right: 0rem;
+                height: 10rem;
+                rotate: 15deg;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+.pon{
+    z-index: 2;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+}
+
+.no-money{
+    z-index: 2;
+    height: 256px;
+    width: 256px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 4px solid #ffc353;
+    border-radius: 10px;
 }
 
 #disclaimer{
@@ -309,6 +432,10 @@ footer{
             gap: 0.5rem;
         }
     }
+}
+
+#shop-items{
+    max-height: 855px;
 }
 
 #money{
@@ -345,16 +472,15 @@ footer{
 #reward-genshin-impact{
     display: flex;
     flex-direction: row;
+    gap: 1rem;
     div:first-of-type{
         z-index: 1;
+        max-width: 10rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
         text-align: start;
-    }
-    #reward-genshin-impact-name{
-        max-width: 10rem;
     }
     #reward-genshin-impact-stars{
         img{
@@ -363,7 +489,45 @@ footer{
     }
     #reward-genshin-impact-image{
         height: 124px;
-        margin-left: -4rem;
+    }
+}
+
+#reward-honkai-star-rail{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    div:first-of-type{
+        z-index: 1;
+        max-width: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: start;
+    }
+    #reward-honkai-star-rail-stars{
+        img{
+            height: 18px;
+        }
+    }
+    #reward-honkai-star-rail-image{
+        height: 124px;
+        rotate: 15deg;
+        border-radius: 10px;
+    }
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before{
+    background-color: rgb(255, 62, 104);
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before{
+    background-color: rgb(255, 62, 104);
+}
+
+.simplebar-content-wrapper{
+    &:focus{
+        outline: none;
     }
 }
 
