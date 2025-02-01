@@ -162,6 +162,8 @@ class Homepage extends Component{
             elementGif.className = "no-money";
             elementGif.src = "/no-money.gif";
             elementGif.alt = "no money gif";
+            elementGif.loading = "lazy";
+            elementGif.decoding = "async";
             let randomX = Math.random() * (Math.abs(window.innerWidth - 256)) + window.scrollX;
             let randomY = Math.random() * (Math.abs(window.innerHeight - 256)) + window.scrollY;
             elementGif.style.transform = `translate(${randomX}px, ${randomY}px)`;
@@ -252,6 +254,8 @@ class Homepage extends Component{
                             const imageStar = document.createElement("img");
                             imageStar.src = "/genshin-impact/star.webp";
                             imageStar.alt = "star";
+                            imageStar.loading = "lazy";
+                            imageStar.decoding = "async";
                             for(let i = 0; i < calculateRate; i++){
                                 elementStars.appendChild(imageStar.cloneNode());
                             };
@@ -277,6 +281,8 @@ class Homepage extends Component{
                                 const imageStar = document.createElement("img");
                                 imageStar.src = "/genshin-impact/star.webp";
                                 imageStar.alt = "star";
+                                imageStar.loading = "lazy";
+                                imageStar.decoding = "async";
                                 for(let i = 0; i < calculateRate - starAmount; i++){
                                     elementStars.appendChild(imageStar.cloneNode());
                                 };
@@ -319,6 +325,8 @@ class Homepage extends Component{
                             const imageStar = document.createElement("img");
                             imageStar.src = "/honkai-star-rail/star.webp";
                             imageStar.alt = "star";
+                            imageStar.loading = "lazy";
+                            imageStar.decoding = "async";
                             for(let i = 0; i < calculateRate; i++){
                                 elementStars.appendChild(imageStar.cloneNode());
                             };
@@ -333,6 +341,8 @@ class Homepage extends Component{
                                 const elementImage = document.createElement("img");
                                 elementImage.src = `/honkai-star-rail/reward/${randomItemType}/${reformatName}.webp`;
                                 elementImage.alt = `${calculateReward} ${i}`;
+                                elementImage.loading = "lazy";
+                                elementImage.decoding = "async";
                                 spanReward.appendChild(elementImage);
                             };
                             if(calculateRate === 5){ this.createPon(spanReward); };
@@ -356,6 +366,8 @@ class Homepage extends Component{
                                 const imageStar = document.createElement("img");
                                 imageStar.src = "/honkai-star-rail/star.webp";
                                 imageStar.alt = "star";
+                                imageStar.loading = "lazy";
+                                imageStar.decoding = "async";
                                 for(let i = 0; i < calculateRate - starAmount; i++){
                                     elementStars.appendChild(imageStar.cloneNode());
                                 };
@@ -422,6 +434,8 @@ class Homepage extends Component{
         elementPon.className = "pon";
         elementPon.src = "/pon.webp";
         elementPon.alt = "pon";
+        elementPon.loading = "lazy";
+        elementPon.decoding = "async";
         element.appendChild(elementPon);
     };
     storeData(){
@@ -442,7 +456,9 @@ class Homepage extends Component{
                 elementCapsule.key = `${set} ${capsule}`;
                 elementCapsule.innerHTML = `
                     <img src="/${reformatSet}/${capsule.replace(/\s/g, "-")}.webp"
-                        alt="${set} ${capsule}"/>
+                        alt="${set} ${capsule}"
+                        loading="lazy"
+                        decoding="async"/>
                     <span>${capsule.replace(/^./, (char) => char.toUpperCase())
                         .replace(/\s(.)/g, (char) => char.toUpperCase())}</span>
                     <span>$${shop[set][capsule].cost}</span>
@@ -518,9 +534,11 @@ class Homepage extends Component{
             <section className="hotbar">
                 <div className="title">
                     <img src="/favicon-96x96.png"
-                        alt="title icon"></img>
+                        alt="title icon"
+                        decoding="async"></img>
                     <img src="/title.webp"
-                        alt="title"></img>
+                        alt="title"
+                        decoding="async"></img>
                 </div>
                 <div className="hotbar-buttons">
                     <button id="homepage-button-home"
@@ -536,9 +554,11 @@ class Homepage extends Component{
             </section>
             <section className="influence">
                 <img src="/gamblers-quit.webp"
-                    alt="gamblers quit"></img>
+                    alt="gamblers quit"
+                    decoding="async"></img>
                 <img src="/successful-people.webp"
-                    alt="successful people vs unsuccessul people"></img>
+                    alt="successful people vs unsuccessul people"
+                    decoding="async"></img>
                 <ReactPlayer className="player"
                     url={"https://www.youtube.com/watch?v=IPFiKEm-oNI"}
                     height={"25rem"}
@@ -560,10 +580,8 @@ class Homepage extends Component{
             </section>
             <fieldset className="group">
                 <legend>Shop</legend>
-                <SimpleBar style={{ maxHeight: 855 }}>
-                    <div id="shop-items"
-                        className="group-items"></div>
-                </SimpleBar>
+                <div id="shop-items"
+                    className="group-items"></div>
             </fieldset>
             <section id="open"
                 onClick={() => this.handlePopup("open")}>
@@ -586,7 +604,9 @@ class Homepage extends Component{
                     <span id="reward-genshin-impact-stars"></span>
                 </div>
                 <img id="reward-genshin-impact-image"
-                    alt="reward"/>
+                    alt="reward"
+                    loading="lazy"
+                    decoding="async"/>
             </section>
             <section id="reward-honkai-star-rail"
                 className="reward popup"
@@ -596,7 +616,9 @@ class Homepage extends Component{
                     <span id="reward-honkai-star-rail-stars"></span>
                 </div>
                 <img id="reward-honkai-star-rail-image"
-                    alt="reward"/>
+                    alt="reward"
+                    loading="lazy"
+                    decoding="async"/>
             </section>
             <fieldset className="group">
                 <legend>Inventory</legend>
@@ -606,7 +628,10 @@ class Homepage extends Component{
                             return <span key={`item ${index}`}
                                 className={`group-item inventory-item ${item[0].replace(/\s/g, "-")}-${item[3]}`}
                                 style={{ backgroundImage: `url(/${item[0].replace(/\s/g, "-")}/${item[3]}-bg.webp)` }}>
-                                <img src={`/${item[0].replace(/\s/g, "-")}/inventory/${item[1]}/${item[2].toLowerCase().replace(/\s/g, "-").replace(/'/g, "")}.webp`}/>
+                                <img src={`/${item[0].replace(/\s/g, "-")}/inventory/${item[1]}/${item[2].toLowerCase().replace(/\s/g, "-").replace(/'/g, "")}.webp`}
+                                    alt={`inventory item ${index}`}
+                                    loading="lazy"
+                                    decoding="async"/>
                                 <span>{item[2]}</span>
                             </span>
                     })}
