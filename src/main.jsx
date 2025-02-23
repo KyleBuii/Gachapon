@@ -6,8 +6,8 @@ import './index.scss';
 
 
 createRoot(document.getElementById('root')).render(
-    <div>
+    <StrictMode>
         <Disclaimer/>
         <Hotbar/>
-    </div>
+    </StrictMode>
 );
