@@ -9,11 +9,34 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "globals": {
+      "window": "readonly",
+      "document": "readonly"
+    },
+    "rules": {
+      "react/prop-types": "off",
+      "no-extra-semi": "off"
+    }
+  },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-player": "^2.16.0",
+    "react-router-dom": "^7.1.5",
     "sass": "^1.83.1",
     "simplebar-react": "^3.3.0"
   },
