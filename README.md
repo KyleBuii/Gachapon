@@ -16,3 +16,4 @@ All product names, logos, characters, brands, trademarks and registered trademar
 - [Genshin Impact Assets](https://genshin.hoyoverse.com/en/) by Hoyoverse
 - [Honkai Star Rail Warp Simulator](https://github.com/Mantan21/HSR-Warp-Simulator) by Hantan21
 - [Honkai Star Rail Assets](https://hsr.hoyoverse.com/en-us/) by Hoyoverse
+- [Hachi](https://opengameart.org/content/anime-girl%EF%BC%9Ahachi) by HachiStudio
