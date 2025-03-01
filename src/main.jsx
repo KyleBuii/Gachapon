@@ -1,13 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import Disclaimer from './Disclaimer';
-import Hotbar from './Hotbar';
+import App from './App';
 import './index.scss';
 
 
 createRoot(document.getElementById('root')).render(
-    <StrictMode>
-        <Disclaimer/>
-        <Hotbar/>
-    </StrictMode>
+    <div>
+        <App/>
+    </div>
 );

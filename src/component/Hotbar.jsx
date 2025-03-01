@@ -1,9 +1,10 @@
 import { memo } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router";
-import Homepage from "./Homepage";
-import Inventory from "./Inventory";
+import Homepage from "../Homepage";
+import Inventory from "../Inventory";
+import Shop from "../Shop";
 
-const Hotbar = () => {
+const Hotbar = ({ renderShopItems, inventory, inventoryRecent = [] }) => {
     const handleHotbar = (what) => {
         const elementHotbar = document.querySelectorAll('.hotbar .active');
         if (elementHotbar.length === 1) {
@@ -46,10 +47,15 @@ const Hotbar = () => {
             <Routes>
                 <Route
                     path='/'
-                    element={<Homepage/>}></Route>
+                    element={<Homepage
+                        renderShopItems={renderShopItems}
+                        inventoryRecent={inventoryRecent}/>}></Route>
                 <Route
                     path='/inventory'
-                    element={<Inventory/>}></Route>
+                    element={<Inventory inventory={inventory}/>}></Route>
+                <Route
+                    path='/shop'
+                    element={<Shop renderShopItems={renderShopItems}/>}></Route>
             </Routes>
         </BrowserRouter>
     );

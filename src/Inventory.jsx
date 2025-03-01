@@ -2,51 +2,98 @@ import { memo, useEffect, useState } from "react";
 import Select from "./component/Select";
 
 
-const optionsSort = ['rarity', 'amount', 'set', 'name'];
+let initialInventory = {};
+let sets = [];
+let currentSetIndex = 0;
+const optionsSort = [
+    'amount',
+    'name',
+    'rarity',
+    'latest',
+];
 
-const Inventory = () => {
-    const [inventory, setInventory] = useState([]);
+const Inventory = ({ inventory }) => {
+    const [modifiedInventory, setModifiedInventory] = useState([]);
+    const [currentOption, setCurrentOption] = useState('latest');
+    const [sortOrder, setSortOrder] = useState('descending');
     useEffect(() => {
-        if (localStorage.getItem('inventory') !== null) {
-            setInventory(JSON.parse(localStorage.getItem('inventory')));
+        if (Object.keys(inventory).length !== 0) {
+            const inventorySets = Object.keys(inventory);
+            initialInventory = {
+                ...inventory
+            };
+            sets = [...inventorySets];
+            setModifiedInventory(inventory[inventorySets[currentSetIndex]])
         };
     }, []);
-    const handleOptionChange = (option) => {
-        switch (option) {
-            case 'rarity':
+    const handleSelectOptionChange = (option) => {
+        if (Object.keys(initialInventory).length === 0) return;
+        setCurrentOption(option);
+        setModifiedInventory(sortInventory(modifiedInventory, option));
+    };
+    const handleSelectButtonPress = (order) => {
+        if (Object.keys(initialInventory).length === 0) return;
+        setSortOrder(order);
+        setModifiedInventory(Object.fromEntries(
+            Object.entries(modifiedInventory).reverse()
+        ));
+    };
+    const handleSelectCoinInsert = () => {
+        if (Object.keys(initialInventory).length === 0) return;
+        let calculateSetIndex = currentSetIndex + 1;
+        if (calculateSetIndex > sets.length - 1) {
+            calculateSetIndex = 0;
+        };
+        currentSetIndex = calculateSetIndex;
+        const newInventory = sortInventory(initialInventory[sets[calculateSetIndex]], currentOption);
+        setModifiedInventory(newInventory);
+    };
+    const sortInventory = (originalInventory, sortMethod) => {
+        let changedInventory = [];
+        switch (sortMethod) {
+            case 'amount':
+                changedInventory = Object.entries(originalInventory)
+                    .sort(([, itemOne], [, itemTwo]) => itemTwo.count - itemOne.count);
                 break;
+            case 'name':
+                changedInventory = Object.entries(originalInventory).sort().reverse();
+                break;
+            case 'rarity':
+                changedInventory = Object.entries(originalInventory)
+                    .sort(([, itemOne], [, itemTwo]) => itemTwo.rate - itemOne.rate);
+                break;
+            case 'latest':
+                changedInventory = Object.entries(initialInventory[sets[currentSetIndex]]);
+                break;    
             default: break;
         };
+        if (sortOrder === 'ascending') {
+            changedInventory.reverse();
+        };
+        return Object.fromEntries(changedInventory);
     };
     return (
         <section id='page-inventory'>
             <Select options={optionsSort}
-                optionChange={handleOptionChange}/>
+                defaultOption={'latest'}
+                optionChange={handleSelectOptionChange}
+                buttonPress={handleSelectButtonPress}
+                coinInsert={handleSelectCoinInsert}/>
             <section className='group-items'>
-                {Object.entries(inventory).flatMap((set) => 
-                    Object.entries(set[1]).map((item, index) => (
+                {(modifiedInventory !== undefined)
+                    && Object.entries(modifiedInventory).map((item, index) => (
                         <span key={`item ${item[0]} ${index}`}
-                            className={`group-item inventory-item ${set[0].replace(/\s/g, '-')}-${item[1].rate}`}
-                            style={{ backgroundImage: `url(/${set[0].replace(/\s/g, '-')}/${item[1].rate}-bg.webp)` }}>
-                            <img src={`/${set[0].replace(/\s/g, '-')}/inventory/${item[1].type}/${item[0].toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`}
+                            className={`group-item inventory-item ${sets[currentSetIndex].replace(/\s/g, '-')}-${item[1].rate}`}
+                            style={{ backgroundImage: `url(/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].rate}-bg.webp)` }}>
+                            <span className='item-count'>{item[1].count}</span>
+                            <img src={`/${sets[currentSetIndex].replace(/\s/g, '-')}/inventory/${item[1].type}/${item[0].toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`}
                                 alt={`inventory item ${index}`}
                                 loading='lazy'
                                 decoding='async'/>
-                            <span>{item[0]}</span>
+                            <span className='item-name'>{item[0]}</span>
                         </span>
                     ))
-                )}
-                {/* {inventory.map((item, index) => {
-                    return <span key={`item ${index}`}
-                        className={`group-item inventory-item ${item[0].replace(/\s/g, '-')}-${item[3]}`}
-                        style={{ backgroundImage: `url(/${item[0].replace(/\s/g, '-')}/${item[3]}-bg.webp)` }}>
-                        <img src={`/${item[0].replace(/\s/g, '-')}/inventory/${item[1]}/${item[2].toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`}
-                            alt={`inventory item ${index}`}
-                            loading='lazy'
-                            decoding='async'/>
-                        <span>{item[2]}</span>
-                    </span>
-                })} */}
+                }
             </section>
         </section>
     );
