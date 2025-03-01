@@ -185,7 +185,7 @@ const App = () => {
         };
     };
     const handleBuy = ({ set, type, cost, amount = 1 }) => {
-        if ((set !== 'classic') && (money - (cost * amount) < 0)) {
+        if ((set !== 'classic') && (refMoney.current - (cost * amount) < 0)) {
             const elementGif = document.createElement('img');
             elementGif.className = 'no-money';
             elementGif.src = '/no-money.gif';
@@ -463,6 +463,7 @@ const App = () => {
             };
             if (set !== 'classic') {
                 setOpenAnimation(`/${set.replace(/\s/g, '-')}/open/${calculateOpenAnimation}`);
+                setMoney((prev) => prev - (cost * amount));
                 setInventory((prevInventory) => {
                     let combinedInventory = {
                         ...prevInventory
