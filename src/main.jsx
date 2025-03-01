@@ -5,7 +5,7 @@ import './index.scss';
 
 
 createRoot(document.getElementById('root')).render(
-    <div>
+    <StrictMode>
         <App/>
-    </div>
+    </StrictMode>
 );
