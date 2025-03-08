@@ -1,5 +1,4 @@
 import { memo, useEffect } from 'react';
-import { FaGithub } from 'react-icons/fa6';
 import ReactPlayer from 'react-player';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
@@ -77,9 +76,9 @@ const walkthroughDialog = {
 let currentWalkthroughStep = -1;
 let lockWalkthrough = false;
 
-const Homepage = ({ renderShopItems, inventoryRecent }) => {
+const Homepage = ({ renderShopItems, homepageShop, inventoryRecent }) => {
     useEffect(() => {
-        renderShopItems('shop-items');
+        renderShopItems('shop-items', homepageShop);
     }, []);
     const handleWalkthrough = () => {
         const elementPopup = document.getElementById('walkthrough-popup');
@@ -215,19 +214,6 @@ const Homepage = ({ renderShopItems, inventoryRecent }) => {
                     </div>
                 </SimpleBar>
             </fieldset>
-            <footer>
-                <span>All product names, logos, characters, brands, trademarks and registered trademarks are property of their respective owners and unrelated to Gachapon</span>
-                <div>
-                    <span>Created by <a href='https://github.com/KyleBuii' referrerPolicy='no-referrer'>Kyle Bui</a></span>
-                    &#8226;
-                    <span className='icon-link'
-                        onClick={() => { window.location.href = 'https://github.com/KyleBuii/Gachapon'; }}>
-                        <FaGithub/>
-                    </span>
-                    &#8226;
-                    <span>Attribution</span>
-                </div>
-            </footer>
         </section>
     );
 };

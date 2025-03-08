@@ -4,7 +4,7 @@ import Homepage from "../Homepage";
 import Inventory from "../Inventory";
 import Shop from "../Shop";
 
-const Hotbar = ({ renderShopItems, inventory, inventoryRecent = [] }) => {
+const Hotbar = ({ renderShopItems, homepageShop, shopItems, shopBanners, inventory, inventoryRecent = [] }) => {
     const handleHotbar = (what) => {
         const elementHotbar = document.querySelectorAll('.hotbar .active');
         if (elementHotbar.length === 1) {
@@ -49,13 +49,17 @@ const Hotbar = ({ renderShopItems, inventory, inventoryRecent = [] }) => {
                     path='/'
                     element={<Homepage
                         renderShopItems={renderShopItems}
+                        homepageShop={homepageShop}
                         inventoryRecent={inventoryRecent}/>}></Route>
                 <Route
                     path='/inventory'
                     element={<Inventory inventory={inventory}/>}></Route>
                 <Route
                     path='/shop'
-                    element={<Shop renderShopItems={renderShopItems}/>}></Route>
+                    element={<Shop
+                        renderShopItems={renderShopItems}
+                        shopItems={shopItems}
+                        shopBanners={shopBanners}/>}></Route>
             </Routes>
         </BrowserRouter>
     );

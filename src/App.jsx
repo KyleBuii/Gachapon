@@ -1,6 +1,7 @@
 import { memo, useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import Disclaimer from "./component/Disclaimer";
+import Footer from "./component/Footer";
 import Hotbar from "./component/Hotbar";
 import Money from "./component/Money";
 
@@ -86,16 +87,43 @@ const shopItems = {
 
     }
 };
+const shopBanners = {
+    'genshin impact': [
+        'adrift-in-the-harbor', 'ballad-in-goblets-2', 'ballad-in-goblets',
+        'beginners-wish', 'born-of-ocean-swell', 'dance-of-lanterns',
+        'drifting-luminescence', 'epitome-invocation', 'farewell-of-snezhnaya-2',
+        'farewell-of-snezhnaya', 'files.txt', 'gentry-of-hermitage-2', 'gentry-of-hermitage',
+        'invitation-to-mundane-life', 'leaves-in-the-wind', 'moment-of-bloom-2',
+        'moment-of-bloom', 'reign-of-serenity', 'secretum-secretorum', 'sparkling-steps-2',
+        'sparkling-steps', 'tapestry-of-golden-flames', 'the-herons-court', 'wanderlust-invocation'
+    ],
+    'honkai star rail': [
+        '2-5_1', 'a-lost-soul-1', 'a-lost-soul-2', 'back-to-fons-et-origo-1',
+        'bloom-in-gloom-1', 'bloom-in-gloom-2', 'bloom-in-gloom-3', 'butterfly-on-swordtip-1',
+        'butterfly-on-swordtip-2', 'cauldron-contrivance-1', 'contract-zero-1', 'contract-zero-2',
+        'dusty-trails-lone-star-1', 'earth-hurled-ether-curled-1', 'earth-hurled-ether-curled-2',
+        'epochal-spectrum-1', 'epochal-spectrum-2', 'epochal-spectrum-3', 'eyes-of-a-ninja-1',
+        'eyes-to-the-stars-1', 'files.txt', 'firefull-flyshine-1', 'firefull-flyshine-2', 'floral-triptych-1',
+        'floral-triptych-2', 'foreseen-foreknown-foretold-1', 'foreseen-foreknown-foretold-2', 'fugue-1',
+        'gentle-eclipse-of-the-moon-1', 'gentle-eclipse-of-the-moon-2', 'gilded-imprisonment-1',
+        'gilded-imprisonment-2', 'hati-singa-yang-membara-1', 'just-intonation-1', 'laic-pursuit-1',
+        'laic-pursuit-2', 'let-scent-sink-in-1', 'lien-on-life-lease-on-fate-1', 'nessun-dorma-1', 'nessun-dorma-2',
+        'panta-rhei-1', 'ripples-in-reflection-1', 'sparkling-splendor-1', 'sparkling-splendor-2', 'sunset-clause-1',
+        'sunset-clause-2', 'sunset-clause-3', 'swirl-of-heavenly-spear-1', 'swirl-of-heavenly-spear-2',
+        'swirl-of-heavenly-spear-3', 'the-long-voyage-home-1', 'thorns-of-scented-crown-1', 'thorns-of-scented-crown-2',
+        'words-of-yore-1', 'words-of-yore-2'
+    ]
+};
 const audioOpen = new Audio(null);
 const audioReveal = new Audio(null);
 let timeoutNoMoney;
 let currentPopupReward = '';
 let inventoryRecent = [];
+let homepageShop = {};
 
 const App = () => {
     const [money, setMoney] = useState(10);
     const [inventory, setInventory] = useState({});
-    // const [inventoryRecent, setInventoryRecent] = useState([]);
     const [openAnimation, setOpenAnimation] = useState('');
     const refMoney = useRef(money);
     const refInventory = useRef(inventory);
@@ -109,6 +137,27 @@ const App = () => {
         };
         if (localStorage.getItem('inventory') !== null) {
             setInventory(JSON.parse(localStorage.getItem('inventory')));
+        };
+        let firstSetItemName = '';
+        for (let set of Object.keys(shopItems)) {
+            if (set === 'classic') {
+                for (let i = 0; i < 3; i++) {
+                    firstSetItemName = Object.keys(shopItems[set])[i];
+                    homepageShop[set] = {
+                        ...homepageShop[set],
+                        [firstSetItemName]: {
+                            ...shopItems[set][firstSetItemName]
+                        }
+                    };    
+                };
+            } else {
+                firstSetItemName = Object.keys(shopItems[set])[0];
+                homepageShop[set] = {
+                    [firstSetItemName]: {
+                        ...shopItems[set][firstSetItemName]
+                    }
+                };
+            };
         };
         return () => {
             window.removeEventListener('beforeunload', storeData);
@@ -124,10 +173,10 @@ const App = () => {
     useEffect(() => {
         refInventory.current = inventory;
     }, [inventory]);
-    const renderShopItems = (element) => {
+    const renderShopItems = (element, items = shopItems) => {
         const elementShopItems = document.getElementById(element);
-        for (let set of Object.keys(shopItems)) {
-            for (let capsule of Object.keys(shopItems[set])) {
+        for (let set of Object.keys(items)) {
+            for (let capsule of Object.keys(items[set])) {
                 const elementCapsule = document.createElement('span');
                 let reformatSet = set.replace(/\s/g, '-');
                 elementCapsule.id = `capsule-${reformatSet}-${capsule}`;
@@ -144,7 +193,7 @@ const App = () => {
                 elementCapsuleName.innerText = capsule.replace(/^./, (char) => char.toUpperCase())
                     .replace(/\s(.)/g, (char) => char.toUpperCase());
                 elementCapsule.appendChild(elementCapsuleName);
-                elementCapsule.innerHTML += `<span>$${shopItems[set][capsule].cost}</span>`;
+                elementCapsule.innerHTML += `<span>$${items[set][capsule].cost}</span>`;
                 const buttonBuy = document.createElement('button');
                 let buttonBuyText;
                 buttonBuy.className = 'buy';
@@ -163,14 +212,14 @@ const App = () => {
                 buttonBuy.onclick = () => handleBuy({
                     set: set,
                     type: capsule,
-                    cost: shopItems[set][capsule].cost
+                    cost: items[set][capsule].cost
                 });
                 const buttonBuyClone = buttonBuy.cloneNode();
                 buttonBuyClone.innerText = `${buttonBuyText} x10`;
                 buttonBuyClone.onclick = () => handleBuy({
                     set: set,
                     type: capsule,
-                    cost: shopItems[set][capsule].cost,
+                    cost: items[set][capsule].cost,
                     amount: 10
                 });
                 const elementSet = document.createElement('span');
@@ -551,50 +600,56 @@ const App = () => {
         localStorage.setItem('inventory', JSON.stringify(refInventory.current));
     };
     return (
-        <section>
-            <section id='open'
-                onClick={() => handlePopup('open')}>
-                <ReactPlayer url={openAnimation}
-                    width={'100%'}
-                    height={'100%'}
-                    playing={true}
-                    onStart={handleAnimationStart}
-                    onEnded={() => handleEnded()}
-                    onReady={() => {}}/>
+        <section className='app'>
+            <section className='content'>
+                <section id='open'
+                    onClick={() => handlePopup('open')}>
+                    <ReactPlayer url={openAnimation}
+                        width={'100%'}
+                        height={'100%'}
+                        playing={true}
+                        onStart={handleAnimationStart}
+                        onEnded={() => handleEnded()}
+                        onReady={() => {}}/>
+                </section>
+                <section id='reward-multiple'
+                    className='reward popup'
+                    onClick={() => handlePopup('reward-multiple')}></section>
+                <section id='reward-genshin-impact'
+                    className='reward popup'
+                    onClick={() => handlePopup('reward-genshin-impact')}>
+                    <div>
+                        <span id='reward-genshin-impact-name'></span>
+                        <span id='reward-genshin-impact-stars'></span>
+                    </div>
+                    <img id='reward-genshin-impact-image'
+                        alt='reward'
+                        loading='lazy'
+                        decoding='async'/>
+                </section>
+                <section id='reward-honkai-star-rail'
+                    className='reward popup'
+                    onClick={() => handlePopup('reward-honkai-star-rail')}>
+                    <div>
+                        <span id='reward-honkai-star-rail-name'></span>
+                        <span id='reward-honkai-star-rail-stars'></span>
+                    </div>
+                    <img id='reward-honkai-star-rail-image'
+                        alt='reward'
+                        loading='lazy'
+                        decoding='async'/>
+                </section>
+                <Money money={money}/>
+                <Disclaimer/>
+                <Hotbar
+                    renderShopItems={renderShopItems}
+                    homepageShop={homepageShop}
+                    shopItems={shopItems}
+                    shopBanners={shopBanners}
+                    inventory={inventory}
+                    inventoryRecent={inventoryRecent}/>
             </section>
-            <section id='reward-multiple'
-                className='reward popup'
-                onClick={() => handlePopup('reward-multiple')}></section>
-            <section id='reward-genshin-impact'
-                className='reward popup'
-                onClick={() => handlePopup('reward-genshin-impact')}>
-                <div>
-                    <span id='reward-genshin-impact-name'></span>
-                    <span id='reward-genshin-impact-stars'></span>
-                </div>
-                <img id='reward-genshin-impact-image'
-                    alt='reward'
-                    loading='lazy'
-                    decoding='async'/>
-            </section>
-            <section id='reward-honkai-star-rail'
-                className='reward popup'
-                onClick={() => handlePopup('reward-honkai-star-rail')}>
-                <div>
-                    <span id='reward-honkai-star-rail-name'></span>
-                    <span id='reward-honkai-star-rail-stars'></span>
-                </div>
-                <img id='reward-honkai-star-rail-image'
-                    alt='reward'
-                    loading='lazy'
-                    decoding='async'/>
-            </section>
-            <Money money={money}/>
-            <Disclaimer/>
-            <Hotbar
-                renderShopItems={renderShopItems}
-                inventory={inventory}
-                inventoryRecent={inventoryRecent}/>
+            <Footer/>
         </section>
     );
 };
