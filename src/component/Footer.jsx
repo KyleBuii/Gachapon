@@ -12,8 +12,6 @@ const Footer = () => {
                     onClick={() => { window.location.href = 'https://github.com/KyleBuii/Gachapon'; }}>
                     <FaGithub/>
                 </span>
-                &#8226;
-                <span>Attribution</span>
             </div>
         </footer>
     );

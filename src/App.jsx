@@ -76,7 +76,7 @@ const shopItems = {
                 },
                 4: {
                     character: ['Hanya', 'Moze', 'Herta', 'Natasha', 'Tingyun', 'Arlan', 'Hook', 'Pela', 'Xueyi', 'Asta', 'Luka', 'Qingque', 'Yukong', 'Dan Heng', 'Lynx', 'Sampo', 'Gallagher', 'March 7th', 'Serval', 'Guinaifen', 'Misha', 'Sushang'],
-                    cone: ['A Secret Vow', 'After The Charmony Fall', 'Boundless Choreo', 'Concert For Two', 'Dance Dance Dance', 'Day One Of My New Life', 'Dreams Montage', 'Eyes Of The Prey', 'Geniuses Greetings', 'Geniuses Repose', 'Good Night And Sleep Well', 'Indelible Promise', 'Landaus Choice', 'Make The World Clamor', 'Memories Of The Past', 'Only Silence Remains', 'Perfect Timing', 'Planetary Rendezvous', 'Poised To Bloom', 'Post Op Conversation', 'Resolution Shines As Pearls Of Sweat', 'Shadowed By Night', 'Shared Feeling', 'Subscribe For More', 'Swordplay', 'The Birth Of The Self', 'The Moles Welcome You', 'Trend Of The Universal Market', 'Under The Blue Sky']
+                    cone: ['A Secret Vow', 'After The Charmony Fall', 'Boundless Choreo', 'Concert For Two', 'Dance Dance Dance', 'Day One Of My New Life', 'Dreams Montage', 'Eyes Of The Prey', 'Geniuses Greetings', 'Geniuses Repose', 'Good Night And Sleep Well', 'Indelible Promise', 'Landaus Choice', 'Make The World Clamor', 'Memories Of The Past', 'Only Silence Remains', 'Perfect Timing', 'Planetary Rendezvous', 'Poised To Bloom', 'Post Op Conversation', 'Resolution Shines As Pearls Of Sweat', 'Shadowed by Night', 'Shared Feeling', 'Subscribe For More', 'Swordplay', 'The Birth Of The Self', 'The Moles Welcome You', 'Trend Of The Universal Market', 'Under The Blue Sky']
                 },
                 3: {
                     cone: ['Data Bank', 'Passkey', 'Defense', 'Pioneering', 'Adversarial', 'Fine Fruit', 'Reminiscence', 'Amber', 'Hidden Shadow', 'Sagacity', 'Arrows', 'Loop', 'Shadowburn', 'Chorus', 'Mediation', 'Shattered Home', 'Collapsing Sky', 'Meshing Cogs', 'Cornucopia', 'Multiplication', 'Void', 'Darting Arrow', 'Mutual Demise']
@@ -92,7 +92,7 @@ const shopBanners = {
         'adrift-in-the-harbor', 'ballad-in-goblets-2', 'ballad-in-goblets',
         'beginners-wish', 'born-of-ocean-swell', 'dance-of-lanterns',
         'drifting-luminescence', 'epitome-invocation', 'farewell-of-snezhnaya-2',
-        'farewell-of-snezhnaya', 'files.txt', 'gentry-of-hermitage-2', 'gentry-of-hermitage',
+        'farewell-of-snezhnaya', 'gentry-of-hermitage-2', 'gentry-of-hermitage',
         'invitation-to-mundane-life', 'leaves-in-the-wind', 'moment-of-bloom-2',
         'moment-of-bloom', 'reign-of-serenity', 'secretum-secretorum', 'sparkling-steps-2',
         'sparkling-steps', 'tapestry-of-golden-flames', 'the-herons-court', 'wanderlust-invocation'
@@ -103,7 +103,7 @@ const shopBanners = {
         'butterfly-on-swordtip-2', 'cauldron-contrivance-1', 'contract-zero-1', 'contract-zero-2',
         'dusty-trails-lone-star-1', 'earth-hurled-ether-curled-1', 'earth-hurled-ether-curled-2',
         'epochal-spectrum-1', 'epochal-spectrum-2', 'epochal-spectrum-3', 'eyes-of-a-ninja-1',
-        'eyes-to-the-stars-1', 'files.txt', 'firefull-flyshine-1', 'firefull-flyshine-2', 'floral-triptych-1',
+        'eyes-to-the-stars-1', 'firefull-flyshine-1', 'firefull-flyshine-2', 'floral-triptych-1',
         'floral-triptych-2', 'foreseen-foreknown-foretold-1', 'foreseen-foreknown-foretold-2', 'fugue-1',
         'gentle-eclipse-of-the-moon-1', 'gentle-eclipse-of-the-moon-2', 'gilded-imprisonment-1',
         'gilded-imprisonment-2', 'hati-singa-yang-membara-1', 'just-intonation-1', 'laic-pursuit-1',
@@ -113,6 +113,48 @@ const shopBanners = {
         'swirl-of-heavenly-spear-3', 'the-long-voyage-home-1', 'thorns-of-scented-crown-1', 'thorns-of-scented-crown-2',
         'words-of-yore-1', 'words-of-yore-2'
     ]
+};
+const references = {
+    'Font Generator': {
+        author: 'TextStudio',
+        url: 'https://www.textstudio.com/',
+    },
+    'Image - "Never Give Up" / Digging for Diamonds': {
+        author: 'Dum',
+        url: 'https://dumilustrador.blogspot.com/',
+    },
+    'Video - gamblecore': {
+        author: 'raxdflipnote',
+        url: 'https://www.youtube.com/watch?v=IPFiKEm-oNI',
+    },
+    'Image - Capsule': {
+        author: 'Airos',
+        url: 'https://opengameart.org/content/32px-toy-capsules',
+    },
+    'Image - No money': {
+        author: 'soraway',
+        url: 'https://tenor.com/view/wallet-gif-25866507',
+    },
+    'Genshin Impact Wish Simulator': {
+        author: 'Mantan21',
+        url: 'https://github.com/Mantan21/Genshin-Impact-Wish-Simulator',
+    },
+    'Genshin Impact Assets': {
+        author: 'Hoyoverse',
+        url: 'https://genshin.hoyoverse.com/en/',
+    },
+    'Honkai Star Rail Warp Simulator': {
+        author: 'Hantan21',
+        url: 'https://github.com/Mantan21/HSR-Warp-Simulator',
+    },
+    'Honkai Star Rail Assets': {
+        author: 'Hoyoverse',
+        url: 'https://hsr.hoyoverse.com/en-us/',
+    },
+    'Image - Hachi': {
+        author: 'HachiStudio',
+        url: 'https://opengameart.org/content/anime-girl%EF%BC%9Ahachi',
+    }
 };
 const audioOpen = new Audio(null);
 const audioReveal = new Audio(null);
@@ -642,6 +684,7 @@ const App = () => {
                 <Money money={money}/>
                 <Disclaimer/>
                 <Hotbar
+                    references={references}
                     renderShopItems={renderShopItems}
                     homepageShop={homepageShop}
                     shopItems={shopItems}
