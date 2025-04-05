@@ -169,6 +169,7 @@ const App = () => {
     const [openAnimation, setOpenAnimation] = useState('');
     const refMoney = useRef(money);
     const refInventory = useRef(inventory);
+    const refPlayer = useRef(null);
     useEffect(() => {
         window.addEventListener('beforeunload', storeData);
         audioOpen.addEventListener('ended', handleAudioEnded);
@@ -590,6 +591,7 @@ const App = () => {
                     return combinedInventory;
                 });
                 inventoryRecent = [...inventoryRecentAdd, ...inventoryRecent].slice(0, 15);
+                refPlayer.current.seekTo(0);
             } else {
                 setMoney((prev) => (prev - (cost * amount)) + rewardMoney);
             };
@@ -646,7 +648,8 @@ const App = () => {
             <section className='content'>
                 <section id='open'
                     onClick={() => handlePopup('open')}>
-                    <ReactPlayer url={openAnimation}
+                    <ReactPlayer ref={refPlayer}
+                        url={openAnimation}
                         width={'100%'}
                         height={'100%'}
                         playing={true}
@@ -654,9 +657,9 @@ const App = () => {
                         onEnded={() => handleEnded()}
                         onReady={() => {}}/>
                 </section>
-                <section id='reward-multiple'
+                <div id='reward-multiple'
                     className='reward popup'
-                    onClick={() => handlePopup('reward-multiple')}></section>
+                    onClick={() => handlePopup('reward-multiple')}></div>
                 <section id='reward-genshin-impact'
                     className='reward popup'
                     onClick={() => handlePopup('reward-genshin-impact')}>

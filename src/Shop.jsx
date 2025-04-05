@@ -48,7 +48,6 @@ const Shop = ({ renderShopItems, shopItems, shopBanners }) => {
                 grabCursor={true}
                 modules={[Autoplay, Pagination, Keyboard]}>
                 {randomBanners.map((banner, index) => {
-                    console.log(banner)
                     return <SwiperSlide key={`slide ${index}`}>
                         <img src={banner}
                             alt={`slide ${index}`}/>

@@ -1,7 +1,5 @@
 import { memo, useEffect } from 'react';
 import ReactPlayer from 'react-player';
-import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
 
 const walkthroughDialog = {
     0: {
@@ -97,11 +95,6 @@ const Homepage = ({ renderShopItems, homepageShop, inventoryRecent }) => {
                 elementWalkthroughImage.src = `/character/${walkthroughDialog[currentWalkthroughStep].image}`;
                 switch (currentWalkthroughStep) {
                     case 4:
-                        window.scrollTo({
-                            top: 800,
-                            left: 0,
-                            behavior: 'smooth'
-                        });
                         const cloneCapsuleClassic = elementCapsuleClassic.cloneNode(true);
                         cloneCapsuleClassic.id = 'clone-capsule';            
                         const cloneCapsuleButtons = cloneCapsuleClassic.querySelectorAll('button');
@@ -113,6 +106,12 @@ const Homepage = ({ renderShopItems, homepageShop, inventoryRecent }) => {
                         };
                         elementShopItems.prepend(cloneCapsuleClassic);
                         elementCapsuleClassic.style.display = 'none';
+                        cloneCapsuleClassic.scrollIntoView({
+                            block: 'center'
+                        });
+                        const targetScroll = cloneCapsuleClassic.offsetTop - (window.innerHeight / 2 - cloneCapsuleClassic.getBoundingClientRect().height / 2);
+                        document.body.style.position = 'fixed';
+                        document.body.style.top = `-${targetScroll}px`;
                         break;
                     case 6:
                         elementShopItems.firstChild.classList.add('highlight');
@@ -136,6 +135,11 @@ const Homepage = ({ renderShopItems, homepageShop, inventoryRecent }) => {
                         elementRewardMultiple.style.pointerEvents = 'unset';
                         break;
                     case 14:
+                        document.body.style.position = 'unset';
+                        document.body.style.top = 'unset';
+                        elementCapsuleClassic.scrollIntoView({
+                            block: 'center'
+                        });
                         elementRewardMultiple.classList.remove('highlight');
                         break;
                     default: break;
@@ -198,21 +202,19 @@ const Homepage = ({ renderShopItems, homepageShop, inventoryRecent }) => {
             </fieldset>
             <fieldset className='group'>
                 <legend>Recently Obtained</legend>
-                <SimpleBar style={{ maxHeight: 655 }}>
-                    <div className='group-items inventory'>
-                        {inventoryRecent.map((item, index) => (
-                            <span key={`item ${index}`}
-                                className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
-                                style={{ backgroundImage: `url(/${item.set.replace(/\s/g, '-')}/${item.rate}-bg.webp)` }}>
-                                <img src={`/${item.set.replace(/\s/g, '-')}/inventory/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`}
-                                    alt={`inventory item ${index}`}
-                                    loading='lazy'
-                                    decoding='async'/>
-                                <span className='item-name'>{item.name}</span>
-                            </span>
-                        ))}
-                    </div>
-                </SimpleBar>
+                <div className='group-items inventory'>
+                    {inventoryRecent.map((item, index) => (
+                        <span key={`item ${index}`}
+                            className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
+                            style={{ backgroundImage: `url(/${item.set.replace(/\s/g, '-')}/${item.rate}-bg.webp)` }}>
+                            <img src={`/${item.set.replace(/\s/g, '-')}/inventory/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`}
+                                alt={`inventory item ${index}`}
+                                loading='lazy'
+                                decoding='async'/>
+                            <span className='item-name'>{item.name}</span>
+                        </span>
+                    ))}
+                </div>
             </fieldset>
         </section>
     );
