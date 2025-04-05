@@ -162,6 +162,7 @@ let timeoutNoMoney;
 let currentPopupReward = '';
 let inventoryRecent = [];
 let homepageShop = {};
+let scrollY = 0;
 
 const App = () => {
     const [money, setMoney] = useState(10);
@@ -612,13 +613,23 @@ const App = () => {
                 .catch(() => { console.log('No reveal audio to play'); });
             const popupReward = document.getElementById(`reward-${currentPopupReward}`);
             popupReward.style.visibility = 'visible';    
+            scrollY = window.scrollY;
+            document.body.style.overflowY = 'scroll';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.position = 'fixed';
         } else {
             audioReveal.src = null;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo({
+                top: scrollY
+            });
         };
     };
     const handleAnimationStart = () => {
         audioOpen.play()
             .catch(() => { console.log('No open audio to play'); });
+        document.body.style.overflowY = 'hidden';
         if (!audioReveal.paused) {
             audioReveal.pause()
                 .catch(() => { console.log('No reveal audio to pause'); });
