@@ -50,7 +50,7 @@ const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBann
                     path='/'
                     element={<Homepage
                         renderShopItems={renderShopItems}
-                        homepageShop={homepageShop}
+                        shopItems={shopItems}
                         inventoryRecent={inventoryRecent}/>}></Route>
                 <Route
                     path='/shop'

@@ -73,9 +73,31 @@ const walkthroughDialog = {
 };
 let currentWalkthroughStep = -1;
 let lockWalkthrough = false;
+let homepageShop = {};
 
-const Homepage = ({ renderShopItems, homepageShop, inventoryRecent }) => {
+const Homepage = ({ renderShopItems, shopItems, inventoryRecent }) => {
     useEffect(() => {
+        let firstSetItemName = '';
+        for (let set of Object.keys(shopItems)) {
+            if (set === 'classic') {
+                for (let i = 0; i < 3; i++) {
+                    firstSetItemName = Object.keys(shopItems[set])[i];
+                    homepageShop[set] = {
+                        ...homepageShop[set],
+                        [firstSetItemName]: {
+                            ...shopItems[set][firstSetItemName]
+                        }
+                    };    
+                };
+            } else {
+                firstSetItemName = Object.keys(shopItems[set])[0];
+                homepageShop[set] = {
+                    [firstSetItemName]: {
+                        ...shopItems[set][firstSetItemName]
+                    }
+                };
+            };
+        };
         renderShopItems('shop-items', homepageShop);
     }, []);
     const handleWalkthrough = () => {

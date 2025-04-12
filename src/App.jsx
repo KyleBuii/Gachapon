@@ -161,7 +161,6 @@ const audioReveal = new Audio(null);
 let timeoutNoMoney;
 let currentPopupReward = '';
 let inventoryRecent = [];
-let homepageShop = {};
 let scrollY = 0;
 
 const App = () => {
@@ -181,27 +180,6 @@ const App = () => {
         };
         if (localStorage.getItem('inventory') !== null) {
             setInventory(JSON.parse(localStorage.getItem('inventory')));
-        };
-        let firstSetItemName = '';
-        for (let set of Object.keys(shopItems)) {
-            if (set === 'classic') {
-                for (let i = 0; i < 3; i++) {
-                    firstSetItemName = Object.keys(shopItems[set])[i];
-                    homepageShop[set] = {
-                        ...homepageShop[set],
-                        [firstSetItemName]: {
-                            ...shopItems[set][firstSetItemName]
-                        }
-                    };    
-                };
-            } else {
-                firstSetItemName = Object.keys(shopItems[set])[0];
-                homepageShop[set] = {
-                    [firstSetItemName]: {
-                        ...shopItems[set][firstSetItemName]
-                    }
-                };
-            };
         };
         return () => {
             window.removeEventListener('beforeunload', storeData);
@@ -700,7 +678,6 @@ const App = () => {
                 <Hotbar
                     references={references}
                     renderShopItems={renderShopItems}
-                    homepageShop={homepageShop}
                     shopItems={shopItems}
                     shopBanners={shopBanners}
                     inventory={inventory}
