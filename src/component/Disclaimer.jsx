@@ -1,16 +1,17 @@
-import { memo } from "react";
-import { FaExclamationTriangle } from "react-icons/fa";
+import { memo, useRef } from 'react';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 const Disclaimer = () => {
+    const refDisclaimer = useRef(null);
+
     const hideDisclaimer = () => {
-        const elementDisclaimer = document.getElementById('disclaimer');
-        elementDisclaimer.style.display = 'none';
+        refDisclaimer.current.style.display = 'none';
     };
+
     return (
-        <section id='disclaimer'
-            className='popup'
+        <section ref={refDisclaimer}
+            className='disclaimer'
             onClick={() => hideDisclaimer()}>
-            <span>x</span>
             <span>
                 <FaExclamationTriangle/>
                     Disclaimer

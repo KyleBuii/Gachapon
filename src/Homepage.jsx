@@ -189,8 +189,6 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent }) => {
                 </div>
                 <ReactPlayer className='player'
                     url={'https://www.youtube.com/watch?v=IPFiKEm-oNI'}
-                    height={'25rem'}
-                    width={'36.5rem'}
                     onReady={() => {}}
                     loop={true}
                     playing={true}
