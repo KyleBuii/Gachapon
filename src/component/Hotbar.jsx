@@ -14,6 +14,7 @@ const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBann
         const buttonHotbar = document.getElementById(`homepage-button-${what}`);
         buttonHotbar.classList.toggle('active');
     };
+
     return (
         <BrowserRouter>
             <section className='hotbar'>
@@ -46,24 +47,26 @@ const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBann
                 </div>
             </section>
             <Routes>
-                <Route
-                    path='/'
-                    element={<Homepage
-                        renderShopItems={renderShopItems}
-                        shopItems={shopItems}
-                        inventoryRecent={inventoryRecent}/>}></Route>
-                <Route
-                    path='/shop'
-                    element={<Shop
-                        renderShopItems={renderShopItems}
-                        shopItems={shopItems}
-                        shopBanners={shopBanners}/>}></Route>
-                <Route
-                    path='/inventory'
-                    element={<Inventory inventory={inventory}/>}></Route>
-                <Route
-                    path='/about'
-                    element={<About references={references}/>}></Route>
+                <Route path='/'
+                    element={
+                        <Homepage renderShopItems={renderShopItems}
+                            shopItems={shopItems}
+                            inventoryRecent={inventoryRecent}/>
+                    }>
+                </Route>
+                <Route path='/shop'
+                    element={
+                        <Shop renderShopItems={renderShopItems}
+                            shopItems={shopItems}
+                            shopBanners={shopBanners}/>
+                    }>
+                </Route>
+                <Route path='/inventory'
+                    element={<Inventory inventory={inventory}/>}>
+                </Route>
+                <Route path='/about'
+                    element={<About references={references}/>}>
+                </Route>
             </Routes>
         </BrowserRouter>
     );

@@ -98,8 +98,10 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent }) => {
                 };
             };
         };
+
         renderShopItems('shop-items', homepageShop);
     }, []);
+
     const handleWalkthrough = () => {
         const elementPopup = document.getElementById('walkthrough-popup');
         const elementMoney = document.getElementById('money');
@@ -173,6 +175,7 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent }) => {
             };
         };
     };
+
     return (
         <section>
             <section className='influence'>

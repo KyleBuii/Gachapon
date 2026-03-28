@@ -119,19 +119,19 @@ const references = {
         author: 'TextStudio',
         url: 'https://www.textstudio.com/',
     },
-    'Image - "Never Give Up" / Digging for Diamonds': {
+    '"Never Give Up" / Digging for Diamonds Image': {
         author: 'Dum',
         url: 'https://dumilustrador.blogspot.com/',
     },
-    'Video - gamblecore': {
+    'gamblecore Video': {
         author: 'raxdflipnote',
         url: 'https://www.youtube.com/watch?v=IPFiKEm-oNI',
     },
-    'Image - Capsule': {
+    'Capsule Image': {
         author: 'Airos',
         url: 'https://opengameart.org/content/32px-toy-capsules',
     },
-    'Image - No money': {
+    'No Money Image': {
         author: 'soraway',
         url: 'https://tenor.com/view/wallet-gif-25866507',
     },
@@ -151,15 +151,15 @@ const references = {
         author: 'Hoyoverse',
         url: 'https://hsr.hoyoverse.com/en-us/',
     },
-    'Image - Hachi': {
+    'Walkthrough Image': {
         author: 'HachiStudio',
         url: 'https://opengameart.org/content/anime-girl%EF%BC%9Ahachi',
     }
 };
 const audioOpen = new Audio(null);
 const audioReveal = new Audio(null);
+const maxInventoryRecent = 30;
 let timeoutNoMoney;
-let currentPopupReward = '';
 let inventoryRecent = [];
 let scrollY = 0;
 
@@ -167,24 +167,41 @@ const App = () => {
     const [money, setMoney] = useState(10);
     const [inventory, setInventory] = useState({});
     const [openAnimation, setOpenAnimation] = useState('');
+    const [currentPopupReward, setCurrentPopupReward] = useState('');
+
+    const refOpen = useRef(null);
+    const refRewardMultiple = useRef(null);
+    const refRewardGenshinImpact = useRef(null);
+    const refRewardHonkaiStarRail = useRef(null);
     const refMoney = useRef(money);
     const refInventory = useRef(inventory);
     const refPlayer = useRef(null);
+
+    const refLookup = {
+        'multiple': refRewardMultiple,
+        'genshin impact': refRewardGenshinImpact,
+        'honkai star rail': refRewardHonkaiStarRail,
+    };
+
     useEffect(() => {
         window.addEventListener('beforeunload', storeData);
         audioOpen.addEventListener('ended', handleAudioEnded);
-        const popupDisclaimer = document.getElementById('disclaimer');
+
+        const popupDisclaimer = document.querySelector('.disclaimer');
         popupDisclaimer.style.visibility = 'visible';
+
         if (localStorage.getItem('money') !== null) {
             setMoney(localStorage.getItem('money'));
         };
         if (localStorage.getItem('inventory') !== null) {
             setInventory(JSON.parse(localStorage.getItem('inventory')));
         };
+
         return () => {
             window.removeEventListener('beforeunload', storeData);
             storeData();
             clearTimeout(timeoutNoMoney);
+
             audioOpen.src = '';
             audioReveal.src = '';
         };
@@ -195,6 +212,7 @@ const App = () => {
     useEffect(() => {
         refInventory.current = inventory;
     }, [inventory]);
+
     const renderShopItems = (element, items = shopItems) => {
         const elementShopItems = document.getElementById(element);
         for (let set of Object.keys(items)) {
@@ -255,6 +273,7 @@ const App = () => {
             };
         };
     };
+
     const handleBuy = ({ set, type, cost, amount = 1 }) => {
         if ((set !== 'classic') && (refMoney.current - (cost * amount) < 0)) {
             const elementGif = document.createElement('img');
@@ -271,21 +290,27 @@ const App = () => {
                 document.body.removeChild(elementGif);
             }, 2000);
         } else {
-            const popupOpen = document.getElementById('open');
+            const popupOpen = refOpen.current;
             const reformatSet = set.replace(/\s/g, '-');
-            let spanReward, popupReward, randomNumber, calculateRate, calculateReward, randomItemType, reformatName;
+
+            let spanReward, parentPopup, popupReward, randomNumber, calculateRate, calculateReward, randomItemType, reformatName;
             let calculateOpenAnimation = '';
             let rewardMoney = 0;
             let highestReward = 0;
             let forcedPulls = [];
             let inventoryAdd = {};
             let inventoryRecentAdd = [];
+
             /// Get type of popup (single or multi) and set forced pulls
             if ((amount > 1) || (set === 'classic')) {
+                parentPopup = refRewardMultiple.current;
+
                 popupReward = document.getElementById('reward-multiple');
                 popupReward.innerHTML = '';
-                popupReward.className = `reward popup ${reformatSet}`;
-                currentPopupReward = 'multiple';
+                popupReward.className = `reward ${reformatSet}`;
+
+                setCurrentPopupReward('multiple');
+
                 switch (set) {
                     case 'genshin impact':
                     case 'honkai star rail': {
@@ -301,9 +326,12 @@ const App = () => {
                     default: { break; };
                 };    
             } else {
+                parentPopup = refLookup[set].current;
                 popupReward = document.getElementById(`reward-${reformatSet}`);
-                currentPopupReward = reformatSet;
+
+                setCurrentPopupReward(reformatSet);
             };
+
             /// Create reward items
             for (let i = 0; i < amount; i++) {
                 if (forcedPulls.length === 0) {
@@ -400,7 +428,6 @@ const App = () => {
                                 createPon(popupReward);
                             };
                         };
-                        // inventoryAdd.push([set, randomItemType, calculateReward, calculateRate]);
                         break;
                     case 'honkai star rail':
                         if (forcedPulls.length !== 0) {
@@ -489,7 +516,6 @@ const App = () => {
                                 createPon(popupReward);
                             };
                         };
-                        // inventoryAdd.push([set, randomItemType, calculateReward, calculateRate]);
                         break;
                     default: break;
                 };
@@ -513,6 +539,7 @@ const App = () => {
                 });
                 highestReward = (highestReward < calculateRate) ? calculateRate : highestReward;
             };
+
             /// Handle open animation
             switch (set) {
                 case 'genshin impact':
@@ -527,11 +554,13 @@ const App = () => {
                     break;
                 default: break;
             };
+
             if (calculateOpenAnimation.length === 0) {
-                popupReward.style.visibility = 'visible';
+                parentPopup.style.visibility = 'visible';
             } else {
                 popupOpen.style.visibility = 'visible';
             };
+
             if (set !== 'classic') {
                 setOpenAnimation(`/${set.replace(/\s/g, '-')}/open/${calculateOpenAnimation}`);
                 setMoney((prev) => prev - (cost * amount));
@@ -569,41 +598,51 @@ const App = () => {
                     inventoryAdd.length = 0;
                     return combinedInventory;
                 });
-                inventoryRecent = [...inventoryRecentAdd, ...inventoryRecent].slice(0, 15);
+                inventoryRecent = [...inventoryRecentAdd, ...inventoryRecent].slice(0, maxInventoryRecent);
                 refPlayer.current.seekTo(0);
             } else {
                 setMoney((prev) => (prev - (cost * amount)) + rewardMoney);
             };
         };
     };
+
     const handleAudioEnded = () => {
         audioOpen.src = null;
         audioReveal.play()
             .catch(() => { console.log('No reveal audio to play'); });
     };
+
     const handlePopup = (what) => {
-        const popup = document.getElementById(what);
-        popup.style.visibility = 'hidden';
-        if (what === 'open') {
+        what.current.style.visibility = 'hidden';
+        if (what === refOpen) {
             setOpenAnimation('');
+
             audioOpen.src = null;
             audioReveal.play()
                 .catch(() => { console.log('No reveal audio to play'); });
-            const popupReward = document.getElementById(`reward-${currentPopupReward}`);
-            popupReward.style.visibility = 'visible';    
+
+            refLookup[currentPopupReward.replace(/-/g, ' ')].current.style.visibility = 'visible';
+
             scrollY = window.scrollY;
             document.body.style.overflowY = 'scroll';
             document.body.style.top = `-${scrollY}px`;
             document.body.style.position = 'fixed';
         } else {
             audioReveal.src = null;
+
             document.body.style.position = '';
             document.body.style.top = '';
-            window.scrollTo({
-                top: scrollY
-            });
+
+            if (scrollY !== -1) {
+                window.scrollTo({
+                    top: scrollY
+                });
+            };
+
+            scrollY = -1;
         };
     };
+
     const handleAnimationStart = () => {
         audioOpen.play()
             .catch(() => { console.log('No open audio to play'); });
@@ -613,12 +652,12 @@ const App = () => {
                 .catch(() => { console.log('No reveal audio to pause'); });
         };
     };
+
     const handleEnded = () => {
-        const popupOpen = document.getElementById('open');
-        popupOpen.style.visibility = 'hidden';
-        const popupReward = document.getElementById(`reward-${currentPopupReward}`);
-        popupReward.style.visibility = 'visible';
+        refOpen.current.style.visibility = 'hidden';
+        refLookup[currentPopupReward.replace(/-/g, ' ')].current.style.visibility = 'visible';
     };
+
     const createPon = (element) => {
         const elementPon = document.createElement('img');
         elementPon.className = 'pon';
@@ -627,16 +666,19 @@ const App = () => {
         elementPon.loading = 'lazy';
         elementPon.decoding = 'async';
         element.appendChild(elementPon);
-    };    
+    };
+
     const storeData = () => {
         localStorage.setItem('money', refMoney.current);
         localStorage.setItem('inventory', JSON.stringify(refInventory.current));
     };
+
     return (
         <section className='app'>
             <section className='content'>
-                <section id='open'
-                    onClick={() => handlePopup('open')}>
+                <section ref={refOpen}
+                    className='open'
+                    onClick={() => handlePopup(refOpen)}>
                     <ReactPlayer ref={refPlayer}
                         url={openAnimation}
                         width={'100%'}
@@ -646,37 +688,45 @@ const App = () => {
                         onEnded={() => handleEnded()}
                         onReady={() => {}}/>
                 </section>
-                <div id='reward-multiple'
-                    className='reward popup'
-                    onClick={() => handlePopup('reward-multiple')}></div>
-                <section id='reward-genshin-impact'
-                    className='reward popup'
-                    onClick={() => handlePopup('reward-genshin-impact')}>
-                    <div>
-                        <span id='reward-genshin-impact-name'></span>
-                        <span id='reward-genshin-impact-stars'></span>
-                    </div>
-                    <img id='reward-genshin-impact-image'
-                        alt='reward'
-                        loading='lazy'
-                        decoding='async'/>
-                </section>
-                <section id='reward-honkai-star-rail'
-                    className='reward popup'
-                    onClick={() => handlePopup('reward-honkai-star-rail')}>
-                    <div>
-                        <span id='reward-honkai-star-rail-name'></span>
-                        <span id='reward-honkai-star-rail-stars'></span>
-                    </div>
-                    <img id='reward-honkai-star-rail-image'
-                        alt='reward'
-                        loading='lazy'
-                        decoding='async'/>
-                </section>
+                <div ref={refRewardMultiple}
+                    className='popup'
+                    onClick={() => handlePopup(refRewardMultiple)}>
+                    <div id='reward-multiple'
+                        className='reward'></div>
+                </div>
+                <div ref={refRewardGenshinImpact}
+                    className='popup'
+                    onClick={() => handlePopup(refRewardGenshinImpact)}>
+                    <section id='reward-genshin-impact'
+                        className='reward'>
+                        <div>
+                            <span id='reward-genshin-impact-name'></span>
+                            <span id='reward-genshin-impact-stars'></span>
+                        </div>
+                        <img id='reward-genshin-impact-image'
+                            alt='reward'
+                            loading='lazy'
+                            decoding='async'/>
+                    </section>
+                </div>
+                <div ref={refRewardHonkaiStarRail}
+                    className='popup'
+                    onClick={() => handlePopup(refRewardHonkaiStarRail)}>
+                    <section id='reward-honkai-star-rail'
+                        className='reward'>
+                        <div>
+                            <span id='reward-honkai-star-rail-name'></span>
+                            <span id='reward-honkai-star-rail-stars'></span>
+                        </div>
+                        <img id='reward-honkai-star-rail-image'
+                            alt='reward'
+                            loading='lazy'
+                            decoding='async'/>
+                    </section>
+                </div>
                 <Money money={money}/>
                 <Disclaimer/>
-                <Hotbar
-                    references={references}
+                <Hotbar references={references}
                     renderShopItems={renderShopItems}
                     shopItems={shopItems}
                     shopBanners={shopBanners}

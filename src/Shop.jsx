@@ -7,15 +7,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Shop = ({ renderShopItems, shopItems, shopBanners }) => {
     const [randomBanners, setRandomBanners] = useState([]);
+
     useEffect(() => {
+        handleSidebarSet('classic');
         renderShopItems('shop-items');
+
         let populateRandomBanners = [];
+
         for (let set of Object.keys(shopBanners)) {
             let banners = shopBanners[set];
             populateRandomBanners.push(`/${set.replace(/\s/g, '-')}/banner/${banners[Math.floor(Math.random() * banners.length)]}.webp`);
         };
+
         setRandomBanners(populateRandomBanners);
     }, []);
+
     const handleSidebarSet = (set) => {
         const elementHighlighted = document.querySelectorAll('.highlight-sidebar');
         if (elementHighlighted.length >= 0) {
@@ -23,11 +29,13 @@ const Shop = ({ renderShopItems, shopItems, shopBanners }) => {
                 capsule.classList.remove('highlight-sidebar');
             };
         };
+
         const elementSet = document.querySelectorAll(`.${set.replace(/\s/g, '-')}`);
         for (let capsule of elementSet) {
             capsule.classList.add('highlight-sidebar');
         };
     };
+
     return (
         <section className='flex-column'>
             <Swiper className='image-corousel'
@@ -66,6 +74,7 @@ const Shop = ({ renderShopItems, shopItems, shopBanners }) => {
                                     name='capsule-set'
                                     type='radio'
                                     value={set}
+                                    checked={(set === 'classic')}
                                     onClick={(event) => handleSidebarSet(event.target.value)}/>
                                 <label htmlFor={`checkbox-${set}`}>
                                     <span>{set.replace(/^.|\s./g, (char) => char.toUpperCase())}</span>
