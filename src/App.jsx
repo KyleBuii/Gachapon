@@ -4,6 +4,7 @@ import Disclaimer from "./component/Disclaimer";
 import Footer from "./component/Footer";
 import Hotbar from "./component/Hotbar";
 import Money from "./component/Money";
+import ViewItem from "./component/ViewItem";
 
 /** Gacha Rates
  * Classic
@@ -53,12 +54,12 @@ const shopItems = {
         'wanderlust invocation': {
             items: {
                 5: {
-                    character: ['Albedo', 'Alhaitham', 'Arataki Itto', 'Arlecchino', 'Baizhu', 'Chasca', 'Chiori', 'Citlali', 'Clorinde', 'Cyno', 'Dehya', 'Diluc', 'Emilie', 'Eula', 'Furina', 'Ganyu', 'Hu Tao', 'Jean', 'Kaedehara Kazuha', 'Kamisato Ayaka', 'Kamisato Ayato', 'Keqing', 'Kinich', 'Klee', 'Lyney', 'Mavuika', 'Mona', 'Mualani', 'Nahida', 'Navia', 'Neuvillette', 'Nilou', 'Qiqi', 'Raiden Shogun', 'Sangonomiya Kokomi', 'Shenhe', 'Sigewinne', 'Tartaglia', 'Tighnari', 'Venti', 'Wanderer', 'Wriothesley', 'Xianyun', 'Xiao', 'Xilonen', 'Yae Miko', 'Yelan', 'Yoimiya', 'Zhongli'],
-                    weapon: ['A Thousand Blazing Suns', 'A Thousand Floating Dreams', 'Absolution', 'Amos Bow', 'Aqua Simulacra', 'Aquila Favonia', 'Astral Vultures Crimson Plumage', 'Beacon Of The Reed Sea', 'Calamity Queller', 'Cashflow Supervision', 'Cranes Echoing Call', 'Crimson\'moon\'s Semblance', 'Elegy For The End', 'Engulfing Lightning', 'Everlasting Moonglow', 'Fang Of The Mountain King', 'Freedom Sworn', 'Haran Geppaku Futsu', 'Hunter\'s Path', 'Jadefall Splendor', 'Kagura\'s Verity', 'Key Of Khaj Nisut', 'Light Of Foliar Incision', 'Lost Prayer To The Sacred Winds', 'Lumidouce Elegy', 'Memory Of Dust', 'Mistsplitter Reforged', 'Peak Patrol Song', 'Polar Star', 'Primordial Jade Cutter', 'Primordial Jade Winged Spear', 'Redhorn Stonethresher', 'Silvershower Heartstrings', 'Skyward Atlas', 'Skyward Blade', 'Skyward Harp', 'Skyward Pride', 'Skyward Spine', 'Song Of Broken Pines', 'Splendor Of Tranquil Waters', 'Staff Of Homa', 'Staff Of The Scarlet Sands', 'Starcallers Watch', 'Summit Shaper', 'Surfs Up', 'The First Great Magic', 'The Unforged', 'Thundering Pulse', 'Tome Of The Eternal Flow', 'Tulaytullah\'s Remembrance', 'Uraku Misugiri', 'Verdict', 'Vortex Vanquisher', 'Wolf\'s Gravestone']
+                    character: ['Zibai', 'Yumemizuki Mizuki', 'Varka', 'Varesa', 'Skirk', 'Nefer', 'Lauma', 'Ineffa', 'Flins', 'Escoffier', 'Durin', 'Columbina', 'Albedo', 'Alhaitham', 'Arataki Itto', 'Arlecchino', 'Baizhu', 'Chasca', 'Chiori', 'Citlali', 'Clorinde', 'Cyno', 'Dehya', 'Diluc', 'Emilie', 'Eula', 'Furina', 'Ganyu', 'Hu Tao', 'Jean', 'Kaedehara Kazuha', 'Kamisato Ayaka', 'Kamisato Ayato', 'Keqing', 'Kinich', 'Klee', 'Lyney', 'Mavuika', 'Mona', 'Mualani', 'Nahida', 'Navia', 'Neuvillette', 'Nilou', 'Qiqi', 'Raiden Shogun', 'Sangonomiya Kokomi', 'Shenhe', 'Sigewinne', 'Tartaglia', 'Tighnari', 'Venti', 'Wanderer', 'Wriothesley', 'Xianyun', 'Xiao', 'Xilonen', 'Yae Miko', 'Yelan', 'Yoimiya', 'Zhongli'],
+                    weapon: ['Athame Artis', 'Azurelight', 'Lightbearing Moonshard', 'Symphonist Of Scents', 'Fractured Halo', 'Bloodsoaked Ruins', 'Gest Of The Mighty Wolf', 'Vivid Notions', 'Sunny Morning Sleep In', 'Reliquary Of Truth', 'Nocturnes Curtain Call', 'Nightweavers Looking Glass', 'The Daybreak Chronicles', 'A Thousand Blazing Suns', 'A Thousand Floating Dreams', 'Absolution', 'Amos Bow', 'Aqua Simulacra', 'Aquila Favonia', 'Astral Vultures Crimson Plumage', 'Beacon Of The Reed Sea', 'Calamity Queller', 'Cashflow Supervision', 'Cranes Echoing Call', 'Crimson\'moon\'s Semblance', 'Elegy For The End', 'Engulfing Lightning', 'Everlasting Moonglow', 'Fang Of The Mountain King', 'Freedom Sworn', 'Haran Geppaku Futsu', 'Hunter\'s Path', 'Jadefall Splendor', 'Kagura\'s Verity', 'Key Of Khaj Nisut', 'Light Of Foliar Incision', 'Lost Prayer To The Sacred Winds', 'Lumidouce Elegy', 'Memory Of Dust', 'Mistsplitter Reforged', 'Peak Patrol Song', 'Polar Star', 'Primordial Jade Cutter', 'Primordial Jade Winged Spear', 'Redhorn Stonethresher', 'Silvershower Heartstrings', 'Skyward Atlas', 'Skyward Blade', 'Skyward Harp', 'Skyward Pride', 'Skyward Spine', 'Song Of Broken Pines', 'Splendor Of Tranquil Waters', 'Staff Of Homa', 'Staff Of The Scarlet Sands', 'Starcallers Watch', 'Summit Shaper', 'Surfs Up', 'The First Great Magic', 'The Unforged', 'Thundering Pulse', 'Tome Of The Eternal Flow', 'Tulaytullah\'s Remembrance', 'Uraku Misugiri', 'Verdict', 'Vortex Vanquisher', 'Wolf\'s Gravestone']
                 },
                 4: {
-                    character: ['Amber', 'Barbara', 'Beidou', 'Bennett', 'Candace', 'Charlotte', 'Chevreuse', 'Chongyun', 'Collei', 'Diona', 'Dori', 'Faruzan', 'Fischl', 'Freminet', 'Gaming', 'Gorou', 'Kachina', 'Kaeya', 'Kaveh', 'Kirara', 'Kujou Sara', 'Kuki Shinobu', 'Lan Yan', 'Layla', 'Lisa', 'Lynette', 'Mika', 'Ningguang', 'Noelle', 'Ororon', 'Razor', 'Rosaria', 'Sayu', 'Sethos', 'Shikanoin Heizou', 'Sucrose', 'Thoma', 'Xiangling', 'Xingqiu', 'Xinyan', 'Yanfei', 'Yaoyao', 'Yun Jin'],
-                    weapon: ['Akuoumaru', 'Alley Hunter', 'Dragon\'s Bane', 'Eye Of Perception', 'Favonius Codex', 'Favonius Greatsword', 'Favonius Lance', 'Favonius Sword', 'Favonius Warbow', 'Flower Wreathed Feathers', 'Fruitful Hook', 'Lion\'s Roar', 'Lithic Blade', 'Lithic Spear', 'Makhaira Aquamarine', 'Mitternachts Waltz', 'Mountain Bracing Bolt', 'Mouun\'s Moon', 'Portable Power Saw', 'Prospector Drill', 'Rainslasher', 'Range Gauge', 'Rust', 'Sacrificial Bow', 'Sacrificial Fragments', 'Sacrificial Greatsword', 'Sacrificial Sword', 'Sturdy Bone', 'The Alley Flash', 'The Bell', 'The Dockhands Assistant', 'The Flute', 'The Stringless', 'The Widsith', 'Wandering Evenstar', 'Wavebreaker\'s Fin', 'Waveriding Whirl', 'Wine And Song', 'Xiphos Moonlight']
+                    character: ['Jahoda', 'Illuga', 'Ifa', 'Iansan', 'Dahlia', 'Aino', 'Amber', 'Barbara', 'Beidou', 'Bennett', 'Candace', 'Charlotte', 'Chevreuse', 'Chongyun', 'Collei', 'Diona', 'Dori', 'Faruzan', 'Fischl', 'Freminet', 'Gaming', 'Gorou', 'Kachina', 'Kaeya', 'Kaveh', 'Kirara', 'Kujou Sara', 'Kuki Shinobu', 'Lan Yan', 'Layla', 'Lisa', 'Lynette', 'Mika', 'Ningguang', 'Noelle', 'Ororon', 'Razor', 'Rosaria', 'Sayu', 'Sethos', 'Shikanoin Heizou', 'Sucrose', 'Thoma', 'Xiangling', 'Xingqiu', 'Xinyan', 'Yanfei', 'Yaoyao', 'Yun Jin'],
+                    weapon: ['Moonweavers Dawn', 'Sacrificers Staff', 'Dawning Frost', 'Akuoumaru', 'Alley Hunter', 'Dragon\'s Bane', 'Eye Of Perception', 'Favonius Codex', 'Favonius Greatsword', 'Favonius Lance', 'Favonius Sword', 'Favonius Warbow', 'Flower Wreathed Feathers', 'Fruitful Hook', 'Lion\'s Roar', 'Lithic Blade', 'Lithic Spear', 'Makhaira Aquamarine', 'Mitternachts Waltz', 'Mountain Bracing Bolt', 'Mouun\'s Moon', 'Portable Power Saw', 'Prospector Drill', 'Rainslasher', 'Range Gauge', 'Rust', 'Sacrificial Bow', 'Sacrificial Fragments', 'Sacrificial Greatsword', 'Sacrificial Sword', 'Sturdy Bone', 'The Alley Flash', 'The Bell', 'The Dockhands Assistant', 'The Flute', 'The Stringless', 'The Widsith', 'Wandering Evenstar', 'Wavebreaker\'s Fin', 'Waveriding Whirl', 'Wine And Song', 'Xiphos Moonlight']
                 },
                 3: {
                     weapon: ['Black Tassel', 'Bloodtained Greatsword', 'Cool Steel', 'Debate Club', 'Emerald Orb', 'Ferrous Shadow', 'Harbinger Of Dawn', 'Magic Guide', 'Raven Bow', 'Sharpshooter\'s Oath', 'Skyrider Sword', 'Slingshot', 'Thrilling Tales Of Dragon Slayers']
@@ -71,15 +72,15 @@ const shopItems = {
         'stellar warp': {
             items: {
                 5: {
-                    character: ['Firefly', 'Rappa', 'Fu Xuan', 'Robin', 'Acheron', 'Fugue', 'Ruan Mei', 'Aglaea', 'Gepard', 'Seele', 'Argenti', 'Himeko', 'Silver Wolf', 'Aventurine', 'Huohuo', 'Sparkle', 'Bailu', 'Imbibitor Lunae', 'Sunday', 'Black Swan', 'Jade', 'Blade', 'Jiaoqiu', 'The Herta', 'Boothill', 'Jing Yuan', 'Topaz', 'Bronya', 'Jingliu', 'Welt', 'Clara', 'Kafka', 'Yanqing', 'Dr Ratio', 'Lingsha', 'Yunli', 'Feixiao', 'Luocha'],
-                    cone: ['Moment Of Victory', 'Night Of Fright', 'A Grounded Ascent', 'Night On The Milky Way', 'Along The Passing Shore', 'Ninjutsu Inscription', 'An Instance Before A Gaze', 'Past Self In Mirror', 'Baptism Of Pure Thought', 'Patience Is All You Need', 'Before Dawn', 'Reforged Remembrance', 'Brighter Than The Sun', 'Sailing Towards A Second Life', 'But The Battle Isnt Over', 'Scent Alone Stays True', 'Dance At Sunset', 'She Already Shut Her Eyes', 'Earthly Escapade', 'Sleep Like The Dead', 'Echoes Of The Coffin', 'Something Irreplaceable', 'Flowing Nightglow', 'I Shall Be My Own Sword', 'The Unreachable Side', 'I Venture Forth To Hunt', 'Those Many Springs', 'In The Name Of The World', 'Time Waits For No One', 'In The Night', 'Time Woven Into Gold', 'Incessant Rain', 'Whereabouts Should Dreams Rest', 'Inherently Unjust Destiny', 'Worrisome Blissful', 'Into The Unreachable Veil', 'Yet Hope Is Priceless', 'Long Road Leads Home']
+                    character: ['Acheron', 'Aglaea', 'Anaxa', 'Archer', 'Argenti', 'Ashveil', 'Aventurine', 'Bailu', 'Black Swan', 'Blade', 'Boothill', 'Bronya', 'Castorice', 'Cerydra', 'Cipher', 'Clara', 'Cyrene', 'Dan Heng Permansor Terrae', 'Dr Ratio', 'Evernight', 'Feixiao', 'Firefly', 'Fu Xuan', 'Fugue', 'Gepard', 'Himeko', 'Huohuo', 'Hyacine', 'Hysilens', 'Imbibitor Lunae', 'Jade', 'Jiaoqiu', 'Jing Yuan', 'Jingliu', 'Kafka', 'Lingsha', 'Luocha', 'Mydei', 'Phainon', 'Rappa', 'Robin', 'Ruan Mei', 'Saber', 'Seele', 'Silver Wolf', 'Sparkle', 'Sparxie', 'Sunday', 'The Dahlia', 'The Herta', 'Topaz', 'Tribbie', 'Welt', 'Yanqing', 'Yao Guang', 'Yunli'],
+                    cone: ['A Grounded Ascent', 'A Thankless Coronation', 'Along The Passing Shore', 'An Instance Before A Gaze', 'Baptism Of Pure Thought', 'Before Dawn', 'Brighter Than The Sun', 'But The Battle Isnt Over', 'Dance At Sunset', 'Dazzled By A Flowery World', 'Earthly Escapade', 'Echoes Of The Coffin', 'Epoch Etched In Golden Blood', 'Flame Of Blood Blaze My Path', 'Flowing Nightglow', 'I Shall Be My Own Sword', 'I Venture Forth To Hunt', 'If Time Were A Flower', 'In The Name Of The World', 'In The Night', 'Incessant Rain', 'Inherently Unjust Destiny', 'Into The Unreachable Veil', 'Lies Dance On The Breeze', 'Life Should Be Cast To Flames', 'Long May Rainbows Adorn The Sky', 'Long Road Leads Home', 'Make Farewells More Beautiful', 'Moment Of Victory', 'Never Forget Her Flame', 'Night Of Fright', 'Night On The Milky Way', 'Ninjutsu Inscription', 'Past Self In Mirror', 'Patience Is All You Need', 'Reforged Remembrance', 'Sailing Towards A Second Life', 'Scent Alone Stays True', 'She Already Shut Her Eyes', 'Sleep Like The Dead', 'Something Irreplaceable', 'The Finale Of A Lie', 'The Hell Where Ideals Burn', 'The Unreachable Side', 'This Love Forever', 'Those Many Springs', 'Though Worlds Apart', 'Thus Burns The Dawn', 'Time Waits For No One', 'Time Woven Into Gold', 'To Evernights Stars', 'When She Decided To See', 'Whereabouts Should Dreams Rest', 'Why Does The Ocean Sing', 'Worrisome Blissful', 'Yet Hope Is Priceless']
                 },
                 4: {
                     character: ['Hanya', 'Moze', 'Herta', 'Natasha', 'Tingyun', 'Arlan', 'Hook', 'Pela', 'Xueyi', 'Asta', 'Luka', 'Qingque', 'Yukong', 'Dan Heng', 'Lynx', 'Sampo', 'Gallagher', 'March 7th', 'Serval', 'Guinaifen', 'Misha', 'Sushang'],
-                    cone: ['A Secret Vow', 'After The Charmony Fall', 'Boundless Choreo', 'Concert For Two', 'Dance Dance Dance', 'Day One Of My New Life', 'Dreams Montage', 'Eyes Of The Prey', 'Geniuses Greetings', 'Geniuses Repose', 'Good Night And Sleep Well', 'Indelible Promise', 'Landaus Choice', 'Make The World Clamor', 'Memories Of The Past', 'Only Silence Remains', 'Perfect Timing', 'Planetary Rendezvous', 'Poised To Bloom', 'Post Op Conversation', 'Resolution Shines As Pearls Of Sweat', 'Shadowed by Night', 'Shared Feeling', 'Subscribe For More', 'Swordplay', 'The Birth Of The Self', 'The Moles Welcome You', 'Trend Of The Universal Market', 'Under The Blue Sky']
+                    cone: ['A Secret Vow', 'After The Charmony Fall', 'Boundless Choreo', 'Concert For Two', 'Dance Dance Dance', 'Day One Of My New Life', 'Dreams Montage', 'Eyes Of The Prey', 'Geniuses Greetings', 'Geniuses Repose', 'Good Night And Sleep Well', 'Indelible Promise', 'Landaus Choice', 'Make The World Clamor', 'Memories Of The Past', 'Only Silence Remains', 'Perfect Timing', 'Planetary Rendezvous', 'Poised To Bloom', 'Post Op Conversation', 'Resolution Shines As Pearls Of Sweat', 'Shadowed By Night', 'Shared Feeling', 'Subscribe For More', 'Swordplay', 'The Birth Of The Self', 'The Moles Welcome You', 'The Storys Next Page', 'Trend Of The Universal Market', 'Under The Blue Sky']
                 },
                 3: {
-                    cone: ['Data Bank', 'Passkey', 'Defense', 'Pioneering', 'Adversarial', 'Fine Fruit', 'Reminiscence', 'Amber', 'Hidden Shadow', 'Sagacity', 'Arrows', 'Loop', 'Shadowburn', 'Chorus', 'Mediation', 'Shattered Home', 'Collapsing Sky', 'Meshing Cogs', 'Cornucopia', 'Multiplication', 'Void', 'Darting Arrow', 'Mutual Demise']
+                    cone: ['Adversarial', 'Amber', 'Arrows', 'Chorus', 'Collapsing Sky', 'Cornucopia', 'Darting Arrow', 'Data Bank', 'Defense', 'Fine Fruit', 'Hidden Shadow', 'Lingering Tear', 'Loop', 'Mediation', 'Meshing Cogs', 'Multiplication', 'Mutual Demise', 'Passkey', 'Pioneering', 'Reminiscence', 'Sagacity', 'Shadowburn', 'Shattered Home', 'Sneering', 'Void']
                 }
             },
             cost: 1
@@ -168,6 +169,8 @@ const App = () => {
     const [inventory, setInventory] = useState({});
     const [openAnimation, setOpenAnimation] = useState('');
     const [currentPopupReward, setCurrentPopupReward] = useState('');
+    const [viewedItem, setViewedItem] = useState('');
+    const [isViewedItemVisible, setIsViewedItemVisible] = useState(false);
 
     const refOpen = useRef(null);
     const refRewardMultiple = useRef(null);
@@ -274,7 +277,21 @@ const App = () => {
         };
     };
 
-    const handleBuy = ({ set, type, cost, amount = 1 }) => {
+    const getValidImage = (image, imageFallback) => {
+        return new Promise((resolve) => {
+            const newImage = new Image();
+            newImage.src = image;
+            newImage.onload = () => resolve(image);
+            newImage.onerror = () => resolve(imageFallback);
+        });
+    };
+
+    const handleItemClicked = async (image, imageFallback) => {
+        const validImage = await getValidImage(image, imageFallback);
+        changeViewedItem(validImage);
+    };
+
+    const handleBuy = async ({ set, type, cost, amount = 1 }) => {
         if ((set !== 'classic') && (refMoney.current - (cost * amount) < 0)) {
             const elementGif = document.createElement('img');
             elementGif.className = 'no-money';
@@ -337,8 +354,9 @@ const App = () => {
                 if (forcedPulls.length === 0) {
                     randomNumber = Math.random();
                 };
+
                 switch (set) {
-                    case 'classic':
+                    case 'classic': {
                         spanReward = document.createElement('span');
                         calculateRate = (randomNumber <= 0.75)
                             ? 1
@@ -352,7 +370,8 @@ const App = () => {
                         };
                         popupReward.appendChild(spanReward);
                         break;
-                    case 'genshin impact':
+                    };
+                    case 'genshin impact': {
                         if (forcedPulls.length !== 0) {
                             let forcedPull = forcedPulls.pop();
                             if (forcedPull.character === undefined) {
@@ -374,36 +393,50 @@ const App = () => {
                             let randomItem = Math.floor(Math.random() * itemsStar[randomItemType].length);
                             calculateReward = itemsStar[randomItemType][randomItem];
                         };
+
                         reformatName = calculateReward.toLowerCase()
                             .replace(/\s/g, '-')
                             .replace(/'/g, '');
+
+                        const imageArt = `/genshin-impact/${randomItemType}/${reformatName}-view.webp`;
+                        const imageFace = `/genshin-impact/${randomItemType}/${reformatName}.webp`;
+                        const validImage = await getValidImage(imageArt, imageFace);
+
                         if (amount > 1) {
                             spanReward = document.createElement('span');
-                            spanReward.style.backgroundImage = `url(/genshin-impact/reward/${randomItemType}/${reformatName}.webp)`;
+                            spanReward.style.backgroundImage = `url(${validImage})`;
+
                             const elementName = document.createElement('span');
                             elementName.innerText = calculateReward;
                             spanReward.appendChild(elementName);
+
                             const elementStars = document.createElement('span');
                             const imageStar = document.createElement('img');
                             imageStar.src = '/genshin-impact/star.webp';
                             imageStar.alt = 'star';
                             imageStar.loading = 'lazy';
                             imageStar.decoding = 'async';
+
                             for (let i = 0; i < calculateRate; i++) {
                                 elementStars.appendChild(imageStar.cloneNode());
                             };
+
                             spanReward.appendChild(elementStars);
+
                             if (calculateRate === 5){
                                 createPon(spanReward);
                             };
+
                             popupReward.appendChild(spanReward);
                         } else {
                             const checkPon = popupReward.querySelectorAll('.pon');
                             if (checkPon.length !== 0) {
                                 popupReward.removeChild(checkPon[0]);
                             };
+
                             const elementName = document.getElementById('reward-genshin-impact-name');
                             elementName.innerText = calculateReward;
+
                             const elementStars = document.getElementById('reward-genshin-impact-stars');
                             let starAmount = elementStars.childElementCount;
                             if (starAmount > calculateRate) {
@@ -422,14 +455,17 @@ const App = () => {
                                     elementStars.appendChild(imageStar.cloneNode());
                                 };
                             };
+
                             const elementImage = document.getElementById('reward-genshin-impact-image');
-                            elementImage.src = `/genshin-impact/reward/${randomItemType}/${reformatName}.webp`;
+                            elementImage.src = validImage;
+
                             if (calculateRate === 5){
                                 createPon(popupReward);
                             };
                         };
                         break;
-                    case 'honkai star rail':
+                    };
+                    case 'honkai star rail': {
                         if (forcedPulls.length !== 0) {
                             let forcedPull = forcedPulls.pop();
                             if (forcedPull.character === undefined) {
@@ -451,9 +487,15 @@ const App = () => {
                             let randomItem = Math.floor(Math.random() * itemsStar[randomItemType].length);
                             calculateReward = itemsStar[randomItemType][randomItem];
                         };
+
                         reformatName = calculateReward.toLowerCase()
                             .replace(/\s/g, '-')
                             .replace(/'/g, '');
+
+                        const imageArt = `/honkai-star-rail/${randomItemType}/${reformatName}-view.webp`;
+                        const imageFace = `/honkai-star-rail/${randomItemType}/${reformatName}.webp`;
+                        const validImage = await getValidImage(imageArt, imageFace);
+
                         if (amount > 1) {
                             spanReward = document.createElement('span');
                             const elementInformation = document.createElement('span');
@@ -472,10 +514,10 @@ const App = () => {
                             elementInformation.appendChild(elementName);
                             spanReward.appendChild(elementInformation);
                             if (randomItemType === 'character') {
-                                spanReward.style.backgroundImage = `url(/honkai-star-rail/reward/${randomItemType}/${reformatName}.webp)`;
+                                spanReward.style.backgroundImage = `url(${validImage})`;
                             } else {
                                 const elementImage = document.createElement('img');
-                                elementImage.src = `/honkai-star-rail/reward/${randomItemType}/${reformatName}.webp`;
+                                elementImage.src = validImage;
                                 elementImage.alt = `${calculateReward} ${i}`;
                                 elementImage.loading = 'lazy';
                                 elementImage.decoding = 'async';
@@ -511,14 +553,16 @@ const App = () => {
                                 };
                             };
                             const elementImage = document.getElementById('reward-honkai-star-rail-image');
-                            elementImage.src = `/honkai-star-rail/reward/${randomItemType}/${reformatName}.webp`;
+                            elementImage.src = validImage;
                             if (calculateRate === 5) {
                                 createPon(popupReward);
                             };
                         };
                         break;
-                    default: break;
+                    };
+                    default: { break; };
                 };
+
                 if (inventoryAdd[set]?.calculateReward) {
                     inventoryAdd[set][calculateReward].count++;
                 } else {
@@ -531,6 +575,7 @@ const App = () => {
                         ...inventoryAdd[set]
                     };
                 };
+
                 inventoryRecentAdd.push({
                     set: set,
                     name: calculateReward,
@@ -668,6 +713,15 @@ const App = () => {
         element.appendChild(elementPon);
     };
 
+    const changeViewedItem = (item) => {
+        setIsViewedItemVisible(true);
+        setViewedItem(item);
+    };
+
+    const hideViewedItem = () => {
+        setIsViewedItemVisible(false);
+    };
+
     const storeData = () => {
         localStorage.setItem('money', refMoney.current);
         localStorage.setItem('inventory', JSON.stringify(refInventory.current));
@@ -731,7 +785,11 @@ const App = () => {
                     shopItems={shopItems}
                     shopBanners={shopBanners}
                     inventory={inventory}
-                    inventoryRecent={inventoryRecent}/>
+                    inventoryRecent={inventoryRecent}
+                    handleItemClicked={handleItemClicked}/>
+                <ViewItem viewedItem={viewedItem}
+                    isViewedItemVisible={isViewedItemVisible}
+                    hideViewedItem={hideViewedItem}/>
             </section>
             <Footer/>
         </section>

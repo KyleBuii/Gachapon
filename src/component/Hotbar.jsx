@@ -5,7 +5,7 @@ import Homepage from "../Homepage";
 import Inventory from "../Inventory";
 import Shop from "../Shop";
 
-const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBanners, inventory, inventoryRecent = [] }) => {
+const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBanners, inventory, handleItemClicked, inventoryRecent = [] }) => {
     const handleHotbar = (what) => {
         const elementHotbar = document.querySelectorAll('.hotbar .active');
         if (elementHotbar.length === 1) {
@@ -51,7 +51,8 @@ const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBann
                     element={
                         <Homepage renderShopItems={renderShopItems}
                             shopItems={shopItems}
-                            inventoryRecent={inventoryRecent}/>
+                            inventoryRecent={inventoryRecent}
+                            handleItemClicked={handleItemClicked}/>
                     }>
                 </Route>
                 <Route path='/shop'
@@ -62,7 +63,8 @@ const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBann
                     }>
                 </Route>
                 <Route path='/inventory'
-                    element={<Inventory inventory={inventory}/>}>
+                    element={<Inventory inventory={inventory}
+                        handleItemClicked={handleItemClicked}/>}>
                 </Route>
                 <Route path='/about'
                     element={<About references={references}/>}>

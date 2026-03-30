@@ -854,6 +854,7 @@ footer {
     img {
         cursor: grab;
         position: absolute;
+        transform-origin: top left;
 
         &:active {
             cursor: grabbing;

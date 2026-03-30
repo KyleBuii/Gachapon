@@ -75,7 +75,7 @@ let currentWalkthroughStep = -1;
 let lockWalkthrough = false;
 let homepageShop = {};
 
-const Homepage = ({ renderShopItems, shopItems, inventoryRecent }) => {
+const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClicked }) => {
     useEffect(() => {
         let firstSetItemName = '';
         for (let set of Object.keys(shopItems)) {
@@ -226,17 +226,21 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent }) => {
             <fieldset className='group'>
                 <legend>Recently Obtained</legend>
                 <div className='group-items inventory'>
-                    {inventoryRecent.map((item, index) => (
-                        <span key={`item ${index}`}
+                    {inventoryRecent.map((item, index) => {
+                        const imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}-view.webp`;
+                        const imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`;
+
+                        return <span key={`item ${index}`}
                             className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
-                            style={{ backgroundImage: `url(/${item.set.replace(/\s/g, '-')}/${item.rate}-bg.webp)` }}>
-                            <img src={`/${item.set.replace(/\s/g, '-')}/inventory/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`}
+                            style={{ backgroundImage: `url(/${item.set.replace(/\s/g, '-')}/${item.rate}-bg.webp)` }}
+                            onClick={() => handleItemClicked(imageArt, imageFace)}>
+                            <img src={imageFace}
                                 alt={`inventory item ${index}`}
                                 loading='lazy'
                                 decoding='async'/>
                             <span className='item-name'>{item.name}</span>
                         </span>
-                    ))}
+                    })}
                 </div>
             </fieldset>
         </section>
