@@ -247,7 +247,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 75px;
+    max-width: 76px;
     border-radius: 10px;
     padding: 0.8rem;
     font-weight: bold;
@@ -283,16 +283,17 @@ footer {
         color: white;
         transition-property: opacity;
         transition-duration: 0.5s;
+
         &:hover {
             opacity: 0.7;
         }
+
         &:active {
             opacity: 0.5;
         }
     }
 
     &.genshin-impact {
-        min-width: 185px;
         button {
             color: var(--color-sub);
             background-image: url(/genshin-impact/wish-button.png);
@@ -305,7 +306,6 @@ footer {
     }
 
     &.honkai-star-rail {
-        min-width: 185px;
         button {
             border-radius: 25px;
             outline: 2px solid white;
@@ -313,10 +313,23 @@ footer {
         }
     }
 
+    &.touhou {
+        button {
+            background: linear-gradient(to bottom, #fef9f9 50%, var(--color-sub) 50%);
+            -webkit-background-clip: text;
+                    background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px #e08aff;
+        }
+    }
+
     &.inventory-item {
+        cursor: pointer;
         width: 100%;
+
+        //#region Honkai Star Rail
         &.honkai-star-rail-3::after {
-            content: "";
+            content: '';
             position: absolute;
             height: 50%;
             width: 100%;
@@ -326,8 +339,9 @@ footer {
                 rgba(94, 191, 255, .4),
                 transparent 40%);
         }
+
         &.honkai-star-rail-4::after {
-            content: "";
+            content: '';
             position: absolute;
             height: 50%;
             width: 100%;
@@ -337,8 +351,9 @@ footer {
                 rgba(151, 80, 255, .4),
                 transparent 40%);
         }
+
         &.honkai-star-rail-5::after {
-            content: "";
+            content: '';
             position: absolute;
             height: 50%;
             width: 100%;
@@ -348,6 +363,69 @@ footer {
                 rgba(255, 207, 112, .4),
                 transparent 40%);
         }
+        //#endregion
+
+        //#region Touhou
+        &.touhou-1::after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 2px;
+            right: 2px;
+            background-image: url(/touhou/common.webp);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        &.touhou-2::after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 2px;
+            right: 2px;
+            background-image: url(/touhou/uncommon.webp);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        &.touhou-3::after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 2px;
+            right: 2px;
+            background-image: url(/touhou/rare.webp);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        &.touhou-4::after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 2px;
+            right: 2px;
+            background-image: url(/touhou/super-rare.webp);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        //#endregion
+    }
+
+    &.large {
+        grid-column: span 2;
     }
 }
 
@@ -400,11 +478,11 @@ footer {
     flex-direction: row;
     max-width: 55.4rem;
     max-height: 30rem;
-    width: calc(100% - 2rem);
+    width: 100%;
     height: calc(100vmin - 2rem);
     border: 4px solid var(--color-main);
     border-radius: 10px;
-    margin: 0rem 1rem 1.5rem;
+    margin-bottom: 1.5rem;
     overflow: hidden;
 
     img {
@@ -633,7 +711,7 @@ footer {
                 img {
                     height: 18px;
                 }        
-            }   
+            }
         }
     }
 
@@ -665,6 +743,7 @@ footer {
                 display: flex;
                 flex-direction: column;
                 margin-right: 0.5rem;
+
                 img {
                     height: 18px;
                 }
@@ -687,6 +766,54 @@ footer {
             }
         }
     }
+
+    &.touhou {
+        gap: 0.5rem;
+    }
+}
+
+.reward-item-touhou {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    font-size: 1rem;
+    text-shadow: 0 0 5px black;
+    
+    :nth-child(3) {
+        z-index: -1;
+        position: absolute;
+        width: 5rem;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.reward-item-touhou-image {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: brightness(100%);
+    transition-property: filter;
+    transition-duration: 4s;
+}
+
+.hidden {
+    filter: brightness(0%);
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.no-transition {
+    transition: none !important;
 }
 
 .select-base {
@@ -707,51 +834,39 @@ footer {
     @extend .flex-column;
     justify-content: unset;
     align-items: unset;
-    gap: 0.8rem;
-    min-width: 12rem;
+    width: 14.2rem;
     min-height: 10rem;
-    margin-left: 1.5rem;
     color: var(--color-main);
     background-color: rgba(255, 62, 104, 0.2);
     border: 2px solid var(--color-main);
     border-radius: 5px;
     padding: 1rem;
-}
-
-.sidebar-input {
-    width: 100%;
-    border: 2px solid rgb(255, 123, 150);
-    border-radius: 5px;
-    outline-color: rgb(255, 18, 67);
-    box-sizing: border-box;
-}
-
-.sidebar-options {
-    input {
-        display: none;
-
-        + label:before {
-            content: '';
-            height: 12px;
-            width: 12px;
-            margin-right: 2px;
-            border: 1px solid var(--color-main);
-            border-radius: 50%;
-        }
-
-        &:checked + label:before {
-            background-color: var(--color-sub);
-        }
-    }
 
     > span {
-        font-weight: bold
+        font-weight: bold;
     }
 
     label {
         @extend .flex-row;
         cursor: pointer;
         gap: 0.4rem;
+    }
+}
+
+.sidebar-input {
+    display: none;
+
+    + label:before {
+        content: '';
+        height: 12px;
+        width: 12px;
+        margin-right: 2px;
+        border: 1px solid var(--color-main);
+        border-radius: 50%;
+    }
+
+    &:checked + label:before {
+        background-color: var(--color-sub);
     }
 }
 
@@ -764,6 +879,13 @@ footer {
     input {
         margin: 0;
     }
+}
+
+.sidebar-recently-obtained {
+    @extend .flex-row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 
 .title {
@@ -1002,8 +1124,20 @@ footer {
     }
 }
 
+#reward-touhou {
+    scale: 2;
+}
+
 #shop-items {
-    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+    grid-auto-flow: dense;
+    gap: 1rem;
+    margin: 1rem;
+
+    .group-item {
+        max-width: unset;
+    }
 }
 
 #walkthrough-button {

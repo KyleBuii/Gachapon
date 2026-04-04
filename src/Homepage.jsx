@@ -220,15 +220,14 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClick
             </section>
             <fieldset className='group'>
                 <legend>Shop</legend>
-                <div id='shop-items'
-                    className='group-items'></div>
+                <div id='shop-items'></div>
             </fieldset>
             <fieldset className='group'>
                 <legend>Recently Obtained</legend>
                 <div className='group-items inventory'>
                     {inventoryRecent.map((item, index) => {
-                        const imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}-view.webp`;
-                        const imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`;
+                        const imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
+                        const imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
 
                         return <span key={`item ${index}`}
                             className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}

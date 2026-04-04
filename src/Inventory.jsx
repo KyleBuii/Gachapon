@@ -87,8 +87,8 @@ const Inventory = ({ inventory, handleItemClicked }) => {
             <section className='group-items'>
                 {(modifiedInventory !== undefined)
                     && Object.entries(modifiedInventory).map((item, index) => {
-                        const imageArt = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}-view.webp`;
-                        const imageFace = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s/g, '-').replace(/'/g, '')}.webp`;
+                        const imageArt = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
+                        const imageFace = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
 
                         return <span key={`item ${item[0]} ${index}`}
                             className={`group-item inventory-item ${sets[currentSetIndex].replace(/\s/g, '-')}-${item[1].rate}`}

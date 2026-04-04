@@ -59,7 +59,9 @@ const Hotbar = ({ references, renderShopItems, homepageShop, shopItems, shopBann
                     element={
                         <Shop renderShopItems={renderShopItems}
                             shopItems={shopItems}
-                            shopBanners={shopBanners}/>
+                            shopBanners={shopBanners}
+                            inventoryRecent={inventoryRecent}
+                            handleItemClicked={handleItemClicked}/>
                     }>
                 </Route>
                 <Route path='/inventory'

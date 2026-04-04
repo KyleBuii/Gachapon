@@ -16,40 +16,14 @@ import ViewItem from "./component/ViewItem";
  * 3-star - 94.3%
  * 4-star - 5.1%
  * 5-star - 0.6%
+ * 
+ * Touhou
+ * (1-star) Common     - 60%
+ * (2-star) Uncommon   - 30%
+ * (3-star) Rare       - 8%
+ * (4-star) Super Rare - 2%
  */
 const shopItems = {
-    'classic': {
-        'red': {
-            cost: 1
-        },
-        'pink': {
-            cost: 1
-        },
-        'purple': {
-            cost: 1
-        },
-        'dark blue': {
-            cost: 1
-        },
-        'blue': {
-            cost: 1
-        },
-        'light green': {
-            cost: 1
-        },
-        'green': {
-            cost: 1
-        },
-        'yellow': {
-            cost: 1
-        },
-        'orange': {
-            cost: 1
-        },
-        'grey': {
-            cost: 1
-        },
-    },
     'genshin impact': {
         'wanderlust invocation': {
             items: {
@@ -86,7 +60,62 @@ const shopItems = {
             cost: 1
         }
 
-    }
+    },
+    'touhou': {
+        'fumo': {
+            items: {
+                1: {
+                    label: 'common',
+                    character: ['Izayoi Kourindou', 'Saigyouji Version 1.5', 'Cirno Version 1'],
+                },
+                2: {
+                    label: 'uncommon',
+                    character: ['Hakurei Version 1', 'Kirisame Version 1'],
+                },
+                3: {
+                    label: 'rare',
+                    character: ['Hakurei Nendoroid Plus', 'Kirisame Version 2'],
+                },
+                4: {
+                    label: 'super rare',
+                    character: ['Komeiji Deka Version 1'],
+                },
+            },
+            cost: 1
+        }
+    },
+    'classic': {
+        'red': {
+            cost: 1
+        },
+        'pink': {
+            cost: 1
+        },
+        'purple': {
+            cost: 1
+        },
+        'dark blue': {
+            cost: 1
+        },
+        'blue': {
+            cost: 1
+        },
+        'light green': {
+            cost: 1
+        },
+        'green': {
+            cost: 1
+        },
+        'yellow': {
+            cost: 1
+        },
+        'orange': {
+            cost: 1
+        },
+        'grey': {
+            cost: 1
+        },
+    },
 };
 const shopBanners = {
     'genshin impact': [
@@ -99,20 +128,20 @@ const shopBanners = {
         'sparkling-steps', 'tapestry-of-golden-flames', 'the-herons-court', 'wanderlust-invocation'
     ],
     'honkai star rail': [
-        '2-5_1', 'a-lost-soul-1', 'a-lost-soul-2', 'back-to-fons-et-origo-1',
-        'bloom-in-gloom-1', 'bloom-in-gloom-2', 'bloom-in-gloom-3', 'butterfly-on-swordtip-1',
-        'butterfly-on-swordtip-2', 'cauldron-contrivance-1', 'contract-zero-1', 'contract-zero-2',
-        'dusty-trails-lone-star-1', 'earth-hurled-ether-curled-1', 'earth-hurled-ether-curled-2',
-        'epochal-spectrum-1', 'epochal-spectrum-2', 'epochal-spectrum-3', 'eyes-of-a-ninja-1',
-        'eyes-to-the-stars-1', 'firefull-flyshine-1', 'firefull-flyshine-2', 'floral-triptych-1',
-        'floral-triptych-2', 'foreseen-foreknown-foretold-1', 'foreseen-foreknown-foretold-2', 'fugue-1',
-        'gentle-eclipse-of-the-moon-1', 'gentle-eclipse-of-the-moon-2', 'gilded-imprisonment-1',
-        'gilded-imprisonment-2', 'hati-singa-yang-membara-1', 'just-intonation-1', 'laic-pursuit-1',
-        'laic-pursuit-2', 'let-scent-sink-in-1', 'lien-on-life-lease-on-fate-1', 'nessun-dorma-1', 'nessun-dorma-2',
-        'panta-rhei-1', 'ripples-in-reflection-1', 'sparkling-splendor-1', 'sparkling-splendor-2', 'sunset-clause-1',
-        'sunset-clause-2', 'sunset-clause-3', 'swirl-of-heavenly-spear-1', 'swirl-of-heavenly-spear-2',
-        'swirl-of-heavenly-spear-3', 'the-long-voyage-home-1', 'thorns-of-scented-crown-1', 'thorns-of-scented-crown-2',
-        'words-of-yore-1', 'words-of-yore-2'
+        '2-5_1', 'a-hunt-through-night-1', 'a-lost-soul-1', 'a-lost-soul-2', 'a-rainbow-onto-twilight-1',
+        'a-rainbow-onto-twilight-3', 'back-to-fons-et-origo-1', 'bloom-in-gloom-1', 'bloom-in-gloom-2', 'bloom-in-gloom-3',
+        'butterfly-on-swordtip-1', 'butterfly-on-swordtip-2', 'cauldron-contrivance-1', 'contract-zero-1', 'contract-zero-2',
+        'dance-in-flame-1', 'dusty-trails-lone-star-1', 'dusty-trails-lone-star-3', 'earth-hurled-ether-curled-1', 'earth-hurled-ether-curled-2',
+        'epochal-spectrum-1', 'epochal-spectrum-2', 'epochal-spectrum-3', 'eyes-of-a-ninja-1', 'eyes-to-the-stars-1',
+        'files.txt', 'firefull-flyshine-1', 'firefull-flyshine-2', 'floral-triptych-1', 'floral-triptych-2',
+        'foreseen-foreknown-foretold-1', 'foreseen-foreknown-foretold-2', 'fugue-1', 'gentle-eclipse-of-the-moon-1', 'gentle-eclipse-of-the-moon-2',
+        'gilded-imprisonment-1', 'gilded-imprisonment-2', 'hati-singa-yang-membara-1', 'hysilens-1', 'just-intonation-1',
+        'laic-pursuit-1', 'laic-pursuit-2', 'let-scent-sink-in-1', 'lien-on-life-lease-on-fate-1', 'message-from-beyond-2',
+        'nessun-dorma-1', 'nessun-dorma-2', 'panta-rhei-1', 'panta-rhei-2', 'ripples-in-reflection-1',
+        'slick-and-speedy-steals-the-sky-1', 'sparkling-splendor-1', 'sparkling-splendor-2', 'sunset-clause-1', 'sunset-clause-2',
+        'sunset-clause-3', 'swirl-of-heavenly-spear-1', 'swirl-of-heavenly-spear-2', 'swirl-of-heavenly-spear-3', 'tailored-fate-2',
+        'the-long-voyage-home-1', 'the-universe-in-a-seed-1', 'thorns-of-scented-crown-1', 'thorns-of-scented-crown-2', 'words-of-yore-1',
+        'words-of-yore-2',
     ]
 };
 const references = {
@@ -162,7 +191,7 @@ const audioReveal = new Audio(null);
 const maxInventoryRecent = 30;
 let timeoutNoMoney;
 let inventoryRecent = [];
-let scrollY = 0;
+let scrollY = -1;
 
 const App = () => {
     const [money, setMoney] = useState(10);
@@ -172,18 +201,24 @@ const App = () => {
     const [viewedItem, setViewedItem] = useState('');
     const [isViewedItemVisible, setIsViewedItemVisible] = useState(false);
 
+    const refTimeoutsOpen = useRef([]);
+    const refTimeoutMaxCount = useRef(0);
+    const refTimeoutCount = useRef(0);
+    const refMoney = useRef(money);
+    const refInventory = useRef(inventory);
+    const refPlayer = useRef(null);
+    
     const refOpen = useRef(null);
     const refRewardMultiple = useRef(null);
     const refRewardGenshinImpact = useRef(null);
     const refRewardHonkaiStarRail = useRef(null);
-    const refMoney = useRef(money);
-    const refInventory = useRef(inventory);
-    const refPlayer = useRef(null);
+    const refRewardTouhou = useRef(null);
 
     const refLookup = {
         'multiple': refRewardMultiple,
         'genshin impact': refRewardGenshinImpact,
         'honkai star rail': refRewardHonkaiStarRail,
+        'touhou': refRewardTouhou,
     };
 
     useEffect(() => {
@@ -222,8 +257,9 @@ const App = () => {
             for (let capsule of Object.keys(items[set])) {
                 const elementCapsule = document.createElement('span');
                 let reformatSet = set.replace(/\s/g, '-');
+
                 elementCapsule.id = `capsule-${reformatSet}-${capsule}`;
-                elementCapsule.className = `group-item ${reformatSet}`;
+                elementCapsule.className = `group-item ${reformatSet} ${(set !== 'classic') && 'large'}`;
                 elementCapsule.key = `${set} ${capsule}`;
                 elementCapsule.innerHTML = `
                     <img src='/${reformatSet}/${capsule.replace(/\s/g, '-')}.webp'
@@ -231,15 +267,18 @@ const App = () => {
                         loading='lazy'
                         decoding='async'/>
                 `;
+
                 const elementCapsuleName = document.createElement('span');
                 elementCapsuleName.className = 'item-name';
                 elementCapsuleName.innerText = capsule.replace(/^./, (char) => char.toUpperCase())
                     .replace(/\s(.)/g, (char) => char.toUpperCase());
                 elementCapsule.appendChild(elementCapsuleName);
                 elementCapsule.innerHTML += `<span>$${items[set][capsule].cost}</span>`;
+
                 const buttonBuy = document.createElement('button');
                 let buttonBuyText;
                 buttonBuy.className = 'buy';
+
                 switch (reformatSet) {
                     case 'genshin-impact':
                         buttonBuyText = 'Wish';
@@ -247,16 +286,21 @@ const App = () => {
                     case 'honkai-star-rail':
                         buttonBuyText = 'Warp';
                         break;
+                    case 'touhou':
+                        buttonBuyText = 'Pray';
+                        break;
                     default:
                         buttonBuyText = 'Buy';
                         break;
                 };
+
                 buttonBuy.innerText = buttonBuyText;
                 buttonBuy.onclick = () => handleBuy({
                     set: set,
                     type: capsule,
                     cost: items[set][capsule].cost
                 });
+
                 const buttonBuyClone = buttonBuy.cloneNode();
                 buttonBuyClone.innerText = `${buttonBuyText} x10`;
                 buttonBuyClone.onclick = () => handleBuy({
@@ -265,10 +309,12 @@ const App = () => {
                     cost: items[set][capsule].cost,
                     amount: 10
                 });
+
                 const elementSet = document.createElement('span');
                 elementSet.innerText = set
                     .replace(/\s(.)/g, (char) => char.toUpperCase())
                     .replace(/^./, (char) => char.toUpperCase());
+
                 elementCapsule.appendChild(buttonBuy);
                 elementCapsule.appendChild(buttonBuyClone);
                 elementCapsule.appendChild(elementSet);
@@ -560,10 +606,72 @@ const App = () => {
                         };
                         break;
                     };
+                    case 'touhou': {
+                        if ((amount === 1) && (popupReward.hasChildNodes())) {
+                            popupReward.innerHTML = '';
+                        };
+
+                        calculateRate =
+                              (randomNumber <= .6)  ? 1
+                            : (randomNumber <= .9)  ? 2
+                            : (randomNumber <= .98) ? 3
+                            : 4;
+                            randomItemType = 'character';
+
+                        let dataItems = shopItems[set][type].items[calculateRate];
+                        let dataCharacters = dataItems.character;
+                        let randomItem = Math.floor(Math.random() * dataCharacters.length);
+
+                        calculateReward = dataCharacters[randomItem];
+                        reformatName = calculateReward.toLowerCase()
+                            .replace(/\s|\./g, '-')
+                            .replace(/'/g, '');
+
+                        const urlArt = `/touhou/character/${reformatName}.webp`;
+                        const urlRarity = `/touhou/${dataItems.label.replace(/\s/g, '-')}.webp`;
+
+                        spanReward = document.createElement('span');
+                        spanReward.classList.add('reward-item-touhou');
+                        
+                        const imageReward = document.createElement('span');
+                        imageReward.classList.add('reward-item-touhou-image', 'hidden');
+                        imageReward.style.backgroundImage = `url(${urlArt})`;
+                        spanReward.appendChild(imageReward);
+
+                        const elementName = document.createElement('span');
+                        elementName.classList.add('invisible');
+                        elementName.innerText = calculateReward;
+                        spanReward.appendChild(elementName);
+
+                        const imageRarity = document.createElement('img');
+                        imageRarity.classList.add('invisible');
+                        imageRarity.src = urlRarity;
+                        imageRarity.alt = 'rarity';
+                        imageRarity.loading = 'lazy';
+                        imageRarity.decoding = 'async';
+                        spanReward.appendChild(imageRarity);
+
+                        const timeoutImage = setTimeout(() => {
+                            imageReward.classList.remove('hidden');
+                            incrementTimeouts();
+                        }, 1000);
+                        const timeoutData = setTimeout(() => {
+                            elementName.classList.remove('invisible');
+                            imageRarity.classList.remove('invisible');
+                            incrementTimeouts();
+                        }, 3000);
+                        refTimeoutsOpen.current.push(timeoutImage, timeoutData);
+                        refTimeoutMaxCount.current = refTimeoutsOpen.current.length;
+
+                        if (calculateRate === 4) createPon(spanReward);
+
+                        popupReward.appendChild(spanReward);
+                        break;
+                    };
                     default: { break; };
                 };
 
-                if (inventoryAdd[set]?.calculateReward) {
+                if (inventoryAdd[set]?.[calculateReward]) {
                     inventoryAdd[set][calculateReward].count++;
                 } else {
                     inventoryAdd[set] = {
@@ -613,36 +721,27 @@ const App = () => {
                     let combinedInventory = {
                         ...prevInventory
                     };
+
                     for (let set in inventoryAdd) {
                         for (let item in inventoryAdd[set]) {
                             if (combinedInventory[set]?.[item]) {
-                                const newItem = {
-                                    [item]: {
-                                        type: inventoryAdd[set][item].type,
-                                        rate: inventoryAdd[set][item].rate,
-                                        count: combinedInventory[set][item].count + 1
-                                    },
-                                };
-                                delete combinedInventory[set][item];
-                                combinedInventory[set] = {
-                                    ...newItem,
-                                    ...combinedInventory[set]
-                                };
+                                combinedInventory[set][item].count += inventoryAdd[set][item].count;
                             } else {
                                 combinedInventory[set] = {
+                                    ...combinedInventory[set],
                                     [item]: {
                                         type: inventoryAdd[set][item].type,
                                         rate: inventoryAdd[set][item].rate,
-                                        count: 1
+                                        count: inventoryAdd[set][item].count
                                     },
-                                    ...combinedInventory[set]
                                 };
                             };
                         };
                     };
-                    inventoryAdd.length = 0;
+
                     return combinedInventory;
                 });
+
                 inventoryRecent = [...inventoryRecentAdd, ...inventoryRecent].slice(0, maxInventoryRecent);
                 refPlayer.current.seekTo(0);
             } else {
@@ -658,7 +757,13 @@ const App = () => {
     };
 
     const handlePopup = (what) => {
+        if (refTimeoutsOpen.current.length > 0) {
+            clearTimeouts();
+            return;
+        };
+
         what.current.style.visibility = 'hidden';
+
         if (what === refOpen) {
             setOpenAnimation('');
 
@@ -667,14 +772,12 @@ const App = () => {
                 .catch(() => { console.log('No reveal audio to play'); });
 
             refLookup[currentPopupReward.replace(/-/g, ' ')].current.style.visibility = 'visible';
-
             scrollY = window.scrollY;
             document.body.style.overflowY = 'scroll';
             document.body.style.top = `-${scrollY}px`;
             document.body.style.position = 'fixed';
         } else {
             audioReveal.src = null;
-
             document.body.style.position = '';
             document.body.style.top = '';
 
@@ -686,6 +789,39 @@ const App = () => {
 
             scrollY = -1;
         };
+    };
+
+    const incrementTimeouts = () => {
+        let newCount = refTimeoutCount.current + 1;
+
+        if (newCount === refTimeoutMaxCount.current) {
+            newCount = 0;
+            refTimeoutMaxCount.current = 0;
+            refTimeoutsOpen.current.length = 0;
+        };
+
+        refTimeoutCount.current = newCount;
+    };
+
+    const clearTimeouts = () => {
+        refTimeoutsOpen.current.forEach(clearTimeout);
+        refTimeoutMaxCount.current = 0;
+        refTimeoutCount.current = 0;
+        refTimeoutsOpen.current.length = 0;
+
+        const allHidden = document.querySelectorAll('.hidden, .invisible');
+        const allInvisible = document.querySelectorAll('.invisible');
+
+        allHidden.forEach((hiddenElement) => {
+            hiddenElement.classList.remove('hidden');
+            hiddenElement.classList.add('no-transition');
+            requestAnimationFrame(() => {
+                hiddenElement.classList.remove('no-transition');
+            });
+        });
+        allInvisible.forEach((invisibleElement) => {
+            invisibleElement.classList.remove('invisible');
+        });
     };
 
     const handleAnimationStart = () => {
@@ -777,6 +913,12 @@ const App = () => {
                             loading='lazy'
                             decoding='async'/>
                     </section>
+                </div>
+                <div ref={refRewardTouhou}
+                    className='popup'
+                    onClick={() => handlePopup(refRewardTouhou)}>
+                    <section id='reward-touhou'
+                        className='reward'></section>
                 </div>
                 <Money money={money}/>
                 <Disclaimer/>
