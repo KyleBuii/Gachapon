@@ -207,8 +207,9 @@ const App = () => {
     const refMoney = useRef(money);
     const refInventory = useRef(inventory);
     const refPlayer = useRef(null);
-    
+
     const refOpen = useRef(null);
+    const refCurrentPopup = useRef(null);
     const refRewardMultiple = useRef(null);
     const refRewardGenshinImpact = useRef(null);
     const refRewardHonkaiStarRail = useRef(null);
@@ -366,12 +367,11 @@ const App = () => {
 
             /// Get type of popup (single or multi) and set forced pulls
             if ((amount > 1) || (set === 'classic')) {
+                refCurrentPopup.current = refRewardMultiple.current;
                 parentPopup = refRewardMultiple.current;
-
                 popupReward = document.getElementById('reward-multiple');
                 popupReward.innerHTML = '';
                 popupReward.className = `reward ${reformatSet}`;
-
                 setCurrentPopupReward('multiple');
 
                 switch (set) {
@@ -389,9 +389,9 @@ const App = () => {
                     default: { break; };
                 };    
             } else {
+                refCurrentPopup.current = refLookup[set].current;
                 parentPopup = refLookup[set].current;
                 popupReward = document.getElementById(`reward-${reformatSet}`);
-
                 setCurrentPopupReward(reformatSet);
             };
 
@@ -652,16 +652,15 @@ const App = () => {
                         spanReward.appendChild(imageRarity);
 
                         const timeoutImage = setTimeout(() => {
-                            imageReward.classList.remove('hidden');
                             incrementTimeouts();
-                        }, 1000);
+                            imageReward.classList.remove('hidden');
+                        }, 1000 * ((i + 1) / 6));
                         const timeoutData = setTimeout(() => {
+                            incrementTimeouts();
                             elementName.classList.remove('invisible');
                             imageRarity.classList.remove('invisible');
-                            incrementTimeouts();
-                        }, 3000);
+                        }, 2500 + (amount * 100));
                         refTimeoutsOpen.current.push(timeoutImage, timeoutData);
-                        refTimeoutMaxCount.current = refTimeoutsOpen.current.length;
 
                         if (calculateRate === 4) createPon(spanReward);
 
@@ -692,6 +691,7 @@ const App = () => {
                 });
                 highestReward = (highestReward < calculateRate) ? calculateRate : highestReward;
             };
+            refTimeoutMaxCount.current = refTimeoutsOpen.current.length;
 
             /// Handle open animation
             switch (set) {
@@ -809,19 +809,17 @@ const App = () => {
         refTimeoutCount.current = 0;
         refTimeoutsOpen.current.length = 0;
 
-        const allHidden = document.querySelectorAll('.hidden, .invisible');
-        const allInvisible = document.querySelectorAll('.invisible');
+        const allChildren = refCurrentPopup.current.children[0].children;
 
-        allHidden.forEach((hiddenElement) => {
-            hiddenElement.classList.remove('hidden');
-            hiddenElement.classList.add('no-transition');
-            requestAnimationFrame(() => {
-                hiddenElement.classList.remove('no-transition');
-            });
-        });
-        allInvisible.forEach((invisibleElement) => {
-            invisibleElement.classList.remove('invisible');
-        });
+        for (const child of allChildren) {
+            for (const subchild of child.children) {
+                subchild.classList.remove('hidden', 'invisible');
+                subchild.classList.add('no-transition');
+                requestAnimationFrame(() => {
+                    subchild.classList.remove('no-transition');
+                });
+            };
+        };
     };
 
     const handleAnimationStart = () => {
