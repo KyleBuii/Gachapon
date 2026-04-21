@@ -39,7 +39,8 @@ const shopItems = {
                     weapon: ['Black Tassel', 'Bloodtained Greatsword', 'Cool Steel', 'Debate Club', 'Emerald Orb', 'Ferrous Shadow', 'Harbinger Of Dawn', 'Magic Guide', 'Raven Bow', 'Sharpshooter\'s Oath', 'Skyrider Sword', 'Slingshot', 'Thrilling Tales Of Dragon Slayers']
                 }
             },
-            cost: 1
+            cost: 1,
+            credit: 'HoYoverse',
         }
     },
     'honkai star rail': {
@@ -57,7 +58,8 @@ const shopItems = {
                     cone: ['Adversarial', 'Amber', 'Arrows', 'Chorus', 'Collapsing Sky', 'Cornucopia', 'Darting Arrow', 'Data Bank', 'Defense', 'Fine Fruit', 'Hidden Shadow', 'Lingering Tear', 'Loop', 'Mediation', 'Meshing Cogs', 'Multiplication', 'Mutual Demise', 'Passkey', 'Pioneering', 'Reminiscence', 'Sagacity', 'Shadowburn', 'Shattered Home', 'Sneering', 'Void']
                 }
             },
-            cost: 1
+            cost: 1,
+            credit: 'Hoyoverse',
         }
 
     },
@@ -81,9 +83,19 @@ const shopItems = {
                     character: ['Komeiji Deka Version 1'],
                 },
             },
-            cost: 1
+            cost: 1,
+            credit: 'Team Shanghai Alice / ZUN',
         }
     },
+    // 'blue archive': {
+    //     'regular recruitment': {
+    //         items: {
+
+    //         },
+    //         cost: 1,
+    //         credit: 'Nexon Games',
+    //     }
+    // },
     'classic': {
         'red': {
             cost: 1
@@ -145,6 +157,18 @@ const shopBanners = {
     ]
 };
 const references = {
+    'Genshin Impact': {
+        author: '© HoYoverse',
+        url: 'https://genshin.hoyoverse.com/',
+    },
+    'Honkai: Star Rail': {
+        author: '© HoYoverse',
+        url: 'https://hsr.hoyoverse.com/',
+    },
+    'Blue Archive': {
+        author: '© Nexon Games',
+        url: 'https://www.nexon.com/',
+    },
     'Font Generator': {
         author: 'TextStudio',
         url: 'https://www.textstudio.com/',
@@ -170,7 +194,7 @@ const references = {
         url: 'https://github.com/Mantan21/Genshin-Impact-Wish-Simulator',
     },
     'Genshin Impact Assets': {
-        author: 'Hoyoverse',
+        author: '© Hoyoverse',
         url: 'https://genshin.hoyoverse.com/en/',
     },
     'Honkai Star Rail Warp Simulator': {
@@ -178,7 +202,7 @@ const references = {
         url: 'https://github.com/Mantan21/HSR-Warp-Simulator',
     },
     'Honkai Star Rail Assets': {
-        author: 'Hoyoverse',
+        author: '© Hoyoverse',
         url: 'https://hsr.hoyoverse.com/en-us/',
     },
     'Walkthrough Image': {
@@ -311,14 +335,14 @@ const App = () => {
                     amount: 10
                 });
 
-                const elementSet = document.createElement('span');
-                elementSet.innerText = set
-                    .replace(/\s(.)/g, (char) => char.toUpperCase())
-                    .replace(/^./, (char) => char.toUpperCase());
+                const elementCredit = document.createElement('span');
+                const creditName = (items[set][capsule].credit) ? items[set][capsule].credit : set;
+                const isCC = (set !== 'classic');
+                elementCredit.innerText = `${isCC ? '© ' : ''}${creditName.replace(/\b\w/g, c => c.toUpperCase())}`;
 
                 elementCapsule.appendChild(buttonBuy);
                 elementCapsule.appendChild(buttonBuyClone);
-                elementCapsule.appendChild(elementSet);
+                elementCapsule.appendChild(elementCredit);
                 elementShopItems.appendChild(elementCapsule);
             };
         };

@@ -6,7 +6,7 @@ Dive into the world of gacha with an ultimate pull simulator! Experience the thr
 
 All product names, logos, characters, brands, trademarks and registered trademarks are property of their respective owners and unrelated to Gachapon.
 
-### Sources and References
+### Credit
 - [Font generator](https://www.textstudio.com/) by TextStudio
 - ["Never Give Up" / Digging for Diamonds Image](https://dumilustrador.blogspot.com/) by Dum
 - [gamblecore Video](https://www.youtube.com/watch?v=IPFiKEm-oNI) by raxdflipnote

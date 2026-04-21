@@ -18,9 +18,11 @@ a {
     text-decoration: none;
     transition-property: color opacity;
     transition-duration: 0.5s;
+
     &:hover {
         color: #dcf6ff;
     }
+
     &:active {
         opacity: 0.8;
     }
@@ -76,11 +78,12 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     background-color: #1b2242;
     color: #92e4ff;
     padding: 1.5rem;
     margin-top: 1.5rem;
+
     div {
         display: flex;
         justify-content: center;
@@ -260,12 +263,12 @@ footer {
 
     &:not(.inventory-item) {
         height: 10.4rem;
+
         span:last-of-type {
             position: absolute;
-            bottom: 0.15rem;
+            bottom: 0.1rem;
             font-size: 0.5rem;
             font-style: italic;
-            margin-top: 0.5rem;
         }
     }
 
@@ -296,7 +299,7 @@ footer {
     &.genshin-impact {
         button {
             color: var(--color-sub);
-            background-image: url(/genshin-impact/wish-button.png);
+            background-image: url(/genshin-impact/wish-button.webp);
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
