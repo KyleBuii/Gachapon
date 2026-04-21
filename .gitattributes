@@ -1,3 +1,5 @@
 *.webm filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
+
+public/favicon-96x96.png -filter -diff -merge text
