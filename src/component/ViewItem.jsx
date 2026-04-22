@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
-const ViewItem = ({ viewedItem, isViewedItemVisible, hideViewedItem }) => {
+const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedItem }) => {
     const [currentImage, setCurrentImage] = useState('');
     const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
     const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 });
@@ -78,6 +78,7 @@ const ViewItem = ({ viewedItem, isViewedItemVisible, hideViewedItem }) => {
                 draggable={false}
                 onMouseDown={handleImageMouseDown}
                 onMouseUp={handleImageMouseUp}/>
+            <span>{viewedCredit}</span>
         </section>
     );
 };

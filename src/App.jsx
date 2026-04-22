@@ -90,7 +90,142 @@ const shopItems = {
     // 'blue archive': {
     //     'regular recruitment': {
     //         items: {
+    //             1: {
+    //                 character: [
+    //                     'Airi Band', 'Aoba', 'Asuna', 'Atsuko Swimsuit', 'Ayane Swimsuit',
+    //                     'Chinatsu', 'Fubuki', 'Haruka', 'Hasumi Sportswear', 'Hibiki Cheerleader',
+    //                     'Ibuki', 'Izumi Swimsuit', 'Junko New Year', 'Juri',
+    //                     'Karin School Uniform', 'Kirino Swimsuit', 'Koharu Swimsuit',
+    //                     'Kotama', 'Kotori', 'Michiru', 'Mine Idol', 'Miyu Swimsuit',
+    //                     'Nodoka', 'Pina', 'Saten Ruiko', 'Serina', 'Shimiko',
+    //                     'Shizuko Swimsuit', 'Suzumi', 'Tomoe', 'Tsurugi Swimsuit',
+    //                     'Yoshimi', 'Yuzu Maid'
+    //                 ]
+    //             },
+    //             2: {
+    //                 character: [
+    //                     'Aikiyo Fuuka', 'Akashi Junko', 'Akiizumi Momiji', 'Asagao Hanae',
+    //                     'Asagi Mutsuki', 'Fuwa Renge Swimsuit', 'Hanekawa Hasumi',
+    //                     'Hayase Yuuka', 'Iochi Mari', 'Izayoi Nonomi', 'Kasuga Tsubaki',
+    //                     'Kawawa Shizuko', 'Kurimura Airi', 'Kuromi Serika',
+    //                     'Murokasa Akane', 'Nakatsukasa Kirino', 'Okusora Ayane',
+    //                     'Omagari Hare', 'Onikata Kayoko', 'Saiba Momoi',
+    //                     'Shiraishi Utaha', 'Urawa Hanako', 'Wanibuchi Akari',
+    //                     'Waraku Chise'
+    //                 ]
+    //             },
+    //             3: {
+    //                 character: [
+    //                     'Ako', 'Ako Dress',
+    //                     'Akane Bunny Girl', 'Akari New Year',
+    //                     'Arisu', 'Arisu Maid',
+    //                     'Aru', 'Aru Dress', 'Aru New Year',
+    //                     'Asuna Bunny Girl', 'Asuna School Uniform',
+    //                     'Atsuko', 'Azusa', 'Azusa Swimsuit',
 
+    //                     'Cherino', 'Cherino Hot Spring',
+    //                     'Chiaki', 'Chihiro',
+    //                     'Chinatsu Hot Spring', 'Chise Swimsuit',
+
+    //                     'Eimi', 'Eimi Swimsuit',
+
+    //                     'Fubuki Swimsuit', 'Fuuka New Year',
+
+    //                     'Hanae Christmas', 'Hanako Swimsuit',
+    //                     'Hare Camping', 'Haruka New Year',
+    //                     'Haruna', 'Haruna New Year', 'Haruna Sportswear',
+    //                     'Hatsune Miku',
+    //                     'Hibiki', 'Hifumi', 'Hifumi Swimsuit',
+    //                     'Hikari', 'Himari',
+    //                     'Hina', 'Hina Dress', 'Hina Swimsuit',
+    //                     'Hinata', 'Hinata Swimsuit',
+    //                     'Hiyori', 'Hiyori Swimsuit',
+    //                     'Hoshino', 'Hoshino Battle', 'Hoshino Swimsuit',
+
+    //                     'Ichika', 'Iori', 'Iori Swimsuit',
+    //                     'Iroha',
+    //                     'Izumi', 'Izumi New Year',
+    //                     'Izuna', 'Izuna Swimsuit',
+
+    //                     'Juri Part-Timer',
+
+    //                     'Kaede', 'Kaho',
+    //                     'Kanna', 'Kanna Swimsuit',
+    //                     'Karin', 'Karin Bunny Girl',
+    //                     'Kasumi',
+    //                     'Kayoko Dress', 'Kayoko New Year',
+    //                     'Kazusa', 'Kazusa Band',
+    //                     'Kikyou', 'Kikyou Swimsuit',
+    //                     'Kirara', 'Kisaki',
+    //                     'Koharu', 'Kokona',
+    //                     'Kotama Camping', 'Kotori Cheerleader',
+    //                     'Koyuki',
+
+    //                     'Maki', 'Maki Camping',
+    //                     'Makoto',
+    //                     'Mari Idol', 'Mari Sportswear',
+    //                     'Marina', 'Marina Qipao',
+    //                     'Mashiro', 'Mashiro Swimsuit',
+    //                     'Megu', 'Meru',
+    //                     'Midori', 'Midori Maid',
+    //                     'Mika',
+    //                     'Mimori', 'Mimori Swimsuit',
+    //                     'Mina', 'Mine', 'Minori',
+    //                     'Misaka Mikoto',
+    //                     'Misaki',
+    //                     'Miyako', 'Miyako Swimsuit',
+    //                     'Miyu',
+    //                     'Moe', 'Moe Swimsuit',
+    //                     'Momoi Maid',
+    //                     'Mutsuki New Year',
+
+    //                     'Nagisa', 'Nagusa',
+    //                     'Natsu', 'Natsu Band',
+    //                     'Neru', 'Neru Bunny Girl', 'Neru School Uniform',
+    //                     'Niya',
+    //                     'Noa', 'Noa Pajama',
+    //                     'Nodoka Hot Spring',
+    //                     'Nonomi Swimsuit',
+    //                     'Nozomi',
+
+    //                     'Pina Guide',
+
+    //                     'Rei', 'Reijo', 'Reisa', 'Renge', 'Rio', 'Rumi',
+
+    //                     'Saki', 'Saki Swimsuit',
+    //                     'Sakurako', 'Sakurako Idol',
+    //                     'Saori', 'Saori Dress', 'Saori Swimsuit',
+    //                     'Satsuki',
+    //                     'Saya', 'Saya Casual',
+    //                     'Seia',
+    //                     'Sena', 'Sena Casual',
+    //                     'Serika New Year', 'Serika Swimsuit',
+    //                     'Serina Christmas',
+    //                     'Shigure', 'Shigure Hot Spring',
+    //                     'Shiroko', 'Shiroko Riding', 'Shiroko Swimsuit',
+    //                     'Shiroko Terror',
+    //                     'Shokuhou Misaki',
+    //                     'Shun', 'Shun Kid',
+    //                     'Sumire', 'Sumire Part-Timer',
+
+    //                     'Toki', 'Toki Bunny Girl',
+    //                     'Tomoe Qipao',
+    //                     'Tsubaki Guide',
+    //                     'Tsukuyo',
+    //                     'Tsurugi',
+
+    //                     'Ui', 'Ui Swimsuit',
+    //                     'Umika',
+    //                     'Utaha Cheerleader',
+
+    //                     'Wakamo', 'Wakamo Swimsuit',
+
+    //                     'Yoshimi Band',
+    //                     'Yukari', 'Yukari Swimsuit',
+    //                     'Yuuka Pajama', 'Yuuka Sportswear',
+    //                     'Yuzu'
+    //                 ]
+    //             }
     //         },
     //         cost: 1,
     //         credit: 'Nexon Games',
@@ -223,6 +358,7 @@ const App = () => {
     const [openAnimation, setOpenAnimation] = useState('');
     const [currentPopupReward, setCurrentPopupReward] = useState('');
     const [viewedItem, setViewedItem] = useState('');
+    const [viewedCredit, setViewedCredit] = useState('');
     const [isViewedItemVisible, setIsViewedItemVisible] = useState(false);
 
     const refTimeoutsOpen = useRef([]);
@@ -336,7 +472,7 @@ const App = () => {
                 });
 
                 const elementCredit = document.createElement('span');
-                const creditName = (items[set][capsule].credit) ? items[set][capsule].credit : set;
+                const creditName = items[set][capsule]?.credit || set;
                 const isCC = (set !== 'classic');
                 elementCredit.innerText = `${isCC ? '© ' : ''}${creditName.replace(/\b\w/g, c => c.toUpperCase())}`;
 
@@ -357,9 +493,13 @@ const App = () => {
         });
     };
 
-    const handleItemClicked = async (image, imageFallback) => {
+    const handleItemClicked = async (image, imageFallback, set) => {
         const validImage = await getValidImage(image, imageFallback);
         changeViewedItem(validImage);
+
+        const creditName = shopItems[set][Object.keys(shopItems[set])[0]]?.credit || set;
+        const isCC = (set !== 'classic');
+        setViewedCredit(`${isCC ? '© ' : ''}${creditName}`);
     };
 
     const handleBuy = async ({ set, type, cost, amount = 1 }) => {
@@ -952,6 +1092,7 @@ const App = () => {
                     inventoryRecent={inventoryRecent}
                     handleItemClicked={handleItemClicked}/>
                 <ViewItem viewedItem={viewedItem}
+                    viewedCredit={viewedCredit}
                     isViewedItemVisible={isViewedItemVisible}
                     hideViewedItem={hideViewedItem}/>
             </section>

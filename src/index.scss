@@ -985,6 +985,12 @@ footer {
             cursor: grabbing;
         }
     }
+
+    span:last-of-type {
+        z-index: -1;
+        position: fixed;
+        inset: auto 0 1rem 0;
+    }
 }
 
 #money {

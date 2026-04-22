@@ -232,7 +232,7 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClick
                         return <span key={`item ${index}`}
                             className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
                             style={{ backgroundImage: `url(/${item.set.replace(/\s/g, '-')}/${item.rate}-bg.webp)` }}
-                            onClick={() => handleItemClicked(imageArt, imageFace)}>
+                            onClick={() => handleItemClicked(imageArt, imageFace, item.set)}>
                             <img src={imageFace}
                                 alt={`inventory item ${index}`}
                                 loading='lazy'
