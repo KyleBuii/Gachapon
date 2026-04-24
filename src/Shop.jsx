@@ -6,19 +6,20 @@ import { Autoplay, Keyboard, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Shop = ({ renderShopItems, shopItems, shopBanners, inventoryRecent, handleItemClicked }) => {
-    const [randomBanners, setRandomBanners] = useState([]);
+    const [randomBanners, setRandomBanners] = useState({});
     const [selectedSet, setSelectedSet] = useState('classic');
 
     useEffect(() => {
         handleSidebarSet('classic');
-        renderShopItems('shop-items');
+        renderShopItems('shop-items', shopItems);
 
-        let populateRandomBanners = [];
+        let populateRandomBanners = {};
 
-        for (let set of Object.keys(shopBanners)) {
-            let banners = shopBanners[set];
-            populateRandomBanners.push(`/${set.replace(/\s/g, '-')}/banner/${banners[Math.floor(Math.random() * banners.length)]}.webp`);
-        };
+        Object.entries(shopBanners).forEach(([set, maxAmount]) => {
+            let randomBanner = Math.floor(Math.random() * maxAmount) + 1;
+            let creditName = shopItems[set][Object.keys(shopItems[set])[0]].credit;
+            populateRandomBanners[creditName] = `/${set.replace(/\s/g, '-')}/banner/banner-${String(randomBanner).padStart(3, '0')}.webp`;
+        });
 
         setRandomBanners(populateRandomBanners);
     }, []);
@@ -59,10 +60,11 @@ const Shop = ({ renderShopItems, shopItems, shopBanners, inventoryRecent, handle
                 }}
                 grabCursor={true}
                 modules={[Autoplay, Pagination, Keyboard]}>
-                {randomBanners.map((banner, index) => {
-                    return <SwiperSlide key={`slide ${index}`}>
+                {Object.entries(randomBanners).map(([credit, banner]) => {
+                    return <SwiperSlide key={`slide ${credit} ${banner}`}>
                         <img src={banner}
-                            alt={`slide ${index}`}/>
+                            alt={`slide ${credit} ${banner}`}/>
+                        <span className='slide-credit'>&#169; {credit}</span>
                     </SwiperSlide>
                 })}
             </Swiper>
@@ -93,8 +95,21 @@ const Shop = ({ renderShopItems, shopItems, shopBanners, inventoryRecent, handle
                         <span>Recently Obtained</span>
                         <section className='sidebar-recently-obtained'>
                             {inventoryRecent.map((item, index) => {
-                                const imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
-                                const imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
+                                let imageArt, imageFace;
+
+                                switch (item.set) {
+                                    case 'blue archive': {
+                                        const itemName = item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '');
+                                        imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${itemName}/${itemName}-view-000.webp`;
+                                        imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${itemName}/${itemName}.webp`;
+                                        break;
+                                    };
+                                    default: {
+                                        imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
+                                        imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
+                                        break;
+                                    };
+                                };
 
                                 return <span key={`item ${index}`}
                                     className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
@@ -103,7 +118,11 @@ const Shop = ({ renderShopItems, shopItems, shopBanners, inventoryRecent, handle
                                     <img src={imageFace}
                                         alt={`inventory item ${index}`}
                                         loading='lazy'
-                                        decoding='async'/>
+                                        decoding='async'
+                                        onError={(event) => {
+                                            event.currentTarget.onerror = null;
+                                            event.currentTarget.src = imageArt;
+                                        }}/>
                                     <span className='item-name'>{item.name}</span>
                                 </span>
                             })}

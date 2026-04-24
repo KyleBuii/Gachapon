@@ -8,8 +8,8 @@ import ViewItem from "./component/ViewItem";
 
 /** Gacha Rates
  * Classic
- * $1 - 75%
- * $5 - 20%
+ * $1  - 75%
+ * $5  - 20%
  * $10 - 5%
  * 
  * Genshin Impact | Honkai Star Rail
@@ -22,286 +22,28 @@ import ViewItem from "./component/ViewItem";
  * (2-star) Uncommon   - 30%
  * (3-star) Rare       - 8%
  * (4-star) Super Rare - 2%
+ * 
+ * Blue Archive
+ * 1-star - 78.5%
+ * 2-star - 18.5%
+ * 3-star - 3%
  */
-const shopItems = {
-    'genshin impact': {
-        'wanderlust invocation': {
-            items: {
-                5: {
-                    character: ['Zibai', 'Yumemizuki Mizuki', 'Varka', 'Varesa', 'Skirk', 'Nefer', 'Lauma', 'Ineffa', 'Flins', 'Escoffier', 'Durin', 'Columbina', 'Albedo', 'Alhaitham', 'Arataki Itto', 'Arlecchino', 'Baizhu', 'Chasca', 'Chiori', 'Citlali', 'Clorinde', 'Cyno', 'Dehya', 'Diluc', 'Emilie', 'Eula', 'Furina', 'Ganyu', 'Hu Tao', 'Jean', 'Kaedehara Kazuha', 'Kamisato Ayaka', 'Kamisato Ayato', 'Keqing', 'Kinich', 'Klee', 'Lyney', 'Mavuika', 'Mona', 'Mualani', 'Nahida', 'Navia', 'Neuvillette', 'Nilou', 'Qiqi', 'Raiden Shogun', 'Sangonomiya Kokomi', 'Shenhe', 'Sigewinne', 'Tartaglia', 'Tighnari', 'Venti', 'Wanderer', 'Wriothesley', 'Xianyun', 'Xiao', 'Xilonen', 'Yae Miko', 'Yelan', 'Yoimiya', 'Zhongli'],
-                    weapon: ['Athame Artis', 'Azurelight', 'Lightbearing Moonshard', 'Symphonist Of Scents', 'Fractured Halo', 'Bloodsoaked Ruins', 'Gest Of The Mighty Wolf', 'Vivid Notions', 'Sunny Morning Sleep In', 'Reliquary Of Truth', 'Nocturnes Curtain Call', 'Nightweavers Looking Glass', 'The Daybreak Chronicles', 'A Thousand Blazing Suns', 'A Thousand Floating Dreams', 'Absolution', 'Amos Bow', 'Aqua Simulacra', 'Aquila Favonia', 'Astral Vultures Crimson Plumage', 'Beacon Of The Reed Sea', 'Calamity Queller', 'Cashflow Supervision', 'Cranes Echoing Call', 'Crimson\'moon\'s Semblance', 'Elegy For The End', 'Engulfing Lightning', 'Everlasting Moonglow', 'Fang Of The Mountain King', 'Freedom Sworn', 'Haran Geppaku Futsu', 'Hunter\'s Path', 'Jadefall Splendor', 'Kagura\'s Verity', 'Key Of Khaj Nisut', 'Light Of Foliar Incision', 'Lost Prayer To The Sacred Winds', 'Lumidouce Elegy', 'Memory Of Dust', 'Mistsplitter Reforged', 'Peak Patrol Song', 'Polar Star', 'Primordial Jade Cutter', 'Primordial Jade Winged Spear', 'Redhorn Stonethresher', 'Silvershower Heartstrings', 'Skyward Atlas', 'Skyward Blade', 'Skyward Harp', 'Skyward Pride', 'Skyward Spine', 'Song Of Broken Pines', 'Splendor Of Tranquil Waters', 'Staff Of Homa', 'Staff Of The Scarlet Sands', 'Starcallers Watch', 'Summit Shaper', 'Surfs Up', 'The First Great Magic', 'The Unforged', 'Thundering Pulse', 'Tome Of The Eternal Flow', 'Tulaytullah\'s Remembrance', 'Uraku Misugiri', 'Verdict', 'Vortex Vanquisher', 'Wolf\'s Gravestone']
-                },
-                4: {
-                    character: ['Jahoda', 'Illuga', 'Ifa', 'Iansan', 'Dahlia', 'Aino', 'Amber', 'Barbara', 'Beidou', 'Bennett', 'Candace', 'Charlotte', 'Chevreuse', 'Chongyun', 'Collei', 'Diona', 'Dori', 'Faruzan', 'Fischl', 'Freminet', 'Gaming', 'Gorou', 'Kachina', 'Kaeya', 'Kaveh', 'Kirara', 'Kujou Sara', 'Kuki Shinobu', 'Lan Yan', 'Layla', 'Lisa', 'Lynette', 'Mika', 'Ningguang', 'Noelle', 'Ororon', 'Razor', 'Rosaria', 'Sayu', 'Sethos', 'Shikanoin Heizou', 'Sucrose', 'Thoma', 'Xiangling', 'Xingqiu', 'Xinyan', 'Yanfei', 'Yaoyao', 'Yun Jin'],
-                    weapon: ['Moonweavers Dawn', 'Sacrificers Staff', 'Dawning Frost', 'Akuoumaru', 'Alley Hunter', 'Dragon\'s Bane', 'Eye Of Perception', 'Favonius Codex', 'Favonius Greatsword', 'Favonius Lance', 'Favonius Sword', 'Favonius Warbow', 'Flower Wreathed Feathers', 'Fruitful Hook', 'Lion\'s Roar', 'Lithic Blade', 'Lithic Spear', 'Makhaira Aquamarine', 'Mitternachts Waltz', 'Mountain Bracing Bolt', 'Mouun\'s Moon', 'Portable Power Saw', 'Prospector Drill', 'Rainslasher', 'Range Gauge', 'Rust', 'Sacrificial Bow', 'Sacrificial Fragments', 'Sacrificial Greatsword', 'Sacrificial Sword', 'Sturdy Bone', 'The Alley Flash', 'The Bell', 'The Dockhands Assistant', 'The Flute', 'The Stringless', 'The Widsith', 'Wandering Evenstar', 'Wavebreaker\'s Fin', 'Waveriding Whirl', 'Wine And Song', 'Xiphos Moonlight']
-                },
-                3: {
-                    weapon: ['Black Tassel', 'Bloodtained Greatsword', 'Cool Steel', 'Debate Club', 'Emerald Orb', 'Ferrous Shadow', 'Harbinger Of Dawn', 'Magic Guide', 'Raven Bow', 'Sharpshooter\'s Oath', 'Skyrider Sword', 'Slingshot', 'Thrilling Tales Of Dragon Slayers']
-                }
-            },
-            cost: 1,
-            credit: 'HoYoverse',
-        }
-    },
-    'honkai star rail': {
-        'stellar warp': {
-            items: {
-                5: {
-                    character: ['Acheron', 'Aglaea', 'Anaxa', 'Archer', 'Argenti', 'Ashveil', 'Aventurine', 'Bailu', 'Black Swan', 'Blade', 'Boothill', 'Bronya', 'Castorice', 'Cerydra', 'Cipher', 'Clara', 'Cyrene', 'Dan Heng Permansor Terrae', 'Dr Ratio', 'Evernight', 'Feixiao', 'Firefly', 'Fu Xuan', 'Fugue', 'Gepard', 'Himeko', 'Huohuo', 'Hyacine', 'Hysilens', 'Imbibitor Lunae', 'Jade', 'Jiaoqiu', 'Jing Yuan', 'Jingliu', 'Kafka', 'Lingsha', 'Luocha', 'Mydei', 'Phainon', 'Rappa', 'Robin', 'Ruan Mei', 'Saber', 'Seele', 'Silver Wolf', 'Sparkle', 'Sparxie', 'Sunday', 'The Dahlia', 'The Herta', 'Topaz', 'Tribbie', 'Welt', 'Yanqing', 'Yao Guang', 'Yunli'],
-                    cone: ['A Grounded Ascent', 'A Thankless Coronation', 'Along The Passing Shore', 'An Instance Before A Gaze', 'Baptism Of Pure Thought', 'Before Dawn', 'Brighter Than The Sun', 'But The Battle Isnt Over', 'Dance At Sunset', 'Dazzled By A Flowery World', 'Earthly Escapade', 'Echoes Of The Coffin', 'Epoch Etched In Golden Blood', 'Flame Of Blood Blaze My Path', 'Flowing Nightglow', 'I Shall Be My Own Sword', 'I Venture Forth To Hunt', 'If Time Were A Flower', 'In The Name Of The World', 'In The Night', 'Incessant Rain', 'Inherently Unjust Destiny', 'Into The Unreachable Veil', 'Lies Dance On The Breeze', 'Life Should Be Cast To Flames', 'Long May Rainbows Adorn The Sky', 'Long Road Leads Home', 'Make Farewells More Beautiful', 'Moment Of Victory', 'Never Forget Her Flame', 'Night Of Fright', 'Night On The Milky Way', 'Ninjutsu Inscription', 'Past Self In Mirror', 'Patience Is All You Need', 'Reforged Remembrance', 'Sailing Towards A Second Life', 'Scent Alone Stays True', 'She Already Shut Her Eyes', 'Sleep Like The Dead', 'Something Irreplaceable', 'The Finale Of A Lie', 'The Hell Where Ideals Burn', 'The Unreachable Side', 'This Love Forever', 'Those Many Springs', 'Though Worlds Apart', 'Thus Burns The Dawn', 'Time Waits For No One', 'Time Woven Into Gold', 'To Evernights Stars', 'When She Decided To See', 'Whereabouts Should Dreams Rest', 'Why Does The Ocean Sing', 'Worrisome Blissful', 'Yet Hope Is Priceless']
-                },
-                4: {
-                    character: ['Hanya', 'Moze', 'Herta', 'Natasha', 'Tingyun', 'Arlan', 'Hook', 'Pela', 'Xueyi', 'Asta', 'Luka', 'Qingque', 'Yukong', 'Dan Heng', 'Lynx', 'Sampo', 'Gallagher', 'March 7th', 'Serval', 'Guinaifen', 'Misha', 'Sushang'],
-                    cone: ['A Secret Vow', 'After The Charmony Fall', 'Boundless Choreo', 'Concert For Two', 'Dance Dance Dance', 'Day One Of My New Life', 'Dreams Montage', 'Eyes Of The Prey', 'Geniuses Greetings', 'Geniuses Repose', 'Good Night And Sleep Well', 'Indelible Promise', 'Landaus Choice', 'Make The World Clamor', 'Memories Of The Past', 'Only Silence Remains', 'Perfect Timing', 'Planetary Rendezvous', 'Poised To Bloom', 'Post Op Conversation', 'Resolution Shines As Pearls Of Sweat', 'Shadowed By Night', 'Shared Feeling', 'Subscribe For More', 'Swordplay', 'The Birth Of The Self', 'The Moles Welcome You', 'The Storys Next Page', 'Trend Of The Universal Market', 'Under The Blue Sky']
-                },
-                3: {
-                    cone: ['Adversarial', 'Amber', 'Arrows', 'Chorus', 'Collapsing Sky', 'Cornucopia', 'Darting Arrow', 'Data Bank', 'Defense', 'Fine Fruit', 'Hidden Shadow', 'Lingering Tear', 'Loop', 'Mediation', 'Meshing Cogs', 'Multiplication', 'Mutual Demise', 'Passkey', 'Pioneering', 'Reminiscence', 'Sagacity', 'Shadowburn', 'Shattered Home', 'Sneering', 'Void']
-                }
-            },
-            cost: 1,
-            credit: 'Hoyoverse',
-        }
-
-    },
-    'touhou': {
-        'fumo': {
-            items: {
-                1: {
-                    label: 'common',
-                    character: ['Izayoi Kourindou', 'Saigyouji Version 1.5', 'Cirno Version 1'],
-                },
-                2: {
-                    label: 'uncommon',
-                    character: ['Hakurei Version 1', 'Kirisame Version 1'],
-                },
-                3: {
-                    label: 'rare',
-                    character: ['Hakurei Nendoroid Plus', 'Kirisame Version 2'],
-                },
-                4: {
-                    label: 'super rare',
-                    character: ['Komeiji Deka Version 1'],
-                },
-            },
-            cost: 1,
-            credit: 'Team Shanghai Alice / ZUN',
-        }
-    },
-    // 'blue archive': {
-    //     'regular recruitment': {
-    //         items: {
-    //             1: {
-    //                 character: [
-    //                     'Airi Band', 'Aoba', 'Asuna', 'Atsuko Swimsuit', 'Ayane Swimsuit',
-    //                     'Chinatsu', 'Fubuki', 'Haruka', 'Hasumi Sportswear', 'Hibiki Cheerleader',
-    //                     'Ibuki', 'Izumi Swimsuit', 'Junko New Year', 'Juri',
-    //                     'Karin School Uniform', 'Kirino Swimsuit', 'Koharu Swimsuit',
-    //                     'Kotama', 'Kotori', 'Michiru', 'Mine Idol', 'Miyu Swimsuit',
-    //                     'Nodoka', 'Pina', 'Saten Ruiko', 'Serina', 'Shimiko',
-    //                     'Shizuko Swimsuit', 'Suzumi', 'Tomoe', 'Tsurugi Swimsuit',
-    //                     'Yoshimi', 'Yuzu Maid'
-    //                 ]
-    //             },
-    //             2: {
-    //                 character: [
-    //                     'Aikiyo Fuuka', 'Akashi Junko', 'Akiizumi Momiji', 'Asagao Hanae',
-    //                     'Asagi Mutsuki', 'Fuwa Renge Swimsuit', 'Hanekawa Hasumi',
-    //                     'Hayase Yuuka', 'Iochi Mari', 'Izayoi Nonomi', 'Kasuga Tsubaki',
-    //                     'Kawawa Shizuko', 'Kurimura Airi', 'Kuromi Serika',
-    //                     'Murokasa Akane', 'Nakatsukasa Kirino', 'Okusora Ayane',
-    //                     'Omagari Hare', 'Onikata Kayoko', 'Saiba Momoi',
-    //                     'Shiraishi Utaha', 'Urawa Hanako', 'Wanibuchi Akari',
-    //                     'Waraku Chise'
-    //                 ]
-    //             },
-    //             3: {
-    //                 character: [
-    //                     'Ako', 'Ako Dress',
-    //                     'Akane Bunny Girl', 'Akari New Year',
-    //                     'Arisu', 'Arisu Maid',
-    //                     'Aru', 'Aru Dress', 'Aru New Year',
-    //                     'Asuna Bunny Girl', 'Asuna School Uniform',
-    //                     'Atsuko', 'Azusa', 'Azusa Swimsuit',
-
-    //                     'Cherino', 'Cherino Hot Spring',
-    //                     'Chiaki', 'Chihiro',
-    //                     'Chinatsu Hot Spring', 'Chise Swimsuit',
-
-    //                     'Eimi', 'Eimi Swimsuit',
-
-    //                     'Fubuki Swimsuit', 'Fuuka New Year',
-
-    //                     'Hanae Christmas', 'Hanako Swimsuit',
-    //                     'Hare Camping', 'Haruka New Year',
-    //                     'Haruna', 'Haruna New Year', 'Haruna Sportswear',
-    //                     'Hatsune Miku',
-    //                     'Hibiki', 'Hifumi', 'Hifumi Swimsuit',
-    //                     'Hikari', 'Himari',
-    //                     'Hina', 'Hina Dress', 'Hina Swimsuit',
-    //                     'Hinata', 'Hinata Swimsuit',
-    //                     'Hiyori', 'Hiyori Swimsuit',
-    //                     'Hoshino', 'Hoshino Battle', 'Hoshino Swimsuit',
-
-    //                     'Ichika', 'Iori', 'Iori Swimsuit',
-    //                     'Iroha',
-    //                     'Izumi', 'Izumi New Year',
-    //                     'Izuna', 'Izuna Swimsuit',
-
-    //                     'Juri Part-Timer',
-
-    //                     'Kaede', 'Kaho',
-    //                     'Kanna', 'Kanna Swimsuit',
-    //                     'Karin', 'Karin Bunny Girl',
-    //                     'Kasumi',
-    //                     'Kayoko Dress', 'Kayoko New Year',
-    //                     'Kazusa', 'Kazusa Band',
-    //                     'Kikyou', 'Kikyou Swimsuit',
-    //                     'Kirara', 'Kisaki',
-    //                     'Koharu', 'Kokona',
-    //                     'Kotama Camping', 'Kotori Cheerleader',
-    //                     'Koyuki',
-
-    //                     'Maki', 'Maki Camping',
-    //                     'Makoto',
-    //                     'Mari Idol', 'Mari Sportswear',
-    //                     'Marina', 'Marina Qipao',
-    //                     'Mashiro', 'Mashiro Swimsuit',
-    //                     'Megu', 'Meru',
-    //                     'Midori', 'Midori Maid',
-    //                     'Mika',
-    //                     'Mimori', 'Mimori Swimsuit',
-    //                     'Mina', 'Mine', 'Minori',
-    //                     'Misaka Mikoto',
-    //                     'Misaki',
-    //                     'Miyako', 'Miyako Swimsuit',
-    //                     'Miyu',
-    //                     'Moe', 'Moe Swimsuit',
-    //                     'Momoi Maid',
-    //                     'Mutsuki New Year',
-
-    //                     'Nagisa', 'Nagusa',
-    //                     'Natsu', 'Natsu Band',
-    //                     'Neru', 'Neru Bunny Girl', 'Neru School Uniform',
-    //                     'Niya',
-    //                     'Noa', 'Noa Pajama',
-    //                     'Nodoka Hot Spring',
-    //                     'Nonomi Swimsuit',
-    //                     'Nozomi',
-
-    //                     'Pina Guide',
-
-    //                     'Rei', 'Reijo', 'Reisa', 'Renge', 'Rio', 'Rumi',
-
-    //                     'Saki', 'Saki Swimsuit',
-    //                     'Sakurako', 'Sakurako Idol',
-    //                     'Saori', 'Saori Dress', 'Saori Swimsuit',
-    //                     'Satsuki',
-    //                     'Saya', 'Saya Casual',
-    //                     'Seia',
-    //                     'Sena', 'Sena Casual',
-    //                     'Serika New Year', 'Serika Swimsuit',
-    //                     'Serina Christmas',
-    //                     'Shigure', 'Shigure Hot Spring',
-    //                     'Shiroko', 'Shiroko Riding', 'Shiroko Swimsuit',
-    //                     'Shiroko Terror',
-    //                     'Shokuhou Misaki',
-    //                     'Shun', 'Shun Kid',
-    //                     'Sumire', 'Sumire Part-Timer',
-
-    //                     'Toki', 'Toki Bunny Girl',
-    //                     'Tomoe Qipao',
-    //                     'Tsubaki Guide',
-    //                     'Tsukuyo',
-    //                     'Tsurugi',
-
-    //                     'Ui', 'Ui Swimsuit',
-    //                     'Umika',
-    //                     'Utaha Cheerleader',
-
-    //                     'Wakamo', 'Wakamo Swimsuit',
-
-    //                     'Yoshimi Band',
-    //                     'Yukari', 'Yukari Swimsuit',
-    //                     'Yuuka Pajama', 'Yuuka Sportswear',
-    //                     'Yuzu'
-    //                 ]
-    //             }
-    //         },
-    //         cost: 1,
-    //         credit: 'Nexon Games',
-    //     }
-    // },
-    'classic': {
-        'red': {
-            cost: 1
-        },
-        'pink': {
-            cost: 1
-        },
-        'purple': {
-            cost: 1
-        },
-        'dark blue': {
-            cost: 1
-        },
-        'blue': {
-            cost: 1
-        },
-        'light green': {
-            cost: 1
-        },
-        'green': {
-            cost: 1
-        },
-        'yellow': {
-            cost: 1
-        },
-        'orange': {
-            cost: 1
-        },
-        'grey': {
-            cost: 1
-        },
-    },
-};
 const shopBanners = {
-    'genshin impact': [
-        'adrift-in-the-harbor', 'ballad-in-goblets-2', 'ballad-in-goblets',
-        'beginners-wish', 'born-of-ocean-swell', 'dance-of-lanterns',
-        'drifting-luminescence', 'epitome-invocation', 'farewell-of-snezhnaya-2',
-        'farewell-of-snezhnaya', 'gentry-of-hermitage-2', 'gentry-of-hermitage',
-        'invitation-to-mundane-life', 'leaves-in-the-wind', 'moment-of-bloom-2',
-        'moment-of-bloom', 'reign-of-serenity', 'secretum-secretorum', 'sparkling-steps-2',
-        'sparkling-steps', 'tapestry-of-golden-flames', 'the-herons-court', 'wanderlust-invocation'
-    ],
-    'honkai star rail': [
-        '2-5_1', 'a-hunt-through-night-1', 'a-lost-soul-1', 'a-lost-soul-2', 'a-rainbow-onto-twilight-1',
-        'a-rainbow-onto-twilight-3', 'back-to-fons-et-origo-1', 'bloom-in-gloom-1', 'bloom-in-gloom-2', 'bloom-in-gloom-3',
-        'butterfly-on-swordtip-1', 'butterfly-on-swordtip-2', 'cauldron-contrivance-1', 'contract-zero-1', 'contract-zero-2',
-        'dance-in-flame-1', 'dusty-trails-lone-star-1', 'dusty-trails-lone-star-3', 'earth-hurled-ether-curled-1', 'earth-hurled-ether-curled-2',
-        'epochal-spectrum-1', 'epochal-spectrum-2', 'epochal-spectrum-3', 'eyes-of-a-ninja-1', 'eyes-to-the-stars-1',
-        'files.txt', 'firefull-flyshine-1', 'firefull-flyshine-2', 'floral-triptych-1', 'floral-triptych-2',
-        'foreseen-foreknown-foretold-1', 'foreseen-foreknown-foretold-2', 'fugue-1', 'gentle-eclipse-of-the-moon-1', 'gentle-eclipse-of-the-moon-2',
-        'gilded-imprisonment-1', 'gilded-imprisonment-2', 'hati-singa-yang-membara-1', 'hysilens-1', 'just-intonation-1',
-        'laic-pursuit-1', 'laic-pursuit-2', 'let-scent-sink-in-1', 'lien-on-life-lease-on-fate-1', 'message-from-beyond-2',
-        'nessun-dorma-1', 'nessun-dorma-2', 'panta-rhei-1', 'panta-rhei-2', 'ripples-in-reflection-1',
-        'slick-and-speedy-steals-the-sky-1', 'sparkling-splendor-1', 'sparkling-splendor-2', 'sunset-clause-1', 'sunset-clause-2',
-        'sunset-clause-3', 'swirl-of-heavenly-spear-1', 'swirl-of-heavenly-spear-2', 'swirl-of-heavenly-spear-3', 'tailored-fate-2',
-        'the-long-voyage-home-1', 'the-universe-in-a-seed-1', 'thorns-of-scented-crown-1', 'thorns-of-scented-crown-2', 'words-of-yore-1',
-        'words-of-yore-2',
-    ]
+    'genshin impact': 23,
+    'honkai star rail': 65,
+    'blue archive': 192,
 };
 const references = {
     'Genshin Impact': {
-        author: '© HoYoverse',
+        author: '&#169; HoYoverse',
         url: 'https://genshin.hoyoverse.com/',
     },
     'Honkai: Star Rail': {
-        author: '© HoYoverse',
+        author: '&#169; HoYoverse',
         url: 'https://hsr.hoyoverse.com/',
     },
     'Blue Archive': {
-        author: '© Nexon Games',
+        author: '&#169; NEXON Games & Yostar',
         url: 'https://www.nexon.com/',
     },
     'Font Generator': {
@@ -329,7 +71,7 @@ const references = {
         url: 'https://github.com/Mantan21/Genshin-Impact-Wish-Simulator',
     },
     'Genshin Impact Assets': {
-        author: '© Hoyoverse',
+        author: '&#169; Hoyoverse',
         url: 'https://genshin.hoyoverse.com/en/',
     },
     'Honkai Star Rail Warp Simulator': {
@@ -337,7 +79,7 @@ const references = {
         url: 'https://github.com/Mantan21/HSR-Warp-Simulator',
     },
     'Honkai Star Rail Assets': {
-        author: '© Hoyoverse',
+        author: '&#169; Hoyoverse',
         url: 'https://hsr.hoyoverse.com/en-us/',
     },
     'Walkthrough Image': {
@@ -353,6 +95,7 @@ let inventoryRecent = [];
 let scrollY = -1;
 
 const App = () => {
+    const [shopItems, setShopItems] = useState({});
     const [money, setMoney] = useState(10);
     const [inventory, setInventory] = useState({});
     const [openAnimation, setOpenAnimation] = useState('');
@@ -383,6 +126,11 @@ const App = () => {
     };
 
     useEffect(() => {
+        fetch('/shop-items.json')
+            .then((response) => response.json())
+            .then((json) => setShopItems(json))
+            .catch((error) => console.error(error));
+
         window.addEventListener('beforeunload', storeData);
         audioOpen.addEventListener('ended', handleAudioEnded);
 
@@ -412,7 +160,7 @@ const App = () => {
         refInventory.current = inventory;
     }, [inventory]);
 
-    const renderShopItems = (element, items = shopItems) => {
+    const renderShopItems = (element, items) => {
         const elementShopItems = document.getElementById(element);
         for (let set of Object.keys(items)) {
             for (let capsule of Object.keys(items[set])) {
@@ -450,12 +198,15 @@ const App = () => {
                     case 'touhou':
                         buttonBuyText = 'Pray';
                         break;
+                    case 'blue-archive':
+                        buttonBuyText = '&#x2709; Recruit';
+                        break;
                     default:
                         buttonBuyText = 'Buy';
                         break;
                 };
 
-                buttonBuy.innerText = buttonBuyText;
+                buttonBuy.innerHTML = buttonBuyText;
                 buttonBuy.onclick = () => handleBuy({
                     set: set,
                     type: capsule,
@@ -463,7 +214,7 @@ const App = () => {
                 });
 
                 const buttonBuyClone = buttonBuy.cloneNode();
-                buttonBuyClone.innerText = `${buttonBuyText} x10`;
+                buttonBuyClone.innerHTML = `${buttonBuyText} x10`;
                 buttonBuyClone.onclick = () => handleBuy({
                     set: set,
                     type: capsule,
@@ -474,7 +225,7 @@ const App = () => {
                 const elementCredit = document.createElement('span');
                 const creditName = items[set][capsule]?.credit || set;
                 const isCC = (set !== 'classic');
-                elementCredit.innerText = `${isCC ? '© ' : ''}${creditName.replace(/\b\w/g, c => c.toUpperCase())}`;
+                elementCredit.innerHTML = `${isCC ? '&#169; ' : ''}${creditName.replace(/\b\w/g, c => c.toUpperCase())}`;
 
                 elementCapsule.appendChild(buttonBuy);
                 elementCapsule.appendChild(buttonBuyClone);
@@ -499,7 +250,7 @@ const App = () => {
 
         const creditName = shopItems[set][Object.keys(shopItems[set])[0]]?.credit || set;
         const isCC = (set !== 'classic');
-        setViewedCredit(`${isCC ? '© ' : ''}${creditName}`);
+        setViewedCredit(`${isCC ? '&#169; ' : ''}${creditName}`);
     };
 
     const handleBuy = async ({ set, type, cost, amount = 1 }) => {
@@ -831,6 +582,59 @@ const App = () => {
                         popupReward.appendChild(spanReward);
                         break;
                     };
+                    case 'blue archive': {
+                        if ((amount === 1) && (popupReward.hasChildNodes())) {
+                            popupReward.innerHTML = '';
+                        };
+
+                        calculateRate =
+                              (randomNumber <= .785)  ? 1
+                            : (randomNumber <= .97)  ? 2
+                            : 3;
+                        randomItemType = 'character';
+
+                        let dataItems = shopItems[set][type].items[calculateRate];
+                        let dataCharacters = dataItems.character;
+                        let randomItem = Math.floor(Math.random() * dataCharacters.length);
+
+                        calculateReward = dataCharacters[randomItem];
+                        reformatName = calculateReward.toLowerCase()
+                            .replace(/\s|\./g, '-')
+                            .replace(/'/g, '');
+
+                        const urlArt = `/blue-archive/character/${reformatName}/${reformatName}.webp`;
+                        const urlArtBackup = `/blue-archive/character/${reformatName}/${reformatName}-view-000.webp`;
+                        const validImage = await getValidImage(urlArt, urlArtBackup);
+                        const urlRarity = `/blue-archive/star-${calculateRate}.webp`;
+                        const bg = (validImage === urlArtBackup)
+                            ? `url(${validImage}), url(/blue-archive/bg-star-${calculateRate}.webp)`
+                            : `url(${validImage})`;
+
+                        spanReward = document.createElement('span');
+                        spanReward.style.backgroundImage = bg;
+                        if (validImage === urlArtBackup) spanReward.classList.add('zoom');
+
+                        const elementName = document.createElement('span');
+                        elementName.innerText = calculateReward;
+                        spanReward.appendChild(elementName);
+
+                        const elementStars = document.createElement('span');
+                        const imageStar = document.createElement('img');
+                        imageStar.src = '/blue-archive/star.webp';
+                        imageStar.alt = 'star';
+                        imageStar.loading = 'lazy';
+                        imageStar.decoding = 'async';
+
+                        for (let i = 0; i < calculateRate; i++) {
+                            elementStars.appendChild(imageStar.cloneNode());
+                        };
+                        spanReward.appendChild(elementStars);
+
+                        if (calculateRate === 3) createPon(spanReward);
+
+                        popupReward.appendChild(spanReward);
+                        break;
+                    }
                     default: { break; };
                 };
 
@@ -868,6 +672,9 @@ const App = () => {
                     calculateOpenAnimation = `${highestReward}star.mp4`;
                     audioOpen.src = `/honkai-star-rail/open/${highestReward}star.ogg`;
                     audioReveal.src = `/honkai-star-rail/open/reveal-${highestReward}star.ogg`;
+                    break;
+                case 'blue archive':
+                    calculateOpenAnimation = 'open.mov';
                     break;
                 default: break;
             };

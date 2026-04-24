@@ -78,7 +78,7 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
                 draggable={false}
                 onMouseDown={handleImageMouseDown}
                 onMouseUp={handleImageMouseUp}/>
-            <span>{viewedCredit}</span>
+            <span dangerouslySetInnerHTML={{__html: viewedCredit}}></span>
         </section>
     );
 };

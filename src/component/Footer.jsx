@@ -13,7 +13,7 @@ const Footer = () => {
                     <FaGithub/>
                 </span>
             </div>
-            <span>© {new Date().getFullYear()} Gachapon. All rights reserved.</span>
+            <span>&#169; {new Date().getFullYear()} Gachapon. All rights reserved.</span>
         </footer>
     );
 };

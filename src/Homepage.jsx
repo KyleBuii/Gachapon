@@ -77,6 +77,8 @@ let homepageShop = {};
 
 const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClicked }) => {
     useEffect(() => {
+        if (!shopItems) return;
+
         let firstSetItemName = '';
         for (let set of Object.keys(shopItems)) {
             if (set === 'classic') {
@@ -87,7 +89,7 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClick
                         [firstSetItemName]: {
                             ...shopItems[set][firstSetItemName]
                         }
-                    };    
+                    };
                 };
             } else {
                 firstSetItemName = Object.keys(shopItems[set])[0];
@@ -100,7 +102,7 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClick
         };
 
         renderShopItems('shop-items', homepageShop);
-    }, []);
+    }, [shopItems]);
 
     const handleWalkthrough = () => {
         const elementPopup = document.getElementById('walkthrough-popup');
@@ -226,8 +228,21 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClick
                 <legend>Recently Obtained</legend>
                 <div className='group-items inventory'>
                     {inventoryRecent.map((item, index) => {
-                        const imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
-                        const imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
+                        let imageArt, imageFace;
+
+                        switch (item.set) {
+                            case 'blue archive': {
+                                const itemName = item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '');
+                                imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${itemName}/${itemName}-view-000.webp`;
+                                imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${itemName}/${itemName}.webp`;
+                                break;
+                            };
+                            default: {
+                                imageArt = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
+                                imageFace = `/${item.set.replace(/\s/g, '-')}/${item.type}/${item.name.toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
+                                break;
+                            };
+                        };
 
                         return <span key={`item ${index}`}
                             className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
@@ -236,7 +251,11 @@ const Homepage = ({ renderShopItems, shopItems, inventoryRecent, handleItemClick
                             <img src={imageFace}
                                 alt={`inventory item ${index}`}
                                 loading='lazy'
-                                decoding='async'/>
+                                decoding='async'
+                                onError={(event) => {
+                                    event.currentTarget.onerror = null;
+                                    event.currentTarget.src = imageArt;
+                                }}/>
                             <span className='item-name'>{item.name}</span>
                         </span>
                     })}

@@ -87,8 +87,21 @@ const Inventory = ({ inventory, handleItemClicked }) => {
             <section className='group-items'>
                 {(modifiedInventory !== undefined)
                     && Object.entries(modifiedInventory).map((item, index) => {
-                        const imageArt = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view.webp`;
-                        const imageFace = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
+                        let imageArt, imageFace;
+
+                        switch (sets[currentSetIndex]) {
+                            case 'blue archive': {
+                                const itemName = item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '');
+                                imageArt = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${itemName}/${itemName}-view-000.webp`;
+                                imageFace = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${itemName}/${itemName}.webp`;
+                                break;
+                            };
+                            default: {
+                                imageArt = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}-view-000.webp`;
+                                imageFace = `/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].type}/${item[0].toLowerCase().replace(/\s|\./g, '-').replace(/'/g, '')}.webp`;
+                                break;
+                            };1
+                        };
 
                         return <span key={`item ${item[0]} ${index}`}
                             className={`group-item inventory-item ${sets[currentSetIndex].replace(/\s/g, '-')}-${item[1].rate}`}
@@ -98,7 +111,11 @@ const Inventory = ({ inventory, handleItemClicked }) => {
                             <img src={imageFace}
                                 alt={`inventory item ${index}`}
                                 loading='lazy'
-                                decoding='async'/>
+                                decoding='async'
+                                onError={(event) => {
+                                    event.currentTarget.onerror = null;
+                                    event.currentTarget.src = imageArt;
+                                }}/>
                             <span className='item-name'>{item[0]}</span>
                         </span>
                     })
