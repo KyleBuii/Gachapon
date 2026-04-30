@@ -1,10 +1,13 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
-const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedItem }) => {
+const ViewItem = ({ viewedItem, viewedCredit, currentSet, isViewedItemVisible, hideViewedItem }) => {
+    const [shopItemsView, setShopItemsView] = useState({});
     const [currentImage, setCurrentImage] = useState('');
+    const [currentItem, setCurrentItem] = useState('');
     const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
     const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 });
     const [imageScale, setImageScale] = useState(1);
+    const [isVideo, setIsVideo] = useState(false);
 
     const refViewItem = useRef(false);
     const refIsDragging = useRef(false);
@@ -14,6 +17,13 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
         setImageScale((prev) => {
             return Math.max(0.1, prev - (event.deltaY / 1000));
         });
+    }, []);
+
+    useEffect(() => {
+        fetch('/shop-items-view.json')
+            .then((response) => response.json())
+            .then((json) => setShopItemsView(json))
+            .catch((error) => console.error(error));
     }, []);
 
     useEffect(() => {
@@ -27,9 +37,12 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
     useEffect(() => {
         if (viewedItem === '') return;
 
+        const splitViewedItem = viewedItem.split('/');
         setCurrentImage(viewedItem);
+        setCurrentItem(splitViewedItem[3]);
         setImagePosition({ x: 0, y: 0 });
         setImageScale(1);
+        setIsVideo(false);
     }, [viewedItem]);
 
     const handleImageClose = () => {
@@ -62,23 +75,68 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
         });
     };
 
+    const handleButton = (event, type, number) => {
+        event.stopPropagation();
+
+        let newImage = currentImage;
+        switch (currentSet) {
+            case 'blue archive': {
+                const basePath = `/${currentSet.replace(/\s/g, '-')}/character/${currentItem}/${currentItem}`;
+                const index = String(number + 1).padStart(3, '0');
+
+                newImage =
+                    (type === 'image')
+                        ? `${basePath}-view-${index}.webp`
+                        : `${basePath}-view-${type}-${number + 1}.webm`;
+                break;
+            };
+            default: { break; };
+        };
+
+        setCurrentImage(newImage);
+
+        const checkVideo = newImage.endsWith('.webm');
+        setIsVideo(checkVideo);
+    };
+
     return (
         <section ref={refViewItem}
             className='view-item'
             style={{ visibility: isViewedItemVisible ? 'visible' : 'hidden' }}
             onClick={handleImageClose}
             onMouseMove={handleImageMove}>
-            <img style={{
-                top: `${imagePosition.y}px`
-                , left: `${imagePosition.x}px`
-                , transform: `scale(${imageScale})`
-            }}
-                src={currentImage}
-                alt={currentImage || 'viewed item'}
-                draggable={false}
-                onMouseDown={handleImageMouseDown}
-                onMouseUp={handleImageMouseUp}/>
+            {(isVideo)
+                ? <video src={currentImage}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline/>
+                : <img style={{
+                    top: `${imagePosition.y}px`
+                    , left: `${imagePosition.x}px`
+                    , transform: `scale(${imageScale})`
+                }}
+                    src={currentImage}
+                    alt={currentImage || 'viewed item'}
+                    draggable={false}
+                    onMouseDown={handleImageMouseDown}
+                    onMouseUp={handleImageMouseUp}/>}
             <span dangerouslySetInnerHTML={{__html: viewedCredit}}></span>
+            {(shopItemsView?.[currentSet.replace(' ', '-')]?.[currentItem] !== undefined)
+                ? <div className='view-item-buttons'>
+                    {Object.entries(
+                        shopItemsView?.[currentSet.replace(' ', '-')]?.[currentItem] || {}
+                    ).map(([type, count]) => (
+                        [...Array(count).keys()].map((number) => {
+                            return <button type='button'
+                                onClick={(event) => handleButton(event, type, number)}
+                                key={`${type} ${number}`}>
+                                {type.replace(/^./, (char) => char.toUpperCase())} {number + 1}
+                            </button>
+                        })
+                    ))}
+                </div>
+                : <></>}
         </section>
     );
 };

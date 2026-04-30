@@ -104,7 +104,7 @@ const Inventory = ({ inventory, handleItemClicked }) => {
                         };
 
                         return <span key={`item ${item[0]} ${index}`}
-                            className={`group-item inventory-item ${sets[currentSetIndex].replace(/\s/g, '-')}-${item[1].rate}`}
+                            className={`group-item inventory-item ${sets[currentSetIndex].replace(/\s/g, '-')}-${item[1].rate} ${item[1]?.zoom ? 'zoom-inventory' : ''}`}
                             style={{ backgroundImage: `url(/${sets[currentSetIndex].replace(/\s/g, '-')}/${item[1].rate}-bg.webp)` }}
                             onClick={() => handleItemClicked(imageArt, imageFace, sets[currentSetIndex])}>
                             <span className='item-count'>{item[1].count}</span>

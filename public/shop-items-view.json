@@ -1,0 +1,1822 @@
+﻿{
+	"blue-archive": {
+		"airi": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"airi-band": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 1
+		},
+		"airi-band-no-decorations": {
+			"image": 29
+		},
+		"airi-school-festival": {
+			"image": 29
+		},
+		"akane": {
+			"dangle": 1,
+			"image": 7
+		},
+		"akane-bunny-girl": {
+			"dangle": 1,
+			"image": 23
+		},
+		"akane-school-uniform": {
+			"image": 47,
+			"interaction": 1
+		},
+		"akari": {
+			"dangle": 1,
+			"image": 6
+		},
+		"akari-new-year": {
+			"dangle": 1,
+			"image": 27,
+			"interaction": 1
+		},
+		"akari-sportswear": {
+			"image": 13
+		},
+		"akira": {
+			"image": 30
+		},
+		"akira-miria": {
+			"image": 16
+		},
+		"ako": {
+			"dangle": 1,
+			"image": 17,
+			"interaction": 1
+		},
+		"ako-dress": {
+			"dangle": 1,
+			"image": 31,
+			"interaction": 3
+		},
+		"ako-operator": {
+			"image": 31
+		},
+		"ako-sportswear": {
+			"image": 35
+		},
+		"ako-wounded": {
+			"image": 35
+		},
+		"aoba": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 1
+		},
+		"arata": {
+			"image": 13
+		},
+		"arata-swimsuit": {
+			"image": 13
+		},
+		"arisu": {
+			"dangle": 1,
+			"image": 20,
+			"interaction": 3
+		},
+		"arisu-battle": {
+			"dangle": 1,
+			"image": 65,
+			"interaction": 1
+		},
+		"arisu-battle-wounded": {
+			"image": 65
+		},
+		"arisu-maid": {
+			"dangle": 1,
+			"image": 32,
+			"interaction": 1
+		},
+		"arisu-unarmed": {
+			"image": 62
+		},
+		"arisu-winter": {
+			"image": 32
+		},
+		"arona": {
+			"image": 33
+		},
+		"aru": {
+			"dangle": 1,
+			"image": 15
+		},
+		"aru-dress": {
+			"dangle": 1,
+			"image": 59,
+			"interaction": 3
+		},
+		"aru-new-year": {
+			"dangle": 1,
+			"image": 56,
+			"interaction": 1
+		},
+		"asuna": {
+			"dangle": 1,
+			"image": 7
+		},
+		"asuna-bunny-girl": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 1
+		},
+		"asuna-school-uniform": {
+			"dangle": 1,
+			"image": 26,
+			"interaction": 1
+		},
+		"atsuko": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"atsuko-leotard": {
+			"image": 17
+		},
+		"atsuko-swimsuit": {
+			"image": 65,
+			"interaction": 2
+		},
+		"atsuko-wounded": {
+			"image": 17
+		},
+		"ayame": {
+			"image": 30
+		},
+		"ayame-twilight-1": {
+			"image": 34
+		},
+		"ayame-twilight-2": {
+			"image": 34
+		},
+		"ayane": {
+			"image": 15,
+			"interaction": 1
+		},
+		"ayane-idol": {
+			"image": 35
+		},
+		"ayane-operator": {
+			"image": 33
+		},
+		"ayane-robber": {
+			"image": 31
+		},
+		"ayane-sportswear": {
+			"image": 33
+		},
+		"ayane-swimsuit": {
+			"dangle": 1,
+			"image": 35,
+			"interaction": 1
+		},
+		"ayane-swimsuit-robber": {
+			"image": 35
+		},
+		"ayane-wounded": {
+			"image": 35
+		},
+		"azami": {
+			"image": 38
+		},
+		"azami-disguise": {
+			"image": 21
+		},
+		"azusa": {
+			"dangle": 1,
+			"image": 10
+		},
+		"azusa-school-swimsuit": {
+			"image": 21
+		},
+		"azusa-sportswear": {
+			"image": 21
+		},
+		"azusa-swimsuit": {
+			"dangle": 1,
+			"image": 19,
+			"interaction": 1
+		},
+		"azusa-wounded": {
+			"image": 21
+		},
+		"beatrice": {
+			"image": 1
+		},
+		"cherino": {
+			"dangle": 1,
+			"image": 13
+		},
+		"cherino-hot-spring": {
+			"dangle": 1,
+			"image": 51,
+			"interaction": 1
+		},
+		"cherino-qipao": {
+			"image": 59
+		},
+		"chiaki": {
+			"dangle": 1,
+			"image": 15,
+			"interaction": 1
+		},
+		"chihiro": {
+			"dangle": 1,
+			"image": 7,
+			"interaction": 1
+		},
+		"chihiro-camping": {
+			"image": 12
+		},
+		"chihiro-pajama": {
+			"image": 12
+		},
+		"chinatsu": {
+			"image": 7
+		},
+		"chinatsu-hot-spring": {
+			"dangle": 1,
+			"image": 21,
+			"interaction": 1
+		},
+		"chise": {
+			"dangle": 1,
+			"image": 10
+		},
+		"chise-sportswear": {
+			"image": 21
+		},
+		"chise-swimsuit": {
+			"dangle": 1,
+			"image": 31,
+			"interaction": 1
+		},
+		"eimi": {
+			"dangle": 1,
+			"image": 6
+		},
+		"eimi-battle": {
+			"image": 39
+		},
+		"eimi-swimsuit": {
+			"image": 19,
+			"interaction": 1
+		},
+		"ein": {
+			"image": 17
+		},
+		"ein-damaged": {
+			"image": 24
+		},
+		"eri": {
+			"dangle": 1,
+			"image": 51,
+			"interaction": 2
+		},
+		"erika": {
+			"image": 16
+		},
+		"erika-first-version": {
+			"image": 6
+		},
+		"fubuki": {
+			"dangle": 1,
+			"image": 11,
+			"interaction": 1
+		},
+		"fubuki-idol": {
+			"image": 35
+		},
+		"fubuki-swimsuit": {
+			"image": 31,
+			"interaction": 1
+		},
+		"fuuka": {
+			"image": 9
+		},
+		"fuuka-casual": {
+			"image": 39
+		},
+		"fuuka-new-year": {
+			"image": 39,
+			"interaction": 1
+		},
+		"fuyu": {
+			"dangle": 1,
+			"image": 35,
+			"interaction": 1
+		},
+		"hanae": {
+			"dangle": 1,
+			"image": 7
+		},
+		"hanae-cheerleader": {
+			"image": 19
+		},
+		"hanae-christmas": {
+			"dangle": 1,
+			"image": 21,
+			"interaction": 1
+		},
+		"hanako": {
+			"image": 7
+		},
+		"hanako-operator": {
+			"image": 15
+		},
+		"hanako-school-swimsuit": {
+			"image": 15
+		},
+		"hanako-sportswear": {
+			"image": 15
+		},
+		"hanako-swimsuit": {
+			"dangle": 1,
+			"image": 21,
+			"interaction": 5
+		},
+		"hanako-swimsuit-no-hose": {
+			"image": 21
+		},
+		"hare": {
+			"image": 7
+		},
+		"hare-camping": {
+			"dangle": 1,
+			"image": 31,
+			"interaction": 1
+		},
+		"hare-pajama": {
+			"image": 31
+		},
+		"haruka": {
+			"dangle": 1,
+			"image": 14,
+			"interaction": 1
+		},
+		"haruka-dress": {
+			"image": 25
+		},
+		"haruka-new-year": {
+			"image": 25,
+			"interaction": 1
+		},
+		"haruka-suit": {
+			"image": 25
+		},
+		"haruna": {
+			"dangle": 1,
+			"image": 8
+		},
+		"haruna-new-year": {
+			"dangle": 1,
+			"image": 44,
+			"interaction": 2
+		},
+		"haruna-sportswear": {
+			"image": 47,
+			"interaction": 1
+		},
+		"hasumi": {
+			"dangle": 1,
+			"image": 9
+		},
+		"hasumi-sportswear": {
+			"dangle": 1,
+			"image": 35,
+			"interaction": 1
+		},
+		"hasumi-swimsuit": {
+			"dangle": 1,
+			"image": 41,
+			"interaction": 3
+		},
+		"hatsune-miku": {
+			"image": 15
+		},
+		"hibiki": {
+			"image": 14
+		},
+		"hibiki-cheerleader": {
+			"dangle": 1,
+			"image": 45,
+			"interaction": 1
+		},
+		"hifumi": {
+			"dangle": 1,
+			"image": 13
+		},
+		"hifumi-robber": {
+			"image": 13
+		},
+		"hifumi-school-swimsuit": {
+			"image": 15
+		},
+		"hifumi-sportswear": {
+			"image": 15
+		},
+		"hifumi-swimsuit": {
+			"image": 23
+		},
+		"hikari": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 2
+		},
+		"himari": {
+			"dangle": 1,
+			"image": 26,
+			"interaction": 1
+		},
+		"himari-battle": {
+			"dangle": 1,
+			"image": 25,
+			"interaction": 1
+		},
+		"himari-battle-unarmed": {
+			"image": 21
+		},
+		"himari-expedition": {
+			"image": 27
+		},
+		"himari-operator": {
+			"image": 27
+		},
+		"hina": {
+			"dangle": 1,
+			"image": 21
+		},
+		"hina-dress": {
+			"dangle": 1,
+			"image": 59,
+			"interaction": 3
+		},
+		"hina-nightwear": {
+			"image": 20
+		},
+		"hina-swimsuit": {
+			"dangle": 1,
+			"image": 35,
+			"interaction": 1
+		},
+		"hina-wounded": {
+			"image": 20
+		},
+		"hinata": {
+			"dangle": 1,
+			"image": 7,
+			"interaction": 1
+		},
+		"hinata-swimsuit": {
+			"image": 27,
+			"interaction": 1
+		},
+		"hiromi": {
+			"image": 18
+		},
+		"hiyori": {
+			"image": 11,
+			"interaction": 1
+		},
+		"hiyori-swimsuit": {
+			"dangle": 1,
+			"image": 37,
+			"interaction": 1
+		},
+		"hoshino": {
+			"dangle": 1,
+			"image": 18,
+			"interaction": 1
+		},
+		"hoshino-1st-grade": {
+			"image": 143
+		},
+		"hoshino-1st-grade-school-swimsuit": {
+			"image": 143
+		},
+		"hoshino-2nd-grade": {
+			"image": 86
+		},
+		"hoshino-2nd-grade-no-scarf": {
+			"image": 86
+		},
+		"hoshino-battle": {
+			"dangle": 2,
+			"image": 122,
+			"interaction": 1
+		},
+		"hoshino-battle-handgun": {
+			"image": 122
+		},
+		"hoshino-battle-handgun-wounded": {
+			"image": 122
+		},
+		"hoshino-battle-shotgun": {
+			"image": 122
+		},
+		"hoshino-battle-shotgun-handgun": {
+			"image": 122
+		},
+		"hoshino-battle-shotgun-handgun-wounded": {
+			"image": 122
+		},
+		"hoshino-battle-shotgun-wounded": {
+			"image": 122
+		},
+		"hoshino-robber": {
+			"image": 23
+		},
+		"hoshino-sportswear": {
+			"image": 56
+		},
+		"hoshino-swimsuit": {
+			"dangle": 1,
+			"image": 68,
+			"interaction": 1
+		},
+		"hoshino-swimsuit-robber": {
+			"image": 68
+		},
+		"hyakkiyako-chlorella-observation-club-member": {
+			"image": 7
+		},
+		"hyakkiyako-chlorella-observation-club-member-swimsuit": {
+			"image": 7
+		},
+		"ibuki": {
+			"dangle": 1,
+			"image": 18,
+			"interaction": 1
+		},
+		"ibuki-dress": {
+			"image": 12
+		},
+		"ichika": {
+			"dangle": 1,
+			"image": 22,
+			"interaction": 1
+		},
+		"ichika-stage": {
+			"image": 45
+		},
+		"ichika-swimsuit": {
+			"dangle": 1,
+			"image": 53,
+			"interaction": 3
+		},
+		"iori": {
+			"dangle": 1,
+			"image": 8
+		},
+		"iori-swimsuit": {
+			"dangle": 1,
+			"image": 23
+		},
+		"iroha": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"izumi": {
+			"dangle": 1,
+			"image": 10
+		},
+		"izumi-new-year": {
+			"dangle": 1,
+			"image": 35,
+			"interaction": 1
+		},
+		"izumi-sportswear": {
+			"image": 32
+		},
+		"izumi-swimsuit": {
+			"dangle": 1,
+			"image": 35
+		},
+		"izuna": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"izuna-dress": {
+			"image": 29
+		},
+		"izuna-sportswear": {
+			"image": 17
+		},
+		"izuna-swimsuit": {
+			"dangle": 1,
+			"image": 25,
+			"interaction": 1
+		},
+		"junko": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 2
+		},
+		"junko-new-year": {
+			"dangle": 1,
+			"image": 37,
+			"interaction": 2
+		},
+		"junko-sportswear": {
+			"image": 33
+		},
+		"juri": {
+			"image": 13
+		},
+		"juri-part-timer": {
+			"dangle": 1,
+			"image": 27,
+			"interaction": 1
+		},
+		"kaede": {
+			"image": 16,
+			"interaction": 1
+		},
+		"kaede-guide": {
+			"image": 16
+		},
+		"kaede-sportswear": {
+			"image": 16
+		},
+		"kaguya": {
+			"image": 21
+		},
+		"kaguya-unmasked": {
+			"image": 21
+		},
+		"kaho": {
+			"dangle": 1,
+			"image": 18,
+			"interaction": 3
+		},
+		"kai": {
+			"image": 14
+		},
+		"kai-disguise": {
+			"image": 14
+		},
+		"kanna": {
+			"dangle": 1,
+			"image": 9,
+			"interaction": 1
+		},
+		"kanna-swimsuit": {
+			"dangle": 1,
+			"image": 53,
+			"interaction": 1
+		},
+		"kanna-wounded": {
+			"image": 21
+		},
+		"kanoe": {
+			"dangle": 1,
+			"image": 24,
+			"interaction": 1
+		},
+		"karin": {
+			"image": 7
+		},
+		"karin-bunny-girl": {
+			"dangle": 1,
+			"image": 23,
+			"interaction": 1
+		},
+		"karin-school-uniform": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 2
+		},
+		"kasumi": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 1
+		},
+		"kasumi-swimsuit": {
+			"image": 16
+		},
+		"kasumi-swimsuit-undressed": {
+			"image": 16
+		},
+		"kaya": {
+			"image": 23
+		},
+		"kayoko": {
+			"dangle": 1,
+			"image": 8
+		},
+		"kayoko-dress": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 3
+		},
+		"kayoko-new-year": {
+			"dangle": 1,
+			"image": 26,
+			"interaction": 1
+		},
+		"kayoko-operator": {
+			"image": 26
+		},
+		"kazusa": {
+			"dangle": 1,
+			"image": 14,
+			"interaction": 1
+		},
+		"kazusa-band": {
+			"dangle": 1,
+			"image": 39,
+			"interaction": 1
+		},
+		"kazusa-band-no-decorations": {
+			"image": 39
+		},
+		"kazusa-cbt": {
+			"image": 8
+		},
+		"kazusa-school-festival": {
+			"image": 41
+		},
+		"kei": {
+			"dangle": 1,
+			"image": 34,
+			"interaction": 1
+		},
+		"kei-amas": {
+			"image": 25
+		},
+		"kei-prototype": {
+			"image": 20
+		},
+		"kei-unarmed": {
+			"image": 34
+		},
+		"kikyou": {
+			"dangle": 1,
+			"image": 17,
+			"interaction": 1
+		},
+		"kikyou-swimsuit": {
+			"dangle": 1,
+			"image": 51,
+			"interaction": 1
+		},
+		"kirara": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"kirara-pre-release-design": {
+			"image": 13
+		},
+		"kirino": {
+			"dangle": 1,
+			"image": 10
+		},
+		"kirino-idol": {
+			"image": 29
+		},
+		"kirino-pre-release-design": {
+			"image": 17
+		},
+		"kirino-swimsuit": {
+			"image": 29,
+			"interaction": 1
+		},
+		"kisaki": {
+			"image": 19,
+			"interaction": 2
+		},
+		"kisaki-kindergarten": {
+			"image": 19
+		},
+		"koharu": {
+			"dangle": 1,
+			"image": 13
+		},
+		"koharu-school-swimsuit": {
+			"image": 27
+		},
+		"koharu-sportswear": {
+			"image": 27
+		},
+		"koharu-swimsuit": {
+			"dangle": 1,
+			"image": 43,
+			"interaction": 4
+		},
+		"kokona": {
+			"dangle": 1,
+			"image": 13,
+			"interaction": 1
+		},
+		"kokuriko": {
+			"image": 19
+		},
+		"konoka": {
+			"dangle": 1,
+			"image": 39,
+			"interaction": 1
+		},
+		"kotama": {
+			"image": 7
+		},
+		"kotama-camping": {
+			"dangle": 1,
+			"image": 27,
+			"interaction": 1
+		},
+		"kotama-pajama": {
+			"image": 35
+		},
+		"kotori": {
+			"dangle": 1,
+			"image": 7
+		},
+		"kotori-cheerleader": {
+			"dangle": 1,
+			"image": 43,
+			"interaction": 1
+		},
+		"kotori-sportswear": {
+			"image": 15
+		},
+		"koyuki": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 1
+		},
+		"koyuki-bunnysuit": {
+			"image": 25
+		},
+		"koyuki-pajama": {
+			"image": 31,
+			"interaction": 1
+		},
+		"maia": {
+			"image": 23
+		},
+		"maki": {
+			"dangle": 1,
+			"image": 8
+		},
+		"maki-camping": {
+			"image": 27,
+			"interaction": 1
+		},
+		"maki-pajama": {
+			"image": 29
+		},
+		"maki-sportswear": {
+			"image": 17
+		},
+		"makoto": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"makoto-cbt": {
+			"image": 8
+		},
+		"makoto-dress": {
+			"image": 17
+		},
+		"malkuth": {
+			"image": 7
+		},
+		"malkuth-damaged": {
+			"image": 12
+		},
+		"malkuth-decagrammaton": {
+			"image": 14
+		},
+		"malkuth-decagrammaton-damaged": {
+			"image": 14
+		},
+		"malkuth-hatless": {
+			"image": 7
+		},
+		"mari": {
+			"image": 10,
+			"interaction": 1
+		},
+		"mari-cbt": {
+			"image": 7
+		},
+		"mari-idol": {
+			"dangle": 1,
+			"image": 104,
+			"interaction": 2
+		},
+		"mari-sportswear": {
+			"dangle": 1,
+			"image": 32,
+			"interaction": 1
+		},
+		"marina": {
+			"dangle": 1,
+			"image": 13,
+			"interaction": 1
+		},
+		"marina-cbt": {
+			"image": 8
+		},
+		"marina-qipao": {
+			"dangle": 1,
+			"image": 27,
+			"interaction": 1
+		},
+		"mashiro": {
+			"image": 6
+		},
+		"mashiro-sportswear": {
+			"image": 15
+		},
+		"mashiro-swimsuit": {
+			"image": 17,
+			"interaction": 1
+		},
+		"megu": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"megu-swimsuit": {
+			"image": 14
+		},
+		"meru": {
+			"dangle": 1,
+			"image": 17,
+			"interaction": 2
+		},
+		"meru-hot-spring": {
+			"image": 10
+		},
+		"michiru": {
+			"dangle": 1,
+			"image": 10,
+			"interaction": 2
+		},
+		"michiru-dress": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 1
+		},
+		"midori": {
+			"dangle": 1,
+			"image": 10,
+			"interaction": 4
+		},
+		"midori-battle": {
+			"image": 41
+		},
+		"midori-maid": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 3
+		},
+		"midori-winter": {
+			"image": 41
+		},
+		"mika": {
+			"dangle": 1,
+			"image": 30,
+			"interaction": 1
+		},
+		"mika-school-swimsuit": {
+			"image": 61
+		},
+		"mika-sleeveless": {
+			"image": 61
+		},
+		"mika-sleeveless-wounded": {
+			"image": 61
+		},
+		"mika-sportswear": {
+			"image": 61
+		},
+		"mika-swimsuit": {
+			"dangle": 1,
+			"image": 59,
+			"interaction": 1
+		},
+		"mika-unarmed": {
+			"image": 61
+		},
+		"mimori": {
+			"dangle": 1,
+			"image": 11,
+			"interaction": 1
+		},
+		"mimori-swimsuit": {
+			"image": 19,
+			"interaction": 1
+		},
+		"mina": {
+			"dangle": 1,
+			"image": 17,
+			"interaction": 1
+		},
+		"mine": {
+			"dangle": 1,
+			"image": 10,
+			"interaction": 2
+		},
+		"mine-idol": {
+			"dangle": 1,
+			"image": 61,
+			"interaction": 2
+		},
+		"minori": {
+			"image": 10,
+			"interaction": 1
+		},
+		"minori-pre-release-design": {
+			"image": 10
+		},
+		"mirai": {
+			"image": 24
+		},
+		"misaka-mikoto": {
+			"dangle": 1,
+			"image": 19,
+			"interaction": 2
+		},
+		"misaka-mikoto-unarmed": {
+			"image": 19
+		},
+		"misaki": {
+			"dangle": 1,
+			"image": 41,
+			"interaction": 1
+		},
+		"misaki-swimsuit": {
+			"image": 21,
+			"interaction": 2
+		},
+		"misuzu": {
+			"image": 14
+		},
+		"miyako": {
+			"dangle": 1,
+			"image": 13,
+			"interaction": 1
+		},
+		"miyako-cbt": {
+			"image": 8
+		},
+		"miyako-sportswear": {
+			"image": 21
+		},
+		"miyako-swimsuit": {
+			"dangle": 1,
+			"image": 51,
+			"interaction": 1
+		},
+		"miyo": {
+			"dangle": 1,
+			"image": 38,
+			"interaction": 2
+		},
+		"miyu": {
+			"dangle": 1,
+			"image": 13,
+			"interaction": 1
+		},
+		"miyu-sportswear": {
+			"image": 27
+		},
+		"miyu-swimsuit": {
+			"dangle": 1,
+			"image": 55,
+			"interaction": 1
+		},
+		"mobster": {
+			"image": 7
+		},
+		"moe": {
+			"dangle": 1,
+			"image": 18,
+			"interaction": 1
+		},
+		"moe-sportswear": {
+			"image": 39
+		},
+		"moe-swimsuit": {
+			"dangle": 1,
+			"image": 59,
+			"interaction": 1
+		},
+		"momiji": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"momoi": {
+			"dangle": 1,
+			"image": 9,
+			"interaction": 4
+		},
+		"momoi-battle": {
+			"image": 57
+		},
+		"momoi-maid": {
+			"dangle": 1,
+			"image": 25,
+			"interaction": 4
+		},
+		"momoi-winter": {
+			"image": 57
+		},
+		"mutsuki": {
+			"dangle": 1,
+			"image": 14
+		},
+		"mutsuki-dress": {
+			"image": 25
+		},
+		"mutsuki-new-year": {
+			"dangle": 1,
+			"image": 21,
+			"interaction": 1
+		},
+		"mutsuki-suit": {
+			"image": 23
+		},
+		"nagisa": {
+			"image": 16,
+			"interaction": 2
+		},
+		"nagisa-first-version": {
+			"image": 23
+		},
+		"nagisa-pre-release-design": {
+			"image": 23
+		},
+		"nagisa-standing": {
+			"image": 35
+		},
+		"nagisa-swimsuit": {
+			"dangle": 1,
+			"image": 87,
+			"interaction": 1
+		},
+		"nagusa": {
+			"dangle": 1,
+			"image": 18,
+			"interaction": 1
+		},
+		"nagusa-bandaged-arm": {
+			"image": 18
+		},
+		"nagusa-cured": {
+			"image": 18
+		},
+		"nagusa-first-version": {
+			"image": 8
+		},
+		"nagusa-swimsuit": {
+			"image": 15
+		},
+		"natsu": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"natsu-band": {
+			"dangle": 1,
+			"image": 23,
+			"interaction": 1
+		},
+		"natsu-band-no-decorations": {
+			"image": 23
+		},
+		"natsu-school-festival": {
+			"image": 29
+		},
+		"natsu-sportswear": {
+			"image": 17
+		},
+		"neru": {
+			"dangle": 1,
+			"image": 11,
+			"interaction": 3
+		},
+		"neru-bunny-girl": {
+			"dangle": 1,
+			"image": 32,
+			"interaction": 1
+		},
+		"neru-cbt": {
+			"image": 11
+		},
+		"neru-school-uniform": {
+			"dangle": 1,
+			"image": 77,
+			"interaction": 1
+		},
+		"neru-treated": {
+			"image": 35
+		},
+		"neru-wounded": {
+			"image": 35
+		},
+		"niya": {
+			"dangle": 1,
+			"image": 14,
+			"interaction": 2
+		},
+		"niya-wounded": {
+			"image": 13
+		},
+		"noa": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"noa-pajama": {
+			"dangle": 1,
+			"image": 23,
+			"interaction": 1
+		},
+		"noa-sportswear": {
+			"image": 17
+		},
+		"nodoka": {
+			"image": 8
+		},
+		"nodoka-hot-spring": {
+			"dangle": 1,
+			"image": 75,
+			"interaction": 1
+		},
+		"nonomi": {
+			"dangle": 1,
+			"image": 20,
+			"interaction": 1
+		},
+		"nonomi-1st-year": {
+			"image": 17
+		},
+		"nonomi-middle-school": {
+			"image": 17
+		},
+		"nonomi-robber": {
+			"image": 15
+		},
+		"nonomi-sportswear": {
+			"image": 39
+		},
+		"nonomi-swimsuit": {
+			"dangle": 1,
+			"image": 47,
+			"interaction": 1
+		},
+		"nonomi-swimsuit-robber": {
+			"image": 47
+		},
+		"nonomi-wounded": {
+			"image": 41
+		},
+		"nozomi": {
+			"dangle": 1,
+			"image": 20,
+			"interaction": 2
+		},
+		"ohr": {
+			"image": 18
+		},
+		"ohr-damaged": {
+			"image": 23
+		},
+		"pina": {
+			"dangle": 1,
+			"image": 9,
+			"interaction": 1
+		},
+		"pina-guide": {
+			"image": 21,
+			"interaction": 2
+		},
+		"plana": {
+			"image": 21
+		},
+		"professor-smug": {
+			"image": 24
+		},
+		"rabu": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"rabu-mascot": {
+			"image": 24
+		},
+		"rabu-swimsuit": {
+			"image": 16
+		},
+		"rei": {
+			"image": 20,
+			"interaction": 1
+		},
+		"reijo": {
+			"image": 19,
+			"interaction": 2
+		},
+		"reijo-unreleased-design": {
+			"image": 10
+		},
+		"reisa": {
+			"dangle": 1,
+			"image": 19,
+			"interaction": 1
+		},
+		"reisa-magical": {
+			"dangle": 1,
+			"image": 25,
+			"interaction": 4
+		},
+		"rena": {
+			"image": 30,
+			"interaction": 1
+		},
+		"renge": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 1
+		},
+		"renge-swimsuit": {
+			"dangle": 1,
+			"image": 27,
+			"interaction": 1
+		},
+		"rio": {
+			"dangle": 1,
+			"image": 10,
+			"interaction": 1
+		},
+		"rio-battle": {
+			"dangle": 1,
+			"image": 15
+		},
+		"rio-winter": {
+			"image": 10
+		},
+		"ritsu": {
+			"image": 31,
+			"interaction": 1
+		},
+		"rumi": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"rumi-kid": {
+			"image": 14
+		},
+		"saki": {
+			"dangle": 1,
+			"image": 28,
+			"interaction": 1
+		},
+		"saki-sportswear": {
+			"image": 14
+		},
+		"saki-swimsuit": {
+			"dangle": 1,
+			"image": 29,
+			"interaction": 1
+		},
+		"sakurako": {
+			"dangle": 1,
+			"image": 13,
+			"interaction": 1
+		},
+		"sakurako-first-version": {
+			"image": 8
+		},
+		"sakurako-idol": {
+			"dangle": 1,
+			"image": 42,
+			"interaction": 2
+		},
+		"sakurako-sisterhood": {
+			"image": 13
+		},
+		"saori": {
+			"dangle": 1,
+			"image": 59,
+			"interaction": 1
+		},
+		"saori-dress": {
+			"dangle": 1,
+			"image": 71,
+			"interaction": 1
+		},
+		"saori-dress-unarmed": {
+			"image": 17
+		},
+		"saori-swimsuit": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 2
+		},
+		"saori-swimsuit-no-jacket": {
+			"image": 16
+		},
+		"saori-wounded": {
+			"image": 59
+		},
+		"saten-ruiko": {
+			"image": 15,
+			"interaction": 1
+		},
+		"saten-ruiko-unarmed": {
+			"image": 15
+		},
+		"satsuki": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"satsuki-first-version": {
+			"image": 10
+		},
+		"saya": {
+			"image": 8
+		},
+		"saya-casual": {
+			"image": 7
+		},
+		"seia": {
+			"dangle": 1,
+			"image": 10,
+			"interaction": 1
+		},
+		"seia-swimsuit": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 1
+		},
+		"sena": {
+			"dangle": 1,
+			"image": 7,
+			"interaction": 1
+		},
+		"sena-casual": {
+			"dangle": 1,
+			"image": 7,
+			"interaction": 1
+		},
+		"serika": {
+			"dangle": 1,
+			"image": 14,
+			"interaction": 1
+		},
+		"serika-idol": {
+			"image": 15
+		},
+		"serika-new-year": {
+			"image": 15,
+			"interaction": 1
+		},
+		"serika-new-year-first-version": {
+			"image": 14
+		},
+		"serika-robber": {
+			"image": 14
+		},
+		"serika-shiba-seki": {
+			"image": 14
+		},
+		"serika-sportswear": {
+			"image": 13
+		},
+		"serika-swimsuit": {
+			"image": 18,
+			"interaction": 2
+		},
+		"serika-swimsuit-robber": {
+			"image": 18
+		},
+		"serika-wounded": {
+			"image": 14
+		},
+		"serina": {
+			"image": 7
+		},
+		"serina-christmas": {
+			"dangle": 1,
+			"image": 11,
+			"interaction": 1
+		},
+		"serina-nurse": {
+			"image": 8
+		},
+		"shigure": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"shigure-hot-spring": {
+			"image": 10,
+			"interaction": 1
+		},
+		"shimiko": {
+			"image": 6
+		},
+		"shimiko-villain": {
+			"image": 21
+		},
+		"shiroko": {
+			"dangle": 1,
+			"image": 17,
+			"interaction": 1
+		},
+		"shiroko-1st-year": {
+			"image": 8
+		},
+		"shiroko-riding": {
+			"dangle": 1,
+			"image": 7,
+			"interaction": 1
+		},
+		"shiroko-robber": {
+			"image": 17
+		},
+		"shiroko-sportswear": {
+			"image": 7
+		},
+		"shiroko-swimsuit": {
+			"image": 7,
+			"interaction": 1
+		},
+		"shiroko-swimsuit-robber": {
+			"image": 7
+		},
+		"shiroko-terror": {
+			"dangle": 1,
+			"image": 9,
+			"interaction": 1
+		},
+		"shiroko-terror-robber": {
+			"image": 9
+		},
+		"shiroko-terror-unknown": {
+			"image": 8
+		},
+		"shiroko-terror-unknown-robber": {
+			"image": 9
+		},
+		"shiroko-terror-unknown-wounded": {
+			"image": 9
+		},
+		"shiroko-wounded": {
+			"image": 17
+		},
+		"shizuko": {
+			"image": 7,
+			"interaction": 1
+		},
+		"shizuko-sportswear": {
+			"image": 7
+		},
+		"shizuko-swimsuit": {
+			"image": 10,
+			"interaction": 2
+		},
+		"shokuhou-misaki": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"shokuhou-misaki-unarmed": {
+			"image": 12
+		},
+		"shun": {
+			"dangle": 1,
+			"image": 15
+		},
+		"shun-kid": {
+			"dangle": 1,
+			"image": 30
+		},
+		"subaru": {
+			"dangle": 1,
+			"image": 28,
+			"interaction": 1
+		},
+		"sumire": {
+			"dangle": 1,
+			"image": 14
+		},
+		"sumire-part-timer": {
+			"image": 12,
+			"interaction": 1
+		},
+		"sumire-sportswear": {
+			"image": 14
+		},
+		"suzumi": {
+			"dangle": 1,
+			"image": 6
+		},
+		"suzumi-magical": {
+			"dangle": 1,
+			"image": 24,
+			"interaction": 3
+		},
+		"takane": {
+			"dangle": 1,
+			"image": 19,
+			"interaction": 1
+		},
+		"toki": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"toki-abi-eshuh-mode": {
+			"image": 13
+		},
+		"toki-abi-eshuh-mode-damaged": {
+			"image": 8
+		},
+		"toki-battle": {
+			"image": 8
+		},
+		"toki-bunny-girl": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"toki-school-uniform": {
+			"image": 9
+		},
+		"toki-sleeveless": {
+			"image": 8
+		},
+		"toki-treated": {
+			"image": 8
+		},
+		"tomoe": {
+			"dangle": 1,
+			"image": 7,
+			"interaction": 1
+		},
+		"tomoe-qipao": {
+			"image": 12,
+			"interaction": 1
+		},
+		"tsubaki": {
+			"dangle": 1,
+			"image": 11
+		},
+		"tsubaki-guide": {
+			"image": 11,
+			"interaction": 1
+		},
+		"tsukuyo": {
+			"dangle": 1,
+			"image": 8,
+			"interaction": 1
+		},
+		"tsukuyo-dress": {
+			"image": 15,
+			"interaction": 1
+		},
+		"tsukuyo-sportswear": {
+			"image": 7
+		},
+		"tsurugi": {
+			"dangle": 1,
+			"image": 15
+		},
+		"tsurugi-sportswear": {
+			"image": 15
+		},
+		"tsurugi-stage": {
+			"image": 15
+		},
+		"tsurugi-swimsuit": {
+			"dangle": 1,
+			"image": 11,
+			"interaction": 1
+		},
+		"ui": {
+			"dangle": 1,
+			"image": 24,
+			"interaction": 1
+		},
+		"ui-swimsuit": {
+			"dangle": 1,
+			"image": 30,
+			"interaction": 2
+		},
+		"umika": {
+			"dangle": 1,
+			"image": 19,
+			"interaction": 1
+		},
+		"utaha": {
+			"image": 7
+		},
+		"utaha-cheerleader": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 1
+		},
+		"utaha-kimono": {
+			"image": 15
+		},
+		"wakamo": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"wakamo-kimono": {
+			"image": 9
+		},
+		"wakamo-swimsuit": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 1
+		},
+		"yakumo": {
+			"image": 14,
+			"interaction": 1
+		},
+		"yoshimi": {
+			"dangle": 1,
+			"image": 11
+		},
+		"yoshimi-band": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 1
+		},
+		"yoshimi-band-no-decorations": {
+			"image": 12
+		},
+		"yoshimi-school-festival": {
+			"image": 25
+		},
+		"yukari": {
+			"dangle": 1,
+			"image": 15,
+			"interaction": 1
+		},
+		"yukari-middle-school": {
+			"image": 15
+		},
+		"yukari-miko": {
+			"image": 16
+		},
+		"yukari-swimsuit": {
+			"image": 20,
+			"interaction": 1
+		},
+		"yuuka": {
+			"dangle": 1,
+			"image": 8
+		},
+		"yuuka-operator": {
+			"image": 8
+		},
+		"yuuka-pajama": {
+			"dangle": 1,
+			"image": 21,
+			"interaction": 1
+		},
+		"yuuka-sportswear": {
+			"dangle": 1,
+			"image": 16,
+			"interaction": 2
+		},
+		"yuzu": {
+			"dangle": 1,
+			"image": 9,
+			"interaction": 1
+		},
+		"yuzu-battle": {
+			"dangle": 1,
+			"image": 12,
+			"interaction": 2
+		},
+		"yuzu-maid": {
+			"dangle": 1,
+			"image": 11,
+			"interaction": 1
+		},
+		"yuzu-winter": {
+			"image": 15
+		}
+	}
+}

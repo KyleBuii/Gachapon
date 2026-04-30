@@ -90,6 +90,7 @@ const references = {
 const audioOpen = new Audio(null);
 const audioReveal = new Audio(null);
 const maxInventoryRecent = 30;
+const startingDelay = 200;
 let timeoutNoMoney;
 let inventoryRecent = [];
 let scrollY = -1;
@@ -104,6 +105,8 @@ const App = () => {
     const [viewedCredit, setViewedCredit] = useState('');
     const [isViewedItemVisible, setIsViewedItemVisible] = useState(false);
 
+    const refCurrentSet = useRef('');
+    const refTimeoutsCreate = useRef([]);
     const refTimeoutsOpen = useRef([]);
     const refTimeoutMaxCount = useRef(0);
     const refTimeoutCount = useRef(0);
@@ -117,12 +120,14 @@ const App = () => {
     const refRewardGenshinImpact = useRef(null);
     const refRewardHonkaiStarRail = useRef(null);
     const refRewardTouhou = useRef(null);
+    const refRewardBlueArchive = useRef(null);
 
     const refLookup = {
         'multiple': refRewardMultiple,
         'genshin impact': refRewardGenshinImpact,
         'honkai star rail': refRewardHonkaiStarRail,
         'touhou': refRewardTouhou,
+        'blue archive': refRewardBlueArchive,
     };
 
     useEffect(() => {
@@ -316,6 +321,9 @@ const App = () => {
                     randomNumber = Math.random();
                 };
 
+                let validImage, urlArtBackup;
+                let isZoom = false;
+
                 switch (set) {
                     case 'classic': {
                         spanReward = document.createElement('span');
@@ -361,7 +369,7 @@ const App = () => {
 
                         const imageArt = `/genshin-impact/${randomItemType}/${reformatName}-view.webp`;
                         const imageFace = `/genshin-impact/${randomItemType}/${reformatName}.webp`;
-                        const validImage = await getValidImage(imageArt, imageFace);
+                        validImage = await getValidImage(imageArt, imageFace);
 
                         if (amount > 1) {
                             spanReward = document.createElement('span');
@@ -455,7 +463,7 @@ const App = () => {
 
                         const imageArt = `/honkai-star-rail/${randomItemType}/${reformatName}-view.webp`;
                         const imageFace = `/honkai-star-rail/${randomItemType}/${reformatName}.webp`;
-                        const validImage = await getValidImage(imageArt, imageFace);
+                        validImage = await getValidImage(imageArt, imageFace);
 
                         if (amount > 1) {
                             spanReward = document.createElement('span');
@@ -566,16 +574,21 @@ const App = () => {
                         imageRarity.decoding = 'async';
                         spanReward.appendChild(imageRarity);
 
-                        const timeoutImage = setTimeout(() => {
-                            incrementTimeouts();
-                            imageReward.classList.remove('hidden');
-                        }, 1000 * ((i + 1) / 6));
-                        const timeoutData = setTimeout(() => {
-                            incrementTimeouts();
-                            elementName.classList.remove('invisible');
-                            imageRarity.classList.remove('invisible');
-                        }, 2500 + (amount * 100));
-                        refTimeoutsOpen.current.push(timeoutImage, timeoutData);
+                        refTimeoutsCreate.current.push({
+                            fn: () => {
+                                imageReward.classList.remove('hidden');
+                            },
+                            delay: 1000 * ((i + 1) / 6),
+                        });
+                        refTimeoutsCreate.current.push({
+                            fn: () => {
+                                elementName.classList.remove('invisible');
+                                imageRarity.classList.remove('invisible');
+                            },
+                            delay: 2500 + (amount * 100),
+                        });
+
+                        createTimeouts();
 
                         if (calculateRate === 4) createPon(spanReward);
 
@@ -602,17 +615,38 @@ const App = () => {
                             .replace(/\s|\./g, '-')
                             .replace(/'/g, '');
 
+                        /// Creating card
+                        const divCard = document.createElement('div');
+                        divCard.className = 'flip-card';
+
+                        const divCardInner = document.createElement('div');
+                        divCardInner.className = 'flip-card-inner';
+
+                        divCard.appendChild(divCardInner);
+
+                        /// Creating card front
+                        const divCardFront = document.createElement('div');
+                        divCardFront.className = 'flip-card-front';
+
+                        const imgCardFront = document.createElement('img');
+                        imgCardFront.src = `/blue-archive/star-${calculateRate}.webp`;
+
+                        divCardFront.appendChild(imgCardFront);
+                        divCardInner.appendChild(divCardFront);
+
+                        /// Creating card back
                         const urlArt = `/blue-archive/character/${reformatName}/${reformatName}.webp`;
-                        const urlArtBackup = `/blue-archive/character/${reformatName}/${reformatName}-view-000.webp`;
-                        const validImage = await getValidImage(urlArt, urlArtBackup);
+                        urlArtBackup = `/blue-archive/character/${reformatName}/${reformatName}-view-000.webp`;
+                        validImage = await getValidImage(urlArt, urlArtBackup);
                         const urlRarity = `/blue-archive/star-${calculateRate}.webp`;
                         const bg = (validImage === urlArtBackup)
-                            ? `url(${validImage}), url(/blue-archive/bg-star-${calculateRate}.webp)`
+                            ? `url(${validImage}), url(/blue-archive/${calculateRate}-bg.webp)`
                             : `url(${validImage})`;
 
                         spanReward = document.createElement('span');
+                        spanReward.classList.add('flip-card-back');
                         spanReward.style.backgroundImage = bg;
-                        if (validImage === urlArtBackup) spanReward.classList.add('zoom');
+                        if (validImage === urlArtBackup) spanReward.classList.add('zoom-reward');
 
                         const elementName = document.createElement('span');
                         elementName.innerText = calculateReward;
@@ -629,12 +663,22 @@ const App = () => {
                             elementStars.appendChild(imageStar.cloneNode());
                         };
                         spanReward.appendChild(elementStars);
+                        
+                        refTimeoutsCreate.current.push({
+                            fn: () => {
+                                divCardInner.classList.add('flipped');
+                            },
+                            delay: 100 * i,
+                        });
 
                         if (calculateRate === 3) createPon(spanReward);
 
-                        popupReward.appendChild(spanReward);
+                        divCardInner.appendChild(spanReward);
+                        popupReward.appendChild(divCard);
+
+                        isZoom = (validImage === urlArtBackup);
                         break;
-                    }
+                    };
                     default: { break; };
                 };
 
@@ -645,21 +689,22 @@ const App = () => {
                         [calculateReward]: {
                             type: randomItemType,
                             rate: calculateRate,
-                            count: 1
+                            count: 1,
+                            zoom: (validImage === urlArtBackup),
                         },
                         ...inventoryAdd[set]
                     };
                 };
 
                 inventoryRecentAdd.push({
-                    set: set,
+                    set,
                     name: calculateReward,
                     type: randomItemType,
-                    rate: calculateRate
+                    rate: calculateRate,
+                    zoom: isZoom,
                 });
                 highestReward = (highestReward < calculateRate) ? calculateRate : highestReward;
             };
-            refTimeoutMaxCount.current = refTimeoutsOpen.current.length;
 
             /// Handle open animation
             switch (set) {
@@ -703,7 +748,8 @@ const App = () => {
                                     [item]: {
                                         type: inventoryAdd[set][item].type,
                                         rate: inventoryAdd[set][item].rate,
-                                        count: inventoryAdd[set][item].count
+                                        count: inventoryAdd[set][item].count,
+                                        zoom: inventoryAdd[set][item]?.zoom,
                                     },
                                 };
                             };
@@ -719,18 +765,22 @@ const App = () => {
                 setMoney((prev) => (prev - (cost * amount)) + rewardMoney);
             };
         };
+        
+        refCurrentSet.current = set;
     };
 
     const handleAudioEnded = () => {
         audioOpen.src = null;
-        audioReveal.play()
-            .catch(() => { console.log('No reveal audio to play'); });
+        audioReveal.play().catch(() => { console.log('No reveal audio to play'); });
     };
 
     const handlePopup = (what) => {
-        if (refTimeoutsOpen.current.length > 0) {
-            clearTimeouts();
-            return;
+        if ((refTimeoutsCreate.current.length > 0) || (refTimeoutsOpen.current.length > 0)) {
+            if (what !== refOpen) { 
+                clearTimeouts();
+                return;
+            };
+            createTimeouts();
         };
 
         what.current.style.visibility = 'hidden';
@@ -764,8 +814,8 @@ const App = () => {
 
     const incrementTimeouts = () => {
         let newCount = refTimeoutCount.current + 1;
-
-        if (newCount === refTimeoutMaxCount.current) {
+        
+        if (newCount >= refTimeoutMaxCount.current) {
             newCount = 0;
             refTimeoutMaxCount.current = 0;
             refTimeoutsOpen.current.length = 0;
@@ -776,36 +826,65 @@ const App = () => {
 
     const clearTimeouts = () => {
         refTimeoutsOpen.current.forEach(clearTimeout);
+        refTimeoutsOpen.current.length = 0;
         refTimeoutMaxCount.current = 0;
         refTimeoutCount.current = 0;
-        refTimeoutsOpen.current.length = 0;
 
         const allChildren = refCurrentPopup.current.children[0].children;
 
         for (const child of allChildren) {
             for (const subchild of child.children) {
-                subchild.classList.remove('hidden', 'invisible');
-                subchild.classList.add('no-transition');
-                requestAnimationFrame(() => {
-                    subchild.classList.remove('no-transition');
-                });
+                switch (refCurrentSet.current) {
+                    case 'touhou':
+                        subchild.classList.remove('hidden', 'invisible');
+                        subchild.classList.add('no-transition');
+                        requestAnimationFrame(() => {
+                            subchild.classList.remove('no-transition');
+                        });
+                        break;
+                    case 'blue archive':
+                        subchild.classList.add('flipped');
+                        break;
+                    default: break;
+                };
             };
         };
     };
 
     const handleAnimationStart = () => {
-        audioOpen.play()
-            .catch(() => { console.log('No open audio to play'); });
+        audioOpen.play().catch(() => { console.log('No open audio to play'); });
         document.body.style.overflowY = 'hidden';
         if (!audioReveal.paused) {
-            audioReveal.pause()
-                .catch(() => { console.log('No reveal audio to pause'); });
+            audioReveal.pause().catch(() => { console.log('No reveal audio to pause'); });
         };
     };
 
     const handleEnded = () => {
         refOpen.current.style.visibility = 'hidden';
         refLookup[currentPopupReward.replace(/-/g, ' ')].current.style.visibility = 'visible';
+        createTimeouts();
+        setOpenAnimation('');
+
+        audioOpen.src = null;
+        audioReveal.play()
+            .catch(() => { console.log('No reveal audio to play'); });
+
+        scrollY = window.scrollY;
+        document.body.style.overflowY = 'scroll';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.position = 'fixed';
+    };
+
+    const createTimeouts = () => {
+        refTimeoutsCreate.current.forEach((timeout) => {
+            const timeoutFn = setTimeout(() => {
+                incrementTimeouts();
+                timeout.fn();
+            }, timeout.delay + startingDelay);
+            refTimeoutsOpen.current.push(timeoutFn);
+        });
+        refTimeoutsCreate.current.length = 0;
+        refTimeoutMaxCount.current = refTimeoutsOpen.current.length;
     };
 
     const createPon = (element) => {
@@ -889,6 +968,21 @@ const App = () => {
                     <section id='reward-touhou'
                         className='reward'></section>
                 </div>
+                <div ref={refRewardBlueArchive}
+                    className='popup'
+                    onClick={() => handlePopup(refRewardBlueArchive)}>
+                    <section id='reward-blue-archive'
+                        className='reward'>
+                        <div>
+                            <span id='reward-blue-archive-name'></span>
+                            <span id='reward-blue-archive-stars'></span>
+                        </div>
+                        <img id='reward-blue-archive-image'
+                            alt='reward'
+                            loading='lazy'
+                            decoding='async'/>
+                    </section>
+                </div>
                 <Money money={money}/>
                 <Disclaimer/>
                 <Hotbar references={references}
@@ -900,6 +994,7 @@ const App = () => {
                     handleItemClicked={handleItemClicked}/>
                 <ViewItem viewedItem={viewedItem}
                     viewedCredit={viewedCredit}
+                    currentSet={refCurrentSet.current}
                     isViewedItemVisible={isViewedItemVisible}
                     hideViewedItem={hideViewedItem}/>
             </section>

@@ -23,3 +23,4 @@ All product names, logos, characters, brands, trademarks and registered trademar
 - [Touhou Project Title](https://toppng.com/show_download/185241/image-result-for-touhou-project-logo-touhou-project-logo) by ZUN
 - [Blue Archive Simulator](https://github.com/catptype/Blue-Archive-Gacha-Simulator-V2) by catptype
 - [Blue Archive Assets](https://bluearchive.wiki/wiki/Characters) by Blue Archive
+- [Blue Archive Animation](https://www.youtube.com/watch?v=ENwFQndWRRU) by mapleseallux

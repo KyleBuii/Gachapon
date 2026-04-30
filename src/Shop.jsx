@@ -112,7 +112,7 @@ const Shop = ({ renderShopItems, shopItems, shopBanners, inventoryRecent, handle
                                 };
 
                                 return <span key={`item ${index}`}
-                                    className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate}`}
+                                    className={`group-item inventory-item ${item.set.replace(/\s/g, '-')}-${item.rate} ${item?.zoom ? 'zoom-inventory' : ''}`}
                                     style={{ backgroundImage: `url(/${item.set.replace(/\s/g, '-')}/${item.rate}-bg.webp)` }}
                                     onClick={() => handleItemClicked(imageArt, imageFace, item.set)}>
                                     <img src={imageFace}
