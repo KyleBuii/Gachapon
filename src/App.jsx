@@ -994,7 +994,6 @@ const App = () => {
                     handleItemClicked={handleItemClicked}/>
                 <ViewItem viewedItem={viewedItem}
                     viewedCredit={viewedCredit}
-                    currentSet={refCurrentSet.current}
                     isViewedItemVisible={isViewedItemVisible}
                     hideViewedItem={hideViewedItem}/>
             </section>

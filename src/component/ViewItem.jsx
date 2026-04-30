@@ -1,8 +1,9 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
-const ViewItem = ({ viewedItem, viewedCredit, currentSet, isViewedItemVisible, hideViewedItem }) => {
+const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedItem }) => {
     const [shopItemsView, setShopItemsView] = useState({});
     const [currentImage, setCurrentImage] = useState('');
+    const [currentSet, setCurrentSet] = useState('');
     const [currentItem, setCurrentItem] = useState('');
     const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
     const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 });
@@ -39,6 +40,7 @@ const ViewItem = ({ viewedItem, viewedCredit, currentSet, isViewedItemVisible, h
 
         const splitViewedItem = viewedItem.split('/');
         setCurrentImage(viewedItem);
+        setCurrentSet(splitViewedItem[1]);
         setCurrentItem(splitViewedItem[3]);
         setImagePosition({ x: 0, y: 0 });
         setImageScale(1);
@@ -80,13 +82,13 @@ const ViewItem = ({ viewedItem, viewedCredit, currentSet, isViewedItemVisible, h
 
         let newImage = currentImage;
         switch (currentSet) {
-            case 'blue archive': {
+            case 'blue-archive': {
                 const basePath = `/${currentSet.replace(/\s/g, '-')}/character/${currentItem}/${currentItem}`;
-                const index = String(number + 1).padStart(3, '0');
+                const newNumber = String(number + 1).padStart(3, '0');
 
                 newImage =
                     (type === 'image')
-                        ? `${basePath}-view-${index}.webp`
+                        ? `${basePath}-view-${newNumber}.webp`
                         : `${basePath}-view-${type}-${number + 1}.webm`;
                 break;
             };
