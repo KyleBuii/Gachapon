@@ -73,13 +73,6 @@ button:not(footer button):not(.group-item button):not(.view-item button) {
     }
 }
 
-video {
-    max-width: 96%;
-    border: 2px solid var(--color-sub);
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-
 footer {
     display: flex;
     flex-direction: column;
@@ -1088,6 +1081,13 @@ footer {
         &:active {
             cursor: grabbing;
         }
+    }
+
+    video {
+        max-width: 96%;
+        border: 2px solid var(--color-sub);
+        border-radius: 10px;
+        box-sizing: border-box;
     }
 
     span:last-of-type {
