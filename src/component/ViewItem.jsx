@@ -2,16 +2,25 @@ import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedItem }) => {
     const [shopItemsView, setShopItemsView] = useState({});
+
     const [currentImage, setCurrentImage] = useState('');
     const [currentSet, setCurrentSet] = useState('');
     const [currentItem, setCurrentItem] = useState('');
+
     const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
     const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 });
     const [imageScale, setImageScale] = useState(1);
+
     const [isVideo, setIsVideo] = useState(false);
+    const [isOnTop, setIsOnTop] = useState(false);
 
     const refViewItem = useRef(false);
+    const refViewItemButtons = useRef(null);
+    const refButtons = useRef([]);
+    const refButtonsIndex = useRef(0);
     const refIsDragging = useRef(false);
+
+    let index = 0;
 
     const handleImageScroll = useCallback((event) => {
         event.preventDefault();
@@ -77,8 +86,10 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
         });
     };
 
-    const handleButton = (event, type, number) => {
+    const handleButton = (event, type, number, index) => {
         event.stopPropagation();
+
+        refButtonsIndex.current = index;
 
         let newImage = currentImage;
         switch (currentSet) {
@@ -101,12 +112,41 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
         setIsVideo(checkVideo);
     };
 
+    const handleButtonShowOnTop = (event) => {
+        event.stopPropagation();
+        setIsOnTop((prev) => !prev);
+    };
+
+    const handleKeyDown = (event) => {
+        const buttons = refButtons.current;
+        if (!buttons.length) return;
+
+        if (event.key === 'ArrowRight') {
+            refButtonsIndex.current = Math.min(
+                refButtonsIndex.current + 1,
+                buttons.length - 1
+            );
+            buttons[refButtonsIndex.current]?.focus();
+            buttons[refButtonsIndex.current]?.click();
+        }
+
+        if (event.key === 'ArrowLeft') {
+            refButtonsIndex.current = Math.max(
+                refButtonsIndex.current - 1,
+                0
+            );
+            buttons[refButtonsIndex.current]?.focus();
+            buttons[refButtonsIndex.current]?.click();
+        }
+    };
+
     return (
         <section ref={refViewItem}
             className='view-item'
             style={{ visibility: isViewedItemVisible ? 'visible' : 'hidden' }}
             onClick={handleImageClose}
-            onMouseMove={handleImageMove}>
+            onMouseMove={handleImageMove}
+            onKeyDown={handleKeyDown}>
             {(isVideo)
                 ? <video src={currentImage}
                     autoPlay
@@ -125,13 +165,19 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
                     onMouseUp={handleImageMouseUp}/>}
             <span dangerouslySetInnerHTML={{__html: viewedCredit}}></span>
             {(shopItemsView?.[currentSet.replace(' ', '-')]?.[currentItem] !== undefined)
-                ? <div className='view-item-buttons'>
+                ? <div className={`view-item-buttons ${isOnTop ? 'on-top' : ''}`}>
+                    <button type='button'
+                        className={`button-show-on-top ${isOnTop ? '' : 'disabled'}`}
+                        onClick={handleButtonShowOnTop}>Show On Top</button>
                     {Object.entries(
                         shopItemsView?.[currentSet.replace(' ', '-')]?.[currentItem] || {}
-                    ).map(([type, count]) => (
+                    ).flatMap(([type, count]) => (
                         [...Array(count).keys()].map((number) => {
-                            return <button type='button'
-                                onClick={(event) => handleButton(event, type, number)}
+                            const i = index++;
+
+                            return <button ref={(element) => refButtons.current[i] = element}
+                                type='button'
+                                onClick={(event) => handleButton(event, type, number, i)}
                                 key={`${type} ${number}`}>
                                 {type.replace(/^./, (char) => char.toUpperCase())} {number + 1}
                             </button>
