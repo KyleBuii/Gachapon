@@ -121,23 +121,23 @@ const ViewItem = ({ viewedItem, viewedCredit, isViewedItemVisible, hideViewedIte
         const buttons = refButtons.current;
         if (!buttons.length) return;
 
-        if (event.key === 'ArrowRight') {
+        if (event.key === 'ArrowRight' || event.key.toLowerCase() === 'd') {
             refButtonsIndex.current = Math.min(
                 refButtonsIndex.current + 1,
                 buttons.length - 1
             );
             buttons[refButtonsIndex.current]?.focus();
             buttons[refButtonsIndex.current]?.click();
-        }
+        };
 
-        if (event.key === 'ArrowLeft') {
+        if (event.key === 'ArrowLeft' || event.key.toLowerCase() === 'a') {
             refButtonsIndex.current = Math.max(
                 refButtonsIndex.current - 1,
                 0
             );
             buttons[refButtonsIndex.current]?.focus();
             buttons[refButtonsIndex.current]?.click();
-        }
+        };
     };
 
     return (
